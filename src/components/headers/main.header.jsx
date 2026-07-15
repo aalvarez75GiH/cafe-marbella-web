@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import { Text } from "../../infrastructure/typography/text.component";
 import MarbellaLogo from "../../assets/logos/Logo.png";
-
+import { AccountIcon } from "../../assets/icons/ui/account.icon";
+import { CartIcon } from "../../assets/icons/ui/cart.icon";
 import {
   HeaderWrapper,
   HeaderContent,
@@ -23,8 +24,6 @@ import {
   MobileNavigationLink,
   MobileBackdrop,
   TemporaryLogo,
-  //   TemporaryLogoTop,
-  //   TemporaryLogoName,
 } from "./main.header.styles";
 
 const navigationItems = [
@@ -55,34 +54,6 @@ const navigationItems = [
   },
 ];
 
-const SearchIcon = () => {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <circle cx="11" cy="11" r="6.5" />
-      <path d="m16 16 4 4" />
-    </svg>
-  );
-};
-
-const AccountIcon = () => {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <circle cx="12" cy="7.5" r="3.5" />
-      <path d="M5.5 20c.5-4 2.8-6 6.5-6s6 2 6.5 6" />
-    </svg>
-  );
-};
-
-const CartIcon = () => {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 8H6" />
-      <circle cx="9.5" cy="20" r="1" />
-      <circle cx="17" cy="20" r="1" />
-    </svg>
-  );
-};
-
 const MenuIcon = () => {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -102,12 +73,7 @@ const CloseIcon = () => {
   );
 };
 
-export const Main_Header = ({
-  cartQuantity = 0,
-  onSearch,
-  onAccount,
-  onCart,
-}) => {
+export const Main_Header = ({ cartQuantity = 0, onAccount, onCart }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => {
@@ -168,10 +134,6 @@ export const Main_Header = ({
           </DesktopNavigation>
 
           <ActionsContainer>
-            <IconButton type="button" aria-label="Search" onClick={onSearch}>
-              <SearchIcon />
-            </IconButton>
-
             <IconButton
               type="button"
               aria-label="My account"

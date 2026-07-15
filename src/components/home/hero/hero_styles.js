@@ -2,18 +2,6 @@ import styled, { keyframes } from "styled-components";
 
 import heroBackgroundImage from "../../../assets/images/hero/hero_bg.png";
 
-// const backgroundReveal = keyframes`
-//   from {
-//     opacity: 0;
-//     transform: scale(1.08);
-//   }
-
-//   to {
-//     opacity: 1;
-//     transform: scale(1.01);
-//   }
-// `;
-
 const overlayReveal = keyframes`
   from {
     opacity: 0;
@@ -86,20 +74,6 @@ const buttonReveal = keyframes`
   }
 `;
 
-// const backgroundDrift = keyframes`
-//   0% {
-//     transform: scale(1.01) translate3d(0, 0, 0);
-//   }
-
-//   50% {
-//     transform: scale(1.035) translate3d(-0.4%, -0.2%, 0);
-//   }
-
-//   100% {
-//     transform: scale(1.01) translate3d(0, 0, 0);
-//   }
-// `;
-
 export const HeroSection = styled.section`
   position: relative;
   width: 100%;
@@ -156,41 +130,6 @@ export const HeroBackground = styled.div`
     transform: scale(1);
   }
 `;
-/* export const HeroBackground = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-
-  background-image: url(${heroBackgroundImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-  opacity: 0;
-  transform: scale(1.08);
-
-  animation: ${backgroundReveal} 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-    ${backgroundDrift} 18s ease-in-out 1.8s infinite;
-  will-change: opacity, transform;
-
-  @media (max-width: 1024px) {
-    background-position: 58% center;
-  }
-
-  @media (max-width: 768px) {
-    background-position: 67% center;
-  }
-
-  @media (max-width: 480px) {
-    background-position: 70% center;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-    opacity: 1;
-    transform: scale(1.01);
-  }
-`; */
 
 export const HeroOverlay = styled.div`
   position: absolute;

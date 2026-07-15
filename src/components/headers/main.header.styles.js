@@ -19,16 +19,19 @@ const sharedIconButtonStyles = css`
   cursor: pointer;
 
   transition: color 180ms ease, transform 180ms ease;
-
   svg {
-    width: 22px;
-    height: 22px;
+    display: block;
+
+    width: 24px;
+    height: 24px;
 
     fill: none;
     stroke: currentColor;
-    stroke-width: 1.6;
+    stroke-width: 1.65;
     stroke-linecap: round;
     stroke-linejoin: round;
+
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -41,25 +44,37 @@ const sharedIconButtonStyles = css`
     outline-offset: 3px;
   }
 
-  /* 480px and below */
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 36px;
-    height: 36px;
+  /* Tablet: 768px and below */
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 46px;
+    height: 46px;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 26px;
+      height: 26px;
+      stroke-width: 1.7;
     }
   }
 
-  /* 375px and below */
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    width: 32px;
-    height: 32px;
+  /* Mobile: 480px and below */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 44px;
+    height: 44px;
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  /* Small mobile: 375px and below */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
 `;
@@ -299,38 +314,18 @@ export const ActionsContainer = styled(Container)`
     gap: 1px;
   }
 `;
-
-export const IconButton = styled.button`
-  ${sharedIconButtonStyles}
-`;
 export const CartButton = styled.button`
   ${sharedIconButtonStyles}
 
   position: relative;
-  margin-left: 4px;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
+  margin-left: 2px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    margin-left: 1px;
-
-    svg {
-      width: 18px;
-      height: 18px;
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     margin-left: 0;
-
-    svg {
-      width: 17px;
-      height: 17px;
-    }
   }
+`;
+export const IconButton = styled.button`
+  ${sharedIconButtonStyles}
 `;
 
 export const CartBadge = styled.span`
@@ -379,16 +374,6 @@ export const CartBadge = styled.span`
   }
 `;
 
-// export const MobileMenuButton = styled.button`
-//   ${sharedIconButtonStyles}
-
-//   display: none;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     display: inline-flex;
-//     justify-self: start;
-//   }
-// `;
 export const MobileMenuButton = styled.button`
   ${sharedIconButtonStyles}
 
