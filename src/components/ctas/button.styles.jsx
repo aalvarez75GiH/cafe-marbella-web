@@ -79,9 +79,11 @@ const variants = {
 };
 
 export const CTA_Button = styled.button`
+  /* width: ${({ $width }) => $width || "auto"}; */
   width: ${({ $width }) => $width || "auto"};
+  max-width: 100%;
 
-  border-radius: 2px;
+  border-radius: 8px;
 
   cursor: pointer;
 
@@ -91,7 +93,7 @@ export const CTA_Button = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 28px;
+  gap: 10px;
 
   white-space: nowrap;
 
@@ -102,6 +104,15 @@ export const CTA_Button = styled.button`
   ${({ $size }) => sizes[$size] || sizes.medium}
 
   ${({ $variant }) => variants[$variant] || variants.primary}
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: ${({ $tabletWidth, $width }) => $tabletWidth || $width || "auto"};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: ${({ $mobileWidth, $tabletWidth, $width }) =>
+      $mobileWidth || $tabletWidth || $width || "auto"};
+  }
 
   &:active {
     transform: translateY(1px);

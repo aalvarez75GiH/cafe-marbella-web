@@ -5,8 +5,11 @@ export const Button = ({
   variant = "primary",
   size = "medium",
   width,
+  tabletWidth,
+  mobileWidth,
   type = "button",
   onClick,
+  ...props
 }) => {
   return (
     <CTA_Button
@@ -14,7 +17,10 @@ export const Button = ({
       $variant={variant}
       $size={size}
       $width={width}
+      $tabletWidth={tabletWidth}
+      $mobileWidth={mobileWidth}
       onClick={onClick}
+      {...props}
     >
       {children}
     </CTA_Button>
