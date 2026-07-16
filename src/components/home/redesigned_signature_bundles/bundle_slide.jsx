@@ -23,6 +23,7 @@ import {
   SlideImageArea,
   SceneImage,
   Badge,
+  ButtonWrapper,
 } from "./bundle_slide.styles";
 
 const CoffeeBeanIcon = () => (
@@ -160,17 +161,18 @@ export const BundleSlide = ({ bundle, totalBundles }) => {
         <BundleFeatures items={bundle.items} />
 
         <Price>${bundle.price.toFixed(2)}</Price>
-
-        <Button
-          variant="primary"
-          size="medium"
-          width="220px"
-          tabletWidth="220px"
-          mobileWidth="100%"
-        >
-          Shop Bundle
-          <span aria-hidden="true">→</span>
-        </Button>
+        <ButtonWrapper>
+          <Button
+            variant="primary"
+            size="medium"
+            width="220px"
+            tabletWidth="220px"
+            mobileWidth="100%"
+          >
+            Shop Bundle
+            <span aria-hidden="true">→</span>
+          </Button>
+        </ButtonWrapper>
       </BundleColumn>
 
       <SlideImageArea>

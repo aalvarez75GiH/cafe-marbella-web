@@ -58,6 +58,9 @@ export const IntroColumn = styled.div`
   min-width: 0;
   padding: 58px 28px 58px 64px;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+    padding: 50px 24px 50px 56px;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding: 50px 24px 50px 56px;
   }
@@ -73,7 +76,7 @@ export const IntroColumn = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 40px 22px;
+    display: none;
   }
 `;
 
@@ -548,4 +551,13 @@ export const ArrowIcon = styled.span`
   font-weight: 300;
 
   line-height: 1;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    justify-content: center;
+  }
 `;

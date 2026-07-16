@@ -1,24 +1,41 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { BundleCard } from "./bundle_card";
-import { bundleItems } from "./ bundles_data";
+import { redesignedBundleItems } from "./bundles_data";
 import { Button } from "../../ctas/button";
 
 import {
   SignatureBundlesSection,
   SectionHeader,
   SectionEyebrow,
+  HeaderDivider,
+  DividerLine,
+  DividerDiamond,
+  DesktopHeaderContent,
+  MobileHeaderContent,
   SectionTitle,
-  TitleDecoration,
+  SectionTitleAccent,
   SectionDescription,
+  MobileSectionTitle,
+  BundleFeatures,
+  BundleFeature,
+  FeatureIconWrapper,
+  FeatureContent,
+  FeatureTitle,
+  FeatureDescription,
   CarouselArea,
+  CarouselButton,
   CarouselViewport,
   CarouselTrack,
   CarouselItem,
-  CarouselButton,
   ViewAllContainer,
-  //   ViewAllButton,
 } from "./signature_bundles.styles";
+
+import {
+  CoffeeFeatureIcon,
+  GiftFeatureIcon,
+  LeafFeatureIcon,
+} from "./bundle_feature_icons";
 
 const ArrowIcon = ({ direction = "right" }) => {
   const rotation = direction === "left" ? "rotate(180 12 12)" : undefined;
@@ -109,21 +126,75 @@ export const SignatureBundles = () => {
       <SectionHeader>
         <SectionEyebrow>Our Signature Bundles</SectionEyebrow>
 
-        <SectionTitle>
-          Curated combinations.
-          <span>Extraordinary experiences.</span>
-        </SectionTitle>
+        <HeaderDivider aria-hidden="true">
+          <DividerLine />
+          <DividerDiamond />
+          <DividerLine />
+        </HeaderDivider>
 
-        <TitleDecoration aria-hidden="true">
-          <span />
-          <i />
-          <span />
-        </TitleDecoration>
+        <DesktopHeaderContent>
+          <SectionTitle>
+            Curated combinations.
+            <SectionTitleAccent>Extraordinary experiences.</SectionTitleAccent>
+          </SectionTitle>
 
-        <SectionDescription>
-          Premium Venezuelan coffee paired with exclusive merchandise.
-          <span>Perfect for gifting. Perfect for you.</span>
-        </SectionDescription>
+          <SectionDescription>
+            Premium Venezuelan coffee paired with exclusive Marbella
+            merchandise. Perfect for gifting. Perfect for you.
+          </SectionDescription>
+        </DesktopHeaderContent>
+
+        <MobileHeaderContent>
+          <MobileSectionTitle>
+            Premium Venezuelan coffee paired with exclusive Marbella
+            merchandise.
+            <em> Perfect for gifting. Perfect for you.</em>
+          </MobileSectionTitle>
+        </MobileHeaderContent>
+
+        <BundleFeatures>
+          <BundleFeature>
+            <FeatureIconWrapper aria-hidden="true">
+              <CoffeeFeatureIcon />
+            </FeatureIconWrapper>
+
+            <FeatureContent>
+              <FeatureTitle>Premium Coffee</FeatureTitle>
+
+              <FeatureDescription>
+                100% Arabica from Venezuela
+              </FeatureDescription>
+            </FeatureContent>
+          </BundleFeature>
+
+          <BundleFeature>
+            <FeatureIconWrapper aria-hidden="true">
+              <GiftFeatureIcon />
+            </FeatureIconWrapper>
+
+            <FeatureContent>
+              <FeatureTitle>Exclusive Merch</FeatureTitle>
+
+              <FeatureDescription>
+                Designed for everyday moments
+              </FeatureDescription>
+            </FeatureContent>
+          </BundleFeature>
+
+          <BundleFeature>
+            <FeatureIconWrapper aria-hidden="true">
+              <LeafFeatureIcon />
+            </FeatureIconWrapper>
+
+            <FeatureContent>
+              <FeatureTitle>Perfectly Paired</FeatureTitle>
+
+              <FeatureDescription>
+                Curated with care and intention
+              </FeatureDescription>
+            </FeatureContent>
+          </BundleFeature>
+        </BundleFeatures>
       </SectionHeader>
 
       <CarouselArea>
@@ -142,7 +213,7 @@ export const SignatureBundles = () => {
           aria-label="Café Marbella signature bundles"
         >
           <CarouselTrack>
-            {bundleItems.map((bundle) => (
+            {redesignedBundleItems.map((bundle) => (
               <CarouselItem key={bundle.id} data-carousel-item>
                 <BundleCard
                   name={bundle.name}
@@ -151,7 +222,6 @@ export const SignatureBundles = () => {
                   items={bundle.items}
                   price={bundle.price}
                   productUrl={bundle.productUrl}
-                  buttonLabel={bundle.buttonLabel}
                 />
               </CarouselItem>
             ))}

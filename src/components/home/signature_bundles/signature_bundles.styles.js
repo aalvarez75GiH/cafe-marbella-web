@@ -22,34 +22,49 @@ export const SignatureBundlesSection = styled.section`
 `;
 
 export const SectionHeader = styled.div`
-  width: min(100% - 40px, 760px);
-  margin: 0 auto 48px;
+  width: min(100%, 900px);
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-bottom: 40px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding-inline: 22px;
+    padding-bottom: 40px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: min(100% - 32px, 760px);
-    margin-bottom: 32px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    padding-inline: 16px;
+    padding-bottom: 34px;
   }
 `;
-
-export const SectionEyebrow = styled.p`
-  margin: 0 0 12px;
-
+export const SectionEyebrow = styled.span`
   color: ${({ theme }) => theme.colors.brand.secondary};
 
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 0.78rem;
+  font-size: clamp(0.9rem, 1.25vw, 1.05rem);
   font-weight: 700;
-
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-
+  line-height: 1.2;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    max-width: 290px;
+
+    font-size: 1.18rem;
+    line-height: 1.35;
+    letter-spacing: 0.17em;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    max-width: 260px;
+
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -72,6 +87,15 @@ export const SectionTitle = styled.h2`
     font-size: clamp(2rem, 10vw, 2.65rem);
     line-height: 1.02;
   }
+`;
+
+export const SectionTitleAccent = styled.span`
+  display: block;
+
+  margin-top: 6px;
+
+  font-weight: 400;
+  font-style: italic;
 `;
 
 export const TitleDecoration = styled.div`
@@ -102,26 +126,93 @@ export const TitleDecoration = styled.div`
 `;
 
 export const SectionDescription = styled.p`
-  display: flex;
-  flex-direction: column;
+  max-width: 650px;
 
-  margin: 0;
+  margin: 28px 0 0;
 
   color: ${({ theme }) => theme.colors.text.secondary};
 
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.98rem;
   font-weight: 400;
-
   line-height: 1.65;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 0.9rem;
+  text-align: center;
+  text-wrap: balance;
+`;
+export const BundleFeatures = styled.div`
+  width: 100%;
 
-    span {
-      display: inline;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+
+  margin-top: 48px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    gap: 20px;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
+`;
+export const BundleFeature = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  text-align: left;
+`;
+
+export const FeatureIconWrapper = styled.div`
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: ${({ theme }) => theme.colors.bg.primary};
+
+  color: ${({ theme }) => theme.colors.brand.secondary};
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+export const FeatureContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const FeatureTitle = styled.h3`
+  margin: 0;
+
+  color: ${({ theme }) => theme.colors.brand.secondary};
+
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`;
+
+export const FeatureDescription = styled.p`
+  margin: 0;
+
+  color: ${({ theme }) => theme.colors.text.secondary};
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
 `;
 
 export const CarouselArea = styled.div`
@@ -320,5 +411,100 @@ export const ViewAllButton = styled.button`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-width: 190px;
     min-height: 46px;
+  }
+`;
+
+export const DesktopHeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
+`;
+
+export const MobileHeaderContent = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    max-width: 560px;
+
+    display: block;
+
+    margin-top: 28px;
+  }
+`;
+
+export const MobileSectionTitle = styled.h2`
+  margin: 0;
+
+  color: ${({ theme }) => theme.colors.brand.primary};
+
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+
+  text-wrap: balance;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    font-size: clamp(1.8rem, 9.5vw, 2.25rem);
+    line-height: 1.1;
+  }
+
+  em {
+    display: block;
+
+    margin-top: 6px;
+
+    font-weight: 400;
+    font-style: italic;
+  }
+`;
+
+export const HeaderDivider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 24px 0 48px;
+
+  color: ${({ theme }) => theme.colors.brand.secondary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin: 22px 0 0;
+  }
+`;
+
+export const DividerLine = styled.span`
+  width: 92px;
+  height: 1px;
+
+  background: currentColor;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 70px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    width: 54px;
+  }
+`;
+
+export const DividerDiamond = styled.span`
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid currentColor;
+
+  transform: rotate(45deg);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 8px;
+    height: 8px;
   }
 `;
