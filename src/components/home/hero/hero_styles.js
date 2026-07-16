@@ -3,16 +3,6 @@ import styled, { keyframes } from "styled-components";
 import heroBackgroundImage from "../../../assets/images/hero/hero_2.png";
 //import heroBackgroundImage from "../../../assets/images/hero/hero_bg.png";
 
-// const overlayReveal = keyframes`
-//   from {
-//     opacity: 0;
-//   }
-
-//   to {
-//     opacity: 1;
-//   }
-// `;
-
 const contentReveal = keyframes`
   from {
     opacity: 0;
@@ -145,75 +135,6 @@ export const HeroOverlay = styled.div`
     transparent 100%
   );
 `;
-/* export const HeroOverlay = styled.div`
-  display: none;
-`; */
-
-/* export const HeroOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-
-  opacity: 0;
-
-  background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.52) 30%,
-      rgba(0, 0, 0, 0.18) 58%,
-      rgba(0, 0, 0, 0.03) 100%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.13) 100%);
-
-
-  @media (max-width: 768px) {
-    background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.76) 0%,
-        rgba(0, 0, 0, 0.58) 58%,
-        rgba(0, 0, 0, 0.22) 100%
-      ),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.28) 100%);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-    opacity: 1;
-  }
-`; */
-// export const HeroOverlay = styled.div`
-//   position: absolute;
-//   inset: 0;
-//   z-index: -2;
-
-//   opacity: 0;
-
-//   background: linear-gradient(
-//       90deg,
-//       rgba(13, 28, 19, 0.88) 0%,
-//       rgba(13, 28, 19, 0.72) 30%,
-//       rgba(13, 28, 19, 0.28) 58%,
-//       rgba(13, 28, 19, 0.05) 100%
-//     ),
-//     linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.16) 100%);
-
-//   animation: ${overlayReveal} 1.2s ease-out 0.25s forwards;
-
-//   @media (max-width: 768px) {
-//     background: linear-gradient(
-//         90deg,
-//         rgba(10, 24, 16, 0.9) 0%,
-//         rgba(10, 24, 16, 0.7) 58%,
-//         rgba(10, 24, 16, 0.26) 100%
-//       ),
-//       linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.32) 100%);
-//   }
-
-//   @media (prefers-reduced-motion: reduce) {
-//     animation: none;
-//     opacity: 1;
-//   }
-// `;
 
 export const HeroContentWrapper = styled.div`
   width: min(100% - 48px, 1320px);
@@ -291,28 +212,6 @@ export const TitleContainer = styled.div`
     opacity: 1;
   }
 `;
-// export const TitleContainer = styled.div`
-//   max-width: 650px;
-
-//   opacity: 0;
-//   animation: ${contentReveal} 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.58s
-//     forwards;
-
-//   h1 {
-//     margin: 0;
-//     color: #ffffff;
-//     text-wrap: balance;
-//   }
-
-//   @media (max-width: 768px) {
-//     max-width: 580px;
-//   }
-
-//   @media (prefers-reduced-motion: reduce) {
-//     animation: none;
-//     opacity: 1;
-//   }
-// `;
 
 export const DecorativeDivider = styled.div`
   width: 230px;
@@ -367,7 +266,9 @@ export const Description = styled.div`
     color: ${({ theme }) => theme.colors.text.black};
     /* color: rgba(255, 255, 255, 0.9); */
   }
-
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
   @media (prefers-reduced-motion: reduce) {
     animation: none;
     opacity: 1;
@@ -388,13 +289,19 @@ export const ActionsContainer = styled.div`
     justify-content: space-between;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 10px;
 
     button {
-      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    button {
       min-width: 0;
     }
   }

@@ -70,7 +70,7 @@ export const Hero_Component = () => {
             </Button>
 
             <Button
-              variant="white_transparent"
+              variant="green_transparent"
               size="large"
               onClick={handleExploreBundles}
             >

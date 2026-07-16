@@ -410,6 +410,24 @@ export const SlideImageArea = styled.div`
     inset: 0 auto 0 0;
     z-index: 2;
 
+    width: 35px;
+
+    background: linear-gradient(
+      90deg,
+      ${({ theme }) => theme.colors.bg.secondary} 0%,
+      rgba(248, 246, 241, 0.35) 45%,
+      rgba(248, 246, 241, 0) 100%
+    );
+
+    pointer-events: none;
+  }
+  /* &::after {
+    content: "";
+
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 2;
+
     width: 96px;
 
     background: linear-gradient(
@@ -420,7 +438,7 @@ export const SlideImageArea = styled.div`
     );
 
     pointer-events: none;
-  }
+  } */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     min-height: 620px;

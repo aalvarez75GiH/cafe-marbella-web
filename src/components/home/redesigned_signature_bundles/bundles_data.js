@@ -1,6 +1,6 @@
-import starterPackImage from "../../../assets/images/bundles/redesigned/starter_pack.png";
+import starterPackImage from "../../../assets/images/bundles/redesigned/scenes/starter_pack_small.png";
 import capCoffeeComboImage from "../../../assets/images/bundles/redesigned/scenes/cap_and_coffee_pack.png";
-import tShirtCoffeeComboImage from "../../../assets/images/bundles/redesigned/scenes/t-shirt_and_coffee_combo.png";
+import tShirtCoffeeComboImage from "../../../assets/images/bundles/redesigned/scenes/t-shirt_and_coffee_combo_small.png";
 import streetwearImage from "../../../assets/images/bundles/redesigned/scenes/streetware_coffee_pack.png";
 
 import starterPackImage_tr from "../../../assets/images/bundles/redesigned/tumbnails/starter_pack_transparent.png";

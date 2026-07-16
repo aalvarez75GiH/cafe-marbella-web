@@ -55,6 +55,21 @@ const variants = {
     }
   `,
 
+  green_transparent: css`
+    background: rgba(20, 92, 52, 0.04);
+    border: 2px solid rgba(20, 92, 52, 0.35);
+    color: ${({ theme }) => theme.colors.brand.primary};
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.brand.primary};
+      color: ${({ theme }) => theme.colors.text.inverse};
+      border-color: ${({ theme }) => theme.colors.brand.primaryDark};
+    }
+  `,
+
   icon: css`
     width: 56px;
     height: 56px;
@@ -77,14 +92,11 @@ const variants = {
     }
   `,
 };
-
 export const CTA_Button = styled.button`
-  /* width: ${({ $width }) => $width || "auto"}; */
   width: ${({ $width }) => $width || "auto"};
   max-width: 100%;
 
   border-radius: 8px;
-
   cursor: pointer;
 
   transition: background-color 0.25s ease, border-color 0.25s ease,
@@ -102,16 +114,20 @@ export const CTA_Button = styled.button`
   letter-spacing: 0.04em;
 
   ${({ $size }) => sizes[$size] || sizes.medium}
-
   ${({ $variant }) => variants[$variant] || variants.primary}
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: ${({ $tabletWidth, $width }) => $tabletWidth || $width || "auto"};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: ${({ $mobileWidth, $tabletWidth, $width }) =>
-      $mobileWidth || $tabletWidth || $width || "auto"};
+    width: ${({ $mobileCompactWidth, $mobileWidth, $tabletWidth, $width }) =>
+      $mobileCompactWidth || $mobileWidth || $tabletWidth || $width || "auto"};
+
+    padding-left: 18px;
+    padding-right: 18px;
+
+    min-height: 48px;
   }
 
   &:active {
