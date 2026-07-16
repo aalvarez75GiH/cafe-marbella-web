@@ -41,10 +41,12 @@ export const Slide = styled.article`
     grid-template-columns: 0.78fr 0.82fr 1.25fr;
     min-height: 590px;
   }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
+    display: none;
   }
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  } */
 `;
 
 export const IntroColumn = styled.div`

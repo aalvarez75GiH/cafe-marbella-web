@@ -18,8 +18,17 @@ export const Section = styled.section`
     padding: 48px 0 22px;
   }
 `;
+
 export const SectionReveal = styled.div`
-  width: min(100% - 48px, 1440px);
+  width: 100%;
+
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transform: translateY(${({ $isVisible }) => ($isVisible ? "0" : "28px")});
+
+  transition: opacity 700ms ease, transform 700ms ease;
+`;
+//export const SectionReveal = styled.div`
+/* width: min(100% - 48px, 1440px);
   margin: 0 auto;
 
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
@@ -34,7 +43,7 @@ export const SectionReveal = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: calc(100% - 40px);
   }
-`;
+`; */
 
 export const SectionHeader = styled.header`
   width: 100%;
@@ -46,10 +55,6 @@ export const SectionHeader = styled.header`
     padding: 0 16px;
   }
 
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 0;
-    margin-bottom: 22px;
-  } */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding-inline: 12px;
   }
@@ -151,5 +156,21 @@ export const CardReveal = styled.div`
     opacity: 1;
     transform: none;
     transition: none;
+  }
+`;
+
+export const SectionContent = styled.div`
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 48px;
+  box-sizing: border-box;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-inline: 32px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding-inline: 28px;
   }
 `;

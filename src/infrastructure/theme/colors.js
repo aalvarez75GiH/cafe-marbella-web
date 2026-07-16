@@ -24,6 +24,7 @@ export const colors = /** @type {const} */ ({
     green: "#145C34",
     gold: "#C8922D",
     gold_light: "#D9A441",
+    black: "#000000",
   },
 
   border: {
