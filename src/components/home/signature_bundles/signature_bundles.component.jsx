@@ -28,7 +28,7 @@ import {
   BundlesHeaderContent,
 } from "./signature_bundles.styles";
 
-export const RedesignedSignatureBundles = () => {
+export const SignatureBundles = () => {
   const [currentBundle, setCurrentBundle] = useState(0);
 
   const activeBundle = redesignedBundleItems[currentBundle];

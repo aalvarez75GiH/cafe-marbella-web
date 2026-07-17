@@ -11,6 +11,7 @@ export const colors = /** @type {const} */ ({
   bg: {
     primary: "#FFFFFF",
     secondary: "#F7F1E6",
+    tertiary: "#F8F9FA", // NEW
     card: "#F7F1E6",
     footer: "#074729",
     dark: "#102318",
