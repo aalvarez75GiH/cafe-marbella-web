@@ -1,0 +1,181 @@
+import { useState } from "react";
+// import { Link } from "react-router-dom";
+import { CoffeeCupIcon } from "../../../assets/icons/footer/coffee_cup_icon";
+import logoGreen from "../../../assets/logos/Logo.png";
+
+import { contactItems, footerNavigation, socialItems } from "./footer.data";
+
+import {
+  BottomBar,
+  BottomBarContent,
+  BrandDescription,
+  BrandSection,
+  ContactItem,
+  ContactLink,
+  ContactList,
+  Footer,
+  FooterContainer,
+  FooterContent,
+  FooterHeading,
+  FooterLink,
+  FooterLinksList,
+  FooterLogo,
+  FooterNavigation,
+  FooterNavigationColumn,
+  NewsletterDescription,
+  NewsletterEyebrow,
+  NewsletterText,
+  PaymentBadge,
+  PaymentMethods,
+  PaymentTitle,
+  SocialLink,
+  SocialLinks,
+  VenezuelaSignature,
+  NewsletterIntro,
+  NewsletterIconWrapper,
+  NewsletterContent,
+  NewsletterSection,
+  NewsletterInput,
+  NewsletterButton,
+  NewsletterForm,
+  LogoSurface,
+} from "./footer.styles";
+
+export const FooterSection = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      return;
+    }
+
+    console.log("Newsletter subscription:", email);
+    setEmail("");
+  };
+
+  return (
+    <Footer>
+      <FooterContainer>
+        <NewsletterSection>
+          <NewsletterContent>
+            <NewsletterIntro>
+              <NewsletterIconWrapper>
+                <CoffeeCupIcon size={58} />
+              </NewsletterIconWrapper>
+
+              <NewsletterText>
+                <NewsletterEyebrow>Stay connected</NewsletterEyebrow>
+
+                <NewsletterDescription>
+                  Get exclusive offers, new arrivals,
+                  <br />
+                  and stories from our family to yours.
+                </NewsletterDescription>
+              </NewsletterText>
+            </NewsletterIntro>
+
+            <NewsletterForm onSubmit={handleSubmit}>
+              <NewsletterInput
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="Enter your email"
+                aria-label="Email address"
+                required
+              />
+
+              <NewsletterButton type="submit">Subscribe</NewsletterButton>
+            </NewsletterForm>
+          </NewsletterContent>
+        </NewsletterSection>
+
+        <FooterContent>
+          <BrandSection>
+            <LogoSurface>
+              <FooterLogo src={logoGreen} alt="Café Marbella" />
+            </LogoSurface>
+
+            <BrandDescription>
+              Premium Venezuelan coffee, roasted with purpose and shared with
+              the world.
+            </BrandDescription>
+
+            <SocialLinks aria-label="Social media links">
+              {socialItems.map((social) => (
+                <SocialLink
+                  key={social.id}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                >
+                  {social.label.slice(0, 1)}
+                </SocialLink>
+              ))}
+            </SocialLinks>
+          </BrandSection>
+
+          <FooterNavigation>
+            {footerNavigation.map((group) => (
+              <FooterNavigationColumn key={group.id}>
+                <FooterHeading>{group.title}</FooterHeading>
+
+                <FooterLinksList>
+                  {group.links.map((item) => (
+                    <li key={item.id}>
+                      <FooterLink href={item.href}>{item.label}</FooterLink>
+                    </li>
+                  ))}
+                </FooterLinksList>
+              </FooterNavigationColumn>
+            ))}
+
+            <FooterNavigationColumn>
+              <FooterHeading>Contact</FooterHeading>
+
+              <ContactList>
+                {contactItems.map((item) => (
+                  <ContactItem key={item.id}>
+                    <ContactLink
+                      href={item.href}
+                      target={item.id === "location" ? "_blank" : undefined}
+                      rel={item.id === "location" ? "noreferrer" : undefined}
+                    >
+                      {item.label}
+                    </ContactLink>
+                  </ContactItem>
+                ))}
+              </ContactList>
+
+              <PaymentMethods>
+                <PaymentTitle>Secure payments</PaymentTitle>
+
+                <div>
+                  <PaymentBadge>Visa</PaymentBadge>
+                  <PaymentBadge>MC</PaymentBadge>
+                  <PaymentBadge>Amex</PaymentBadge>
+                  <PaymentBadge> Pay</PaymentBadge>
+                  <PaymentBadge>PayPal</PaymentBadge>
+                </div>
+              </PaymentMethods>
+            </FooterNavigationColumn>
+          </FooterNavigation>
+        </FooterContent>
+
+        <BottomBar>
+          <BottomBarContent>
+            <span>
+              © {new Date().getFullYear()} Café Marbella. All rights reserved.
+            </span>
+
+            <VenezuelaSignature>
+              With a touch of Venezuela <span>♥</span> 🇻🇪
+            </VenezuelaSignature>
+          </BottomBarContent>
+        </BottomBar>
+      </FooterContainer>
+    </Footer>
+  );
+};
