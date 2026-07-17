@@ -23,28 +23,6 @@ export const Section = styled.section`
     padding: 20px 0 46px;
   }
 `;
-//export const Section = styled.section`
-/* width: 100%;
-  padding: 96px 0 120px;
-
-  background: ${({ theme }) => theme.colors.bg.primary};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    padding: 84px 0 104px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 72px 0 88px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 58px 0 72px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    padding: 50px 0 64px;
-  }
-`; */
 
 // ************* COMMUNITY SECTION HEADER
 
@@ -230,13 +208,14 @@ export const SectionTitle = styled.h2`
 
   font-family: ${({ theme }) =>
     theme.fonts?.heading || "'Raleway', sans-serif"};
-  font-size: clamp(2rem, 3vw, 3.15rem);
+  /* font-size: clamp(2rem, 3vw, 3.15rem); */
+  font-size: clamp(1.5rem, 2vw, 2.15rem);
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.04em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: clamp(1.85rem, 8vw, 2.4rem);
+    font-size: clamp(1.45rem, 6vw, 1.4rem);
   }
 `;
 

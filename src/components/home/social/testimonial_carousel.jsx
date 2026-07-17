@@ -13,6 +13,7 @@ import {
   NavigationContainer,
   NavigationButton,
   ArrowIcon,
+  TestimonialSurface,
 } from "./testimonial_carousel.styles";
 
 export const TestimonialCarousel = () => {
@@ -34,47 +35,49 @@ export const TestimonialCarousel = () => {
 
   return (
     <CarouselContainer>
-      <QuoteIcon aria-hidden="true">“</QuoteIcon>
+      <TestimonialSurface>
+        <QuoteIcon aria-hidden="true">“</QuoteIcon>
 
-      <TestimonialText key={activeTestimonial.id}>
-        {activeTestimonial.quote}
-      </TestimonialText>
+        <TestimonialText key={activeTestimonial.id}>
+          {activeTestimonial.quote}
+        </TestimonialText>
 
-      <TestimonialFooter>
-        <div>
-          <CustomerName>{activeTestimonial.customerName}</CustomerName>
+        <TestimonialFooter>
+          <div>
+            <CustomerName>{activeTestimonial.customerName}</CustomerName>
 
-          <StarsContainer
-            aria-label={`${activeTestimonial.rating} out of 5 stars`}
-          >
-            {Array.from({ length: activeTestimonial.rating }).map(
-              (_, index) => (
-                <Star key={index}>★</Star>
-              )
-            )}
-          </StarsContainer>
-        </div>
+            <StarsContainer
+              aria-label={`${activeTestimonial.rating} out of 5 stars`}
+            >
+              {Array.from({ length: activeTestimonial.rating }).map(
+                (_, index) => (
+                  <Star key={index}>★</Star>
+                )
+              )}
+            </StarsContainer>
+          </div>
 
-        <NavigationContainer>
-          <NavigationButton
-            type="button"
-            onClick={handlePrevious}
-            aria-label="Previous testimonial"
-          >
-            <ArrowIcon $previous aria-hidden="true">
-              →
-            </ArrowIcon>
-          </NavigationButton>
+          <NavigationContainer>
+            <NavigationButton
+              type="button"
+              onClick={handlePrevious}
+              aria-label="Previous testimonial"
+            >
+              <ArrowIcon $previous aria-hidden="true">
+                →
+              </ArrowIcon>
+            </NavigationButton>
 
-          <NavigationButton
-            type="button"
-            onClick={handleNext}
-            aria-label="Next testimonial"
-          >
-            <ArrowIcon aria-hidden="true">→</ArrowIcon>
-          </NavigationButton>
-        </NavigationContainer>
-      </TestimonialFooter>
+            <NavigationButton
+              type="button"
+              onClick={handleNext}
+              aria-label="Next testimonial"
+            >
+              <ArrowIcon aria-hidden="true">→</ArrowIcon>
+            </NavigationButton>
+          </NavigationContainer>
+        </TestimonialFooter>
+      </TestimonialSurface>
     </CarouselContainer>
   );
 };

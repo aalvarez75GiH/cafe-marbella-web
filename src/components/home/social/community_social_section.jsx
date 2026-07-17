@@ -49,7 +49,7 @@ export const CommunitySocialSection = () => {
             <ColumnHeader>
               <SectionEyebrow>TESTIMONIALS</SectionEyebrow>
 
-              <SectionTitle>Loved by Coffee Lovers</SectionTitle>
+              <SectionTitle>Reviews by coffee lovers</SectionTitle>
 
               {/* <DecorativeDivider>
                 <DividerLine />
