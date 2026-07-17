@@ -296,3 +296,100 @@ export const ArrowIcon = styled.span`
   font-weight: 300;
   line-height: 1;
 `;
+
+// ************* BUNDLES SECTION HEADER
+export const BundlesHeaderContent = styled.div`
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 48px;
+  box-sizing: border-box;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-inline: 32px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding-inline: 28px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    padding-inline: 20px;
+  }
+`;
+export const BundlesSectionHeader = styled.header`
+  width: 100%;
+  margin: 0 0 34px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin-bottom: 28px;
+  }
+`;
+
+export const BundlesSectionEyebrow = styled.p`
+  margin: 0 0 18px;
+
+  color: ${({ theme }) => theme.colors.text.gold};
+
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin-bottom: 15px;
+    font-size: 0.86rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.76rem;
+    letter-spacing: 0.17em;
+  }
+`;
+
+export const BundlesSectionTitle = styled.h2`
+  max-width: 1120px;
+  margin: 0;
+
+  color: ${({ theme }) => theme.colors.brand.primaryDark};
+
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2.45rem, 4vw, 4.15rem);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    max-width: 760px;
+    font-size: clamp(2.15rem, 6vw, 3.4rem);
+    line-height: 1.07;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    max-width: 100%;
+    font-size: clamp(2rem, 8.8vw, 2.35rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+`;
+
+export const BundlesSectionDescription = styled.p`
+  max-width: 760px;
+  margin: 18px 0 0;
+
+  color: ${({ theme }) => theme.colors.text.secondary};
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.55;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    max-width: 100%;
+    margin-top: 14px;
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+`;

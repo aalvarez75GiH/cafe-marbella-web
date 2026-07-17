@@ -27,38 +27,28 @@ export const SectionReveal = styled.div`
 
   transition: opacity 700ms ease, transform 700ms ease;
 `;
-//export const SectionReveal = styled.div`
-/* width: min(100% - 48px, 1440px);
-  margin: 0 auto;
-
-  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-  transform: translateY(${({ $isVisible }) => ($isVisible ? "0" : "28px")});
-
-  transition: opacity 700ms ease, transform 700ms ease;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: min(100% - 32px, 1440px);
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: calc(100% - 40px);
-  }
-`; */
-
 export const SectionHeader = styled.header`
   width: 100%;
   margin: 0 auto 34px;
-  padding: 0 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-bottom: 28px;
-    padding: 0 16px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding-inline: 12px;
   }
 `;
+// export const SectionHeader = styled.header`
+//   width: 100%;
+//   margin: 0 auto 34px;
+//   padding: 0 24px;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     margin-bottom: 28px;
+//     padding: 0 16px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     padding-inline: 12px;
+//   }
+// `;
 
 export const SectionEyebrow = styled.p`
   margin: 0 0 18px;
@@ -172,5 +162,8 @@ export const SectionContent = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding-inline: 28px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    padding-inline: 20px;
   }
 `;

@@ -21,6 +21,11 @@ import {
   PreviousButton,
   NextButton,
   ArrowIcon,
+  BundlesSectionHeader,
+  BundlesSectionEyebrow,
+  BundlesSectionTitle,
+  BundlesSectionDescription,
+  BundlesHeaderContent,
 } from "./signature_bundles.styles";
 
 export const RedesignedSignatureBundles = () => {
@@ -42,6 +47,19 @@ export const RedesignedSignatureBundles = () => {
 
   return (
     <SignatureBundlesSection>
+      <BundlesHeaderContent>
+        <BundlesSectionHeader>
+          <BundlesSectionEyebrow>SHOP BY BUNDLES</BundlesSectionEyebrow>
+
+          <BundlesSectionTitle>
+            Discover our amazing combinations
+          </BundlesSectionTitle>
+
+          <BundlesSectionDescription>
+            Great coffee &amp; great merch
+          </BundlesSectionDescription>
+        </BundlesSectionHeader>
+      </BundlesHeaderContent>
       <SectionHeader>
         <SectionEyebrow>Our Signature Bundles</SectionEyebrow>
 

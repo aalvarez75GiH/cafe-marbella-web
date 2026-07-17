@@ -79,9 +79,12 @@ export const HeroSection = styled.section`
   @media (max-width: 768px) {
     min-height: 760px;
   }
-
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     min-height: 700px;
+  } */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    min-height: calc(100vh - 76px);
+    min-height: calc(100svh - 76px);
   }
 `;
 export const HeroBackground = styled.div`
@@ -140,25 +143,25 @@ export const HeroContentWrapper = styled.div`
   width: min(100% - 48px, 1320px);
   min-height: inherit;
   margin: 0 auto;
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
 
   @media (max-width: 768px) {
     width: min(100% - 40px, 1320px);
-    align-items: flex-end;
-    padding-bottom: 72px;
+    align-items: stretch;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: min(100% - 32px, 1320px);
-    padding-bottom: 48px;
   }
 `;
 
 export const HeroContent = styled.div`
   width: min(100%, 650px);
   padding: 80px 0 72px;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
@@ -170,8 +173,27 @@ export const HeroContent = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 56px 0 0;
+    min-height: inherit;
+    padding: 72px 0 44px;
+
+    justify-content: space-between;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding-top: 58px;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    padding-top: 46px;
+    padding-bottom: 28px;
+  }
+`;
+
+export const HeroTextContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const Eyebrow = styled.div`
@@ -232,6 +254,9 @@ export const DecorativeDivider = styled.div`
     animation: none;
     opacity: 1;
     transform: scaleX(1);
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin: 22px 0 0;
   }
 `;
 

@@ -11,6 +11,7 @@ import {
   DecorativeSymbol,
   Description,
   ActionsContainer,
+  HeroTextContent,
 } from "./hero_styles";
 
 import { Text } from "../../../infrastructure/typography/text.component";
@@ -34,34 +35,36 @@ export const Hero_Component = () => {
 
       <HeroContentWrapper>
         <HeroContent>
-          <Eyebrow>
-            <Text variant="label" color={theme.colors.text.gold_light}>
-              PREMIUM VENEZUELAN COFFEE
-            </Text>
-          </Eyebrow>
+          <HeroTextContent>
+            <Eyebrow>
+              <Text variant="label" color={theme.colors.text.gold_light}>
+                PREMIUM VENEZUELAN COFFEE
+              </Text>
+            </Eyebrow>
 
-          <TitleContainer>
-            <Text as="h1" variant="heroTitle">
-              Born in Venezuela.
-              <br />
-              Shared with the world.
-            </Text>
-          </TitleContainer>
+            <TitleContainer>
+              <Text as="h1" variant="heroTitle">
+                Born in Venezuela.
+                <br />
+                Shared with the world.
+              </Text>
+            </TitleContainer>
 
-          <DecorativeDivider aria-hidden="true">
-            <DecorativeLine />
-            <DecorativeSymbol>❧</DecorativeSymbol>
-            <DecorativeLine />
-          </DecorativeDivider>
+            <DecorativeDivider aria-hidden="true">
+              <DecorativeLine />
+              <DecorativeSymbol>❧</DecorativeSymbol>
+              <DecorativeLine />
+            </DecorativeDivider>
 
-          <Description>
-            <Text as="p" variant="body">
-              Experience premium single-origin coffee inspired by
-              Venezuela&apos;s rich landscapes and family traditions. Every cup
-              is an invitation to slow down, connect, and enjoy the warmth of
-              great coffee.
-            </Text>
-          </Description>
+            <Description>
+              <Text as="p" variant="body">
+                Experience premium single-origin coffee inspired by
+                Venezuela&apos;s rich landscapes and family traditions. Every
+                cup is an invitation to slow down, connect, and enjoy the warmth
+                of great coffee.
+              </Text>
+            </Description>
+          </HeroTextContent>
 
           <ActionsContainer>
             <Button variant="primary" size="large" onClick={handleShopCoffee}>
