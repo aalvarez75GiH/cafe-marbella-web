@@ -37,13 +37,9 @@ export const NavigationContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints?.tablet || "768px"}) {
     display: none;
-    //width: calc(100% - 20px);
-    //border-radius: 10px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints?.mobile || "480px"}) {
     display: none;
-    //width: calc(100% - 20px);
-    //border-radius: 10px;
   }
 `;
 

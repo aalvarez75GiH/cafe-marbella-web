@@ -212,7 +212,6 @@ export const SectionContainer = styled.div`
     width: min(100% - 20px, 1500px);
   }
 `;
-
 const NavigationButton = styled.button`
   position: absolute;
   top: 50%;
@@ -221,30 +220,30 @@ const NavigationButton = styled.button`
   display: grid;
   place-items: center;
 
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   padding: 0;
 
-  border: 1px solid ${({ theme }) => theme.colors.brand.primary};
+  border: 1.5px solid ${({ theme }) => theme.colors.brand.primary};
   border-radius: 50%;
 
   background: ${({ theme }) => theme.colors.bg.primary};
   color: ${({ theme }) => theme.colors.brand.primary};
 
-  box-shadow: 0 8px 24px rgba(20, 92, 52, 0.1);
+  box-shadow: 0 8px 22px rgba(20, 92, 52, 0.1);
 
   cursor: pointer;
 
   transform: translateY(-50%);
 
   transition: background-color 180ms ease, color 180ms ease,
-    transform 180ms ease;
+    box-shadow 180ms ease;
 
   &:hover {
     background: ${({ theme }) => theme.colors.brand.primary};
     color: ${({ theme }) => theme.colors.text.inverse};
 
-    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 22px rgba(20, 92, 52, 0.16);
   }
 
   &:focus-visible {
@@ -253,38 +252,88 @@ const NavigationButton = styled.button`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: auto;
-    bottom: 18px;
-
-    transform: none;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 42px;
-    height: 42px;
-    bottom: 14px;
-  }
-`;
-
-export const PreviousButton = styled(NavigationButton)`
-  left: -58px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
+`;
+// const NavigationButton = styled.button`
+//   position: absolute;
+//   top: 50%;
+//   z-index: 20;
+
+//   display: grid;
+//   place-items: center;
+
+//   width: 46px;
+//   height: 46px;
+//   padding: 0;
+
+//   border: 1px solid ${({ theme }) => theme.colors.brand.primary};
+//   border-radius: 50%;
+
+//   background: ${({ theme }) => theme.colors.bg.primary};
+//   color: ${({ theme }) => theme.colors.brand.primary};
+
+//   box-shadow: 0 8px 24px rgba(20, 92, 52, 0.1);
+
+//   cursor: pointer;
+
+//   transform: translateY(-50%);
+
+//   transition: background-color 180ms ease, color 180ms ease,
+//     transform 180ms ease;
+
+//   &:hover {
+//     background: ${({ theme }) => theme.colors.brand.primary};
+//     color: ${({ theme }) => theme.colors.text.inverse};
+
+//     transform: translateY(-50%) scale(1.05);
+//   }
+
+//   &:focus-visible {
+//     outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
+//     outline-offset: 4px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     top: auto;
+//     bottom: 18px;
+
+//     transform: none;
+
+//     &:hover {
+//       transform: scale(1.05);
+//     }
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     width: 42px;
+//     height: 42px;
+//     bottom: 14px;
+//   }
+// `;
+
+export const PreviousButton = styled(NavigationButton)`
+  left: -72px;
 `;
 
 export const NextButton = styled(NavigationButton)`
-  right: -58px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: none;
-  }
+  right: -72px;
 `;
+// export const PreviousButton = styled(NavigationButton)`
+//   left: -58px;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     display: none;
+//   }
+// `;
+
+// export const NextButton = styled(NavigationButton)`
+//   right: -58px;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     display: none;
+//   }
+// `;
 
 export const ArrowIcon = styled.span`
   display: flex;

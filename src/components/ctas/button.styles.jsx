@@ -56,7 +56,8 @@ const variants = {
   `,
 
   green_transparent: css`
-    background: rgba(20, 92, 52, 0.04);
+    /* background: rgba(20, 92, 52, 0.04); */
+    background: transparent;
     border: 2px solid rgba(20, 92, 52, 0.35);
     color: ${({ theme }) => theme.colors.brand.primary};
 

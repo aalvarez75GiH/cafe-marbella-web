@@ -68,9 +68,14 @@ const buttonReveal = keyframes`
 export const HeroSection = styled.section`
   position: relative;
   width: 100%;
-  min-height: clamp(620px, 72vw, 790px);
+  /* min-height: clamp(620px, 72vw, 790px); */
+  min-height: clamp(680px, 68vh, 840px);
   overflow: hidden;
   isolation: isolate;
+
+  @media (min-width: 1920px) {
+    min-height: clamp(760px, 66vh, 920px);
+  }
 
   @media (max-width: 1024px) {
     min-height: 680px;
@@ -79,9 +84,7 @@ export const HeroSection = styled.section`
   @media (max-width: 768px) {
     min-height: 760px;
   }
-  /* @media (max-width: 480px) {
-    min-height: 700px;
-  } */
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-height: calc(100vh - 76px);
     min-height: calc(100svh - 76px);
@@ -92,6 +95,7 @@ export const HeroBackground = styled.div`
   inset: 0;
   z-index: -3;
 
+  background-color: ${({ theme }) => theme.colors.bg.primary};
   background-image: url(${heroBackgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
@@ -105,6 +109,13 @@ export const HeroBackground = styled.div`
     ${backgroundDrift} 22s ease-in-out 1.8s infinite;
 
   will-change: opacity, transform;
+
+  @media (min-width: 1920px) {
+    background-size: auto 100%;
+    background-position: right center;
+
+    animation: ${backgroundReveal} 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 
   @media (max-width: 1024px) {
     background-position: 58% 42%;

@@ -1,13 +1,14 @@
 import styled from "styled-components";
-
 export const Slide = styled.article`
   position: relative;
 
+  width: 100%;
+
   display: grid;
   grid-template-columns:
-    minmax(330px, 0.77fr)
-    minmax(340px, 0.82fr)
-    minmax(650px, 1.55fr);
+    minmax(300px, 0.82fr)
+    minmax(320px, 0.88fr)
+    minmax(0, 1.55fr);
 
   align-items: stretch;
 
@@ -21,32 +22,30 @@ export const Slide = styled.article`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
     grid-template-columns:
-      minmax(310px, 0.8fr)
-      minmax(340px, 0.88fr)
-      minmax(560px, 1.4fr);
+      minmax(280px, 0.8fr)
+      minmax(300px, 0.85fr)
+      minmax(0, 1.4fr);
 
-    column-gap: 28px;
+    column-gap: 20px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-template-columns:
-      minmax(330px, 0.7fr)
-      minmax(300px, 0.5fr)
-      minmax(720px, 1.8fr);
+      minmax(270px, 0.78fr)
+      minmax(290px, 0.82fr)
+      minmax(0, 1.35fr);
 
-    column-gap: 22px;
+    column-gap: 18px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     grid-template-columns: 0.78fr 0.82fr 1.25fr;
     min-height: 590px;
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-  } */
 `;
 
 export const IntroColumn = styled.div`
@@ -290,15 +289,18 @@ export const SlideCounter = styled.p`
     justify-content: center;
   }
 `;
+
 export const BundleName = styled.h3`
   display: flex;
   align-items: flex-start;
 
   width: 100%;
-  max-width: 330px;
-  min-height: 3em;
+  max-width: 350px;
+  height: 3em;
 
   margin: 0;
+
+  overflow: hidden;
 
   color: ${({ theme }) => theme.colors.brand.primaryDark};
 
@@ -310,8 +312,8 @@ export const BundleName = styled.h3`
   line-height: 1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    max-width: 300px;
-    min-height: 3em;
+    max-width: 320px;
+    height: 3em;
 
     font-size: clamp(2.1rem, 3vw, 3.2rem);
   }
@@ -320,9 +322,42 @@ export const BundleName = styled.h3`
     justify-content: center;
 
     max-width: 100%;
-    min-height: auto;
+    height: auto;
   }
 `;
+// export const BundleName = styled.h3`
+//   display: flex;
+//   align-items: flex-start;
+
+//   width: 100%;
+//   max-width: 330px;
+//   min-height: 3em;
+
+//   margin: 0;
+
+//   color: ${({ theme }) => theme.colors.brand.primaryDark};
+
+//   font-family: ${({ theme }) => theme.fonts.display};
+//   font-size: clamp(2.35rem, 3.25vw, 3.7rem);
+//   font-weight: 500;
+
+//   letter-spacing: -0.025em;
+//   line-height: 1;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+//     max-width: 300px;
+//     min-height: 3em;
+
+//     font-size: clamp(2.1rem, 3vw, 3.2rem);
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     justify-content: center;
+
+//     max-width: 100%;
+//     min-height: auto;
+//   }
+// `;
 
 export const TitleDecoration = styled.div`
   display: flex;
@@ -421,24 +456,6 @@ export const SlideImageArea = styled.div`
 
     pointer-events: none;
   }
-  /* &::after {
-    content: "";
-
-    position: absolute;
-    inset: 0 auto 0 0;
-    z-index: 2;
-
-    width: 96px;
-
-    background: linear-gradient(
-      90deg,
-      ${({ theme }) => theme.colors.bg.secondary} 0%,
-      rgba(248, 246, 241, 0.85) 35%,
-      rgba(248, 246, 241, 0) 100%
-    );
-
-    pointer-events: none;
-  } */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     min-height: 620px;
@@ -460,6 +477,7 @@ export const SlideImageArea = styled.div`
     min-height: 370px;
   }
 `;
+
 export const SceneImage = styled.img`
   display: block;
 
@@ -467,16 +485,11 @@ export const SceneImage = styled.img`
   height: 100%;
 
   object-fit: cover;
-  object-position: 72% center;
 
-  transform: scale(1);
-  transform-origin: center;
+  object-position: ${({ $objectPosition }) =>
+    $objectPosition || "center center"};
 
-  transition: transform 700ms ease, object-position 700ms ease;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    object-position: 64% center;
-  }
+  transition: object-position 500ms ease, transform 500ms ease;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     position: absolute;

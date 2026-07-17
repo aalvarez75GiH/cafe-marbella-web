@@ -35,20 +35,6 @@ export const SectionHeader = styled.header`
     margin-bottom: 28px;
   }
 `;
-// export const SectionHeader = styled.header`
-//   width: 100%;
-//   margin: 0 auto 34px;
-//   padding: 0 24px;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     margin-bottom: 28px;
-//     padding: 0 16px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     padding-inline: 12px;
-//   }
-// `;
 
 export const SectionEyebrow = styled.p`
   margin: 0 0 18px;

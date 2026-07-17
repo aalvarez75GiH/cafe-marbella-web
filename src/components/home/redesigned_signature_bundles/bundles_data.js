@@ -13,7 +13,8 @@ export const redesignedBundleItems = [
     id: "starter_pack",
     number: "1",
     name: "Starter Pack",
-    description: "Our complete Marbella coffee experience.",
+    description:
+      "Start every morning with two handcrafted specialty coffees paired with the Café Marbella signature mug. A perfect introduction to our Venezuelan coffee experience.",
     image: starterPackImage,
     image_transparent: starterPackImage_tr,
     badge: "Best Seller",
@@ -34,12 +35,14 @@ export const redesignedBundleItems = [
         label: "Marbella Mug",
       },
     ],
+    imagePosition: "64% center",
   },
   {
     id: "cap_and_coffee_combo",
     number: "2",
     name: "Cap & Coffee Combo",
-    description: "Take Marbella with you, wherever the day takes you.",
+    description:
+      "Enjoy premium Venezuelan coffee with our signature mug and embroidered Marbella cap. A perfect blend of exceptional flavor and everyday style.",
     image: capCoffeeComboImage,
     image_transparent: capCoffeeComboImage_tr,
     price: 45.99,
@@ -59,12 +62,14 @@ export const redesignedBundleItems = [
         label: "Marbella Mug",
       },
     ],
+    imagePosition: "60% center",
   },
   {
     id: "t-shirt_and_coffee_combo",
     number: "3",
     name: "T-Shirt & Coffee Combo",
-    description: "Wear your love for great coffee. Anywhere. Anytime.",
+    description:
+      "Enjoy premium Venezuelan coffee with our signature mug and exclusive Marbella T-shirt. A perfect combination of exceptional flavor and timeless style.",
     image: tShirtCoffeeComboImage,
     image_transparent: tShirtCoffeeComboImage_tr,
     price: 44.99,
@@ -84,12 +89,14 @@ export const redesignedBundleItems = [
         label: "Marbella Mug",
       },
     ],
+    imagePosition: "56% center",
   },
   {
     id: "streetwear_coffee_pack",
     number: "4",
     name: "Streetwear Coffee Pack",
-    description: "Elevated coffee. Effortless style. Made for wherever you go.",
+    description:
+      "Experience the complete Café Marbella collection with specialty coffee, an exclusive T-shirt, and our signature embroidered cap. Crafted for coffee lovers who appreciate quality.",
     image: streetwearImage,
     image_transparent: streetwearImage_tr,
     price: 51.99,
@@ -105,9 +112,10 @@ export const redesignedBundleItems = [
         label: "Ground Coffee",
       },
       {
-        type: "tshirt",
+        type: "<tshirt></tshirt>",
         label: "T-Shirt",
       },
     ],
+    imagePosition: "58% center",
   },
 ];
