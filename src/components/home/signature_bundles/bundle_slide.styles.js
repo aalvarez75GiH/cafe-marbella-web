@@ -1,29 +1,32 @@
 import styled from "styled-components";
+
 export const Slide = styled.article`
   position: relative;
 
-  width: 100%;
-
   display: grid;
   grid-template-columns:
-    minmax(300px, 0.82fr)
-    minmax(320px, 0.88fr)
+    minmax(0, 0.82fr)
+    minmax(0, 0.88fr)
     minmax(0, 1.55fr);
 
   align-items: stretch;
 
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 680px;
-
-  border-radius: 24px;
-
-  background: ${({ theme }) => theme.colors.bg.secondary};
 
   overflow: hidden;
 
+  background: ${({ theme }) => theme.colors.bg.secondary};
+  border-radius: 24px;
+
+  box-sizing: border-box;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
     grid-template-columns:
-      minmax(280px, 0.8fr)
-      minmax(300px, 0.85fr)
+      minmax(0, 0.8fr)
+      minmax(0, 0.85fr)
       minmax(0, 1.4fr);
 
     column-gap: 20px;
@@ -31,15 +34,19 @@ export const Slide = styled.article`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-template-columns:
-      minmax(270px, 0.78fr)
-      minmax(290px, 0.82fr)
+      minmax(0, 0.78fr)
+      minmax(0, 0.82fr)
       minmax(0, 1.35fr);
 
     column-gap: 18px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    grid-template-columns: 0.78fr 0.82fr 1.25fr;
+    grid-template-columns:
+      minmax(0, 0.78fr)
+      minmax(0, 0.82fr)
+      minmax(0, 1.25fr);
+
     min-height: 590px;
   }
 
@@ -325,39 +332,6 @@ export const BundleName = styled.h3`
     height: auto;
   }
 `;
-// export const BundleName = styled.h3`
-//   display: flex;
-//   align-items: flex-start;
-
-//   width: 100%;
-//   max-width: 330px;
-//   min-height: 3em;
-
-//   margin: 0;
-
-//   color: ${({ theme }) => theme.colors.brand.primaryDark};
-
-//   font-family: ${({ theme }) => theme.fonts.display};
-//   font-size: clamp(2.35rem, 3.25vw, 3.7rem);
-//   font-weight: 500;
-
-//   letter-spacing: -0.025em;
-//   line-height: 1;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-//     max-width: 300px;
-//     min-height: 3em;
-
-//     font-size: clamp(2.1rem, 3vw, 3.2rem);
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     justify-content: center;
-
-//     max-width: 100%;
-//     min-height: auto;
-//   }
-// `;
 
 export const TitleDecoration = styled.div`
   display: flex;

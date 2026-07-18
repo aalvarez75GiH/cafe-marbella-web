@@ -50,11 +50,6 @@ export const CommunitySocialSection = () => {
               <SectionEyebrow>TESTIMONIALS</SectionEyebrow>
 
               <SectionTitle>Reviews by coffee lovers</SectionTitle>
-
-              {/* <DecorativeDivider>
-                <DividerLine />
-                <DividerDot />
-              </DecorativeDivider> */}
             </ColumnHeader>
 
             <ColumnContent>

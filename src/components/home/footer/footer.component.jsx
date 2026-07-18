@@ -1,9 +1,16 @@
 import { useState } from "react";
 // import { Link } from "react-router-dom";
+
 import { CoffeeCupIcon } from "../../../assets/icons/footer/coffee_cup_icon";
 import logoGreen from "../../../assets/logos/Logo.png";
-
-import { contactItems, footerNavigation, socialItems } from "./footer.data";
+import { InstagramIcon } from "../../../assets/icons/social/instagram_icon";
+import { FacebookIcon } from "../../../assets/icons/social/facebook_icon";
+import { TikTokIcon } from "../../../assets/icons/social/tiktok_icon";
+import { contactItems, footerNavigation } from "./footer.data";
+import visaLogo from "../../../assets/logos/payments/visa.png";
+import masterLogo from "../../../assets/logos/payments/master.png";
+import { VisaLogo } from "./footer.styles";
+import { MastercardLogo } from "./footer.styles";
 
 import {
   BottomBar,
@@ -25,7 +32,8 @@ import {
   NewsletterDescription,
   NewsletterEyebrow,
   NewsletterText,
-  PaymentBadge,
+  PaymentIcons,
+  //   PaymentBadge,
   PaymentMethods,
   PaymentTitle,
   SocialLink,
@@ -103,17 +111,32 @@ export const FooterSection = () => {
             </BrandDescription>
 
             <SocialLinks aria-label="Social media links">
-              {socialItems.map((social) => (
-                <SocialLink
-                  key={social.id}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.label}
-                >
-                  {social.label.slice(0, 1)}
-                </SocialLink>
-              ))}
+              <SocialLink
+                href="https://www.instagram.com/cafemarbellaus_"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </SocialLink>
+
+              <SocialLink
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
+                <FacebookIcon />
+              </SocialLink>
+
+              <SocialLink
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="TikTok"
+              >
+                <TikTokIcon />
+              </SocialLink>
             </SocialLinks>
           </BrandSection>
 
@@ -148,17 +171,14 @@ export const FooterSection = () => {
                   </ContactItem>
                 ))}
               </ContactList>
-
               <PaymentMethods>
                 <PaymentTitle>Secure payments</PaymentTitle>
 
-                <div>
-                  <PaymentBadge>Visa</PaymentBadge>
-                  <PaymentBadge>MC</PaymentBadge>
-                  <PaymentBadge>Amex</PaymentBadge>
-                  <PaymentBadge> Pay</PaymentBadge>
-                  <PaymentBadge>PayPal</PaymentBadge>
-                </div>
+                <PaymentIcons>
+                  <VisaLogo src={visaLogo} alt="Visa" />
+
+                  <MastercardLogo src={masterLogo} alt="Mastercard" />
+                </PaymentIcons>
               </PaymentMethods>
             </FooterNavigationColumn>
           </FooterNavigation>

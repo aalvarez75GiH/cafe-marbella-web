@@ -2,13 +2,10 @@ import styled from "styled-components";
 
 export const SignatureBundlesSection = styled.section`
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
-  padding: 48px 0 36px;
-
-  background: ${({ theme }) => theme.colors.bg.primary};
-
-  overflow: visible;
-
+  overflow-x: clip;
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 40px 0 30px;
   }
@@ -20,7 +17,19 @@ export const SignatureBundlesSection = styled.section`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     padding: 26px 0 20px;
   }
+
+  /* keep the rest of your existing styles */
 `;
+// export const SignatureBundlesSection = styled.section`
+//   width: 100%;
+
+//   padding: 48px 0 36px;
+
+//   background: ${({ theme }) => theme.colors.bg.primary};
+
+//   overflow: visible;
+
+// `;
 
 export const SectionHeader = styled.header`
   width: min(100% - 40px, 900px);
