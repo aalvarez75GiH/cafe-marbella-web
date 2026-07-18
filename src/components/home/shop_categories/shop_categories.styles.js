@@ -29,10 +29,11 @@ export const SectionReveal = styled.div`
 `;
 export const SectionHeader = styled.header`
   width: 100%;
-  margin: 0 auto 34px;
+  /* margin: 0 auto 34px; */
+  margin: 0 auto 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -98,33 +99,51 @@ export const SectionDescription = styled.p`
 `;
 
 export const CardsContainer = styled.div`
-  width: calc(100% - 48px);
-  max-width: 1440px;
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(22px, 2.4vw, 36px);
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    width: calc(100% - 40px);
-    gap: 16px;
-  }
+  width: 100%;
+  min-width: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: calc(100% - 32px);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: calc(100% - 24px);
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 `;
+// export const CardsContainer = styled.div`
+//   width: calc(100% - 48px);
+//   max-width: 1440px;
+//   margin: 0 auto;
+
+//   display: grid;
+//   grid-template-columns: repeat(3, minmax(0, 1fr));
+//   gap: 18px;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+//     width: calc(100% - 40px);
+//     gap: 16px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     width: calc(100% - 32px);
+//     grid-template-columns: repeat(2, minmax(0, 1fr));
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     width: calc(100% - 24px);
+//     grid-template-columns: 1fr;
+//   }
+// `;
 
 export const CardReveal = styled.div`
   width: 100%;
   min-width: 0;
+  height: 100%;
 
   ${revealCard}
 
@@ -134,6 +153,18 @@ export const CardReveal = styled.div`
     transition: none;
   }
 `;
+// export const CardReveal = styled.div`
+//   width: 100%;
+//   min-width: 0;
+
+//   ${revealCard}
+
+//   @media (prefers-reduced-motion: reduce) {
+//     opacity: 1;
+//     transform: none;
+//     transition: none;
+//   }
+// `;
 
 export const SectionContent = styled.div`
   width: 100%;

@@ -25,12 +25,12 @@ export const ShopCategories = () => {
     <Section ref={elementRef}>
       <SectionContent>
         <SectionHeader>
-          <SectionEyebrow>SHOP BY COLLECTION</SectionEyebrow>
+          <SectionEyebrow>SHOP BY CATEGORIES</SectionEyebrow>
 
           <SectionTitle>Discover everything we have to offer.</SectionTitle>
 
           <SectionDescription>
-            Premium coffee, curated bundles and exclusive merchandise.
+            Premium coffee and exclusive merchandise.
           </SectionDescription>
         </SectionHeader>
 

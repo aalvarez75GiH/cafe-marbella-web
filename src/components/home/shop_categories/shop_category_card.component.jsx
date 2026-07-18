@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardBackground,
@@ -12,11 +11,10 @@ import {
 } from "./shop_category_card.styles";
 
 export const ShopCategoryCard = ({ category }) => {
-  //   const navigate = useNavigate();
-  const { title, description, image, path } = category;
-  console.log(path);
+  const { title, description, image } = category;
+
   return (
-    <Card type="button" onClick={() => null} aria-label={`Explore ${title}`}>
+    <Card type="button" aria-label={`Explore ${title}`}>
       <CardBackground $image={image} />
 
       <CardOverlay />
@@ -24,7 +22,6 @@ export const ShopCategoryCard = ({ category }) => {
       <CardContent>
         <ContentGroup>
           <CardTitle>{title}</CardTitle>
-
           <CardDescription>{description}</CardDescription>
         </ContentGroup>
 
