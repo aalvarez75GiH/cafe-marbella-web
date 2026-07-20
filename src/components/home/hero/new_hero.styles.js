@@ -27,14 +27,13 @@ const contentReveal = keyframes`
 const bagReveal = keyframes`
   0% {
     opacity: 0;
-    filter: blur(6px);
+    filter: blur(5px);
     transform:
-      translate3d(var(--bag-start-x), 34px, 0)
-      rotate(var(--bag-rotation))
-      scale(0.9);
+      translate3d(var(--bag-start-x), 28px, 0)
+      scale(0.94);
   }
 
-  55% {
+  60% {
     opacity: 1;
   }
 
@@ -43,23 +42,7 @@ const bagReveal = keyframes`
     filter: blur(0);
     transform:
       translate3d(0, 0, 0)
-      rotate(var(--bag-rotation))
       scale(1);
-  }
-`;
-
-const subtleFloat = keyframes`
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(var(--bag-rotation));
-  }
-
-  50% {
-    transform:
-      translateY(-7px)
-      rotate(var(--bag-rotation));
   }
 `;
 
@@ -67,31 +50,28 @@ export const Hero = styled.section`
   position: relative;
 
   width: 100%;
-  min-height: min(800px, calc(100vh - 88px));
+  min-height: 820px;
 
   overflow: hidden;
 
   background: ${({ theme }) => theme.colors.bg.secondary};
   isolation: isolate;
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    min-height: 860px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    min-height: 760px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    min-height: 700px;
+    min-height: 680px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: auto;
     min-height: auto;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    height: auto;
-    min-height: auto;
-    max-height: none;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    min-height: auto;
-    max-height: none;
   }
 `;
 
@@ -113,69 +93,52 @@ export const BackgroundImage = styled.div`
     position: absolute;
     inset: 0;
 
+    background: linear-gradient(
+      90deg,
+      rgba(249, 246, 240, 0.3) 0%,
+      rgba(249, 246, 240, 0.17) 31%,
+      rgba(249, 246, 240, 0.04) 51%,
+      rgba(249, 246, 240, 0) 66%
+    );
+
     pointer-events: none;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    background-position: 61% center;
+    background-position: 60% center;
 
     &::after {
       background: linear-gradient(
         90deg,
-        rgba(249, 244, 237, 0.5) 0%,
-        rgba(249, 244, 237, 0.28) 48%,
-        rgba(249, 244, 237, 0.06) 100%
+        rgba(249, 244, 237, 0.72) 0%,
+        rgba(249, 244, 237, 0.42) 50%,
+        rgba(249, 244, 237, 0.08) 100%
       );
     }
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    background-position: 68% center;
+    background-position: 67% center;
 
     &::after {
       background: linear-gradient(
           180deg,
-          rgba(249, 244, 237, 0.4) 0%,
-          rgba(249, 244, 237, 0.22) 50%,
-          rgba(249, 244, 237, 0.08) 100%
+          rgba(249, 244, 237, 0.42) 0%,
+          rgba(249, 244, 237, 0.2) 53%,
+          rgba(249, 244, 237, 0.06) 100%
         ),
         linear-gradient(
           90deg,
-          rgba(249, 244, 237, 0.56) 0%,
-          rgba(249, 244, 237, 0.3) 62%,
-          rgba(249, 244, 237, 0.06) 100%
+          rgba(249, 244, 237, 0.65) 0%,
+          rgba(249, 244, 237, 0.34) 62%,
+          rgba(249, 244, 237, 0.05) 100%
         );
     }
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     background-position: 70% center;
-
-    &::after {
-      background: linear-gradient(
-          180deg,
-          rgba(249, 244, 237, 0.44) 0%,
-          rgba(249, 244, 237, 0.24) 52%,
-          rgba(249, 244, 237, 0.1) 100%
-        ),
-        linear-gradient(
-          90deg,
-          rgba(249, 244, 237, 0.6) 0%,
-          rgba(249, 244, 237, 0.32) 64%,
-          rgba(249, 244, 237, 0.08) 100%
-        );
-    }
   }
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    background-position: 61% center;
-
-    &::after {
-      background: linear-gradient(
-        90deg,
-        rgba(249, 244, 237, 0.94) 0%,
-        rgba(249, 244, 237, 0.8) 48%,
-        rgba(249, 244, 237, 0.18) 100%
-      );
-    }
-  } */
 `;
 
 export const ContentContainer = styled.div`
@@ -183,30 +146,38 @@ export const ContentContainer = styled.div`
   z-index: 1;
 
   display: grid;
-  grid-template-columns: minmax(500px, 0.92fr) minmax(620px, 1.08fr);
-  align-items: center;
-  column-gap: clamp(28px, 3vw, 54px);
+  grid-template-columns: minmax(520px, 0.84fr) minmax(700px, 1.16fr);
+  align-items: stretch;
+  column-gap: clamp(24px, 2.5vw, 48px);
 
-  width: 100%;
-  max-width: 1600px;
+  width: min(calc(100% - 96px), 1800px);
   min-height: inherit;
   margin: 0 auto;
-  padding: 58px clamp(48px, 5.5vw, 88px);
+  padding: 64px 0 0;
 
   box-sizing: border-box;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-template-columns: minmax(430px, 0.9fr) minmax(540px, 1.1fr);
-    column-gap: 24px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    grid-template-columns: minmax(560px, 0.82fr) minmax(760px, 1.18fr);
 
-    padding-inline: 52px;
+    width: min(calc(100% - 112px), 1880px);
+    padding-top: 72px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-template-columns: minmax(460px, 0.88fr) minmax(610px, 1.12fr);
+
+    width: min(calc(100% - 80px), 1580px);
+    column-gap: 20px;
+    padding-top: 54px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    grid-template-columns: minmax(370px, 0.88fr) minmax(460px, 1.12fr);
-    column-gap: 18px;
+    grid-template-columns: minmax(365px, 0.9fr) minmax(470px, 1.1fr);
 
-    padding-inline: 40px;
+    width: calc(100% - 64px);
+    column-gap: 14px;
+    padding-top: 42px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -214,6 +185,7 @@ export const ContentContainer = styled.div`
     flex-direction: column;
     align-items: stretch;
 
+    width: 100%;
     min-height: auto;
     padding: 40px 32px 26px;
   }
@@ -231,39 +203,64 @@ export const HeroContent = styled.div`
   position: relative;
   z-index: 4;
 
+  align-self: center;
+
   width: 100%;
   max-width: 660px;
+  padding-bottom: 34px;
 
   animation: ${contentReveal} 900ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    max-width: 700px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    max-width: 600px;
+    padding-bottom: 30px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    max-width: 520px;
+    max-width: 480px;
+    padding-bottom: 22px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-self: auto;
+
     max-width: 620px;
+    padding-bottom: 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: 100%;
-    padding-bottom: 0;
   }
 `;
 
 export const Eyebrow = styled.p`
-  margin: 0 0 18px;
+  margin: 0 0 22px;
 
   color: ${({ theme }) => theme.colors.text.gold};
 
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    margin-bottom: 19px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     margin-bottom: 16px;
+    font-size: 0.8rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -281,25 +278,30 @@ export const Eyebrow = styled.p`
 `;
 
 export const Title = styled.h1`
-  max-width: 660px;
+  max-width: 680px;
   margin: 0;
 
   color: ${({ theme }) => theme.colors.brand.primaryDark};
 
   font-family: ${({ theme }) => theme.fonts.display};
-  font-size: clamp(3.4rem, 4.5vw, 4.8rem);
+  font-size: clamp(4.3rem, 4.65vw, 5.25rem);
   font-weight: 500;
   line-height: 0.98;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.055em;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    max-width: 720px;
+    font-size: clamp(4.7rem, 4.55vw, 5.65rem);
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    max-width: 580px;
-    font-size: clamp(3.1rem, 4.4vw, 4.15rem);
+    max-width: 610px;
+    font-size: clamp(3.65rem, 4.65vw, 4.45rem);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     max-width: 470px;
-    font-size: clamp(2.8rem, 4.5vw, 3.65rem);
+    font-size: clamp(2.85rem, 4.6vw, 3.55rem);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -328,13 +330,19 @@ export const Title = styled.h1`
 export const Divider = styled.div`
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 14px;
 
-  width: 180px;
-  margin: 28px 0 22px;
+  width: 220px;
+  margin: 30px 0 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin: 26px 0 20px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: 200px;
+    margin: 27px 0 22px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    width: 180px;
+    margin: 23px 0 19px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -344,7 +352,6 @@ export const Divider = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    width: 180px;
     margin: 18px 0 15px;
   }
 `;
@@ -390,9 +397,21 @@ export const Description = styled.p`
   color: ${({ theme }) => theme.colors.text.primary};
 
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  font-size: clamp(1.05rem, 1.2vw, 1.22rem);
   font-weight: 400;
   line-height: 1.55;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    font-size: 1.24rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 1.06rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    font-size: 0.94rem;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     max-width: 470px;
@@ -461,17 +480,18 @@ const HeroButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
 
-  min-height: 56px;
-  padding: 0 28px;
+  min-width: 210px;
+  min-height: 58px;
+  padding: 0 30px;
 
   border-radius: 9px;
 
   cursor: pointer;
 
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 0.96rem;
+  font-size: 0.98rem;
   font-weight: 650;
 
   transition: color 200ms ease, background-color 200ms ease,
@@ -489,6 +509,18 @@ const HeroButton = styled.button`
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
     outline-offset: 4px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    min-width: 190px;
+    min-height: 54px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    min-width: 164px;
+    min-height: 50px;
+    padding-inline: 22px;
+    font-size: 0.86rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -540,10 +572,15 @@ export const BenefitsContainer = styled.div`
   display: flex;
   align-items: stretch;
 
+  width: fit-content;
   margin-top: 34px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     margin-top: 30px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    margin-top: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -556,9 +593,17 @@ export const BenefitItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 9px;
+  gap: 8px;
 
-  width: 132px;
+  width: 128px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    width: 138px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    width: 102px;
+  }
 `;
 
 export const BenefitIcon = styled.svg`
@@ -572,48 +617,78 @@ export const BenefitIcon = styled.svg`
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const BenefitLabel = styled.span`
   color: ${({ theme }) => theme.colors.text.primary};
 
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.83rem;
+  font-size: 0.81rem;
   font-weight: 600;
-  line-height: 1.42;
+  line-height: 1.38;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    font-size: 0.7rem;
+  }
 `;
 
 export const BenefitDivider = styled.span`
   display: block;
 
   width: 1px;
-  min-height: 78px;
-  margin-inline: 10px;
+  min-height: 76px;
+  margin-inline: 9px;
 
   background: rgba(23, 23, 23, 0.2);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    min-height: 68px;
+    margin-inline: 5px;
+  }
 `;
 
 export const ProductsContainer = styled.div`
   position: relative;
   z-index: 2;
 
-  width: 100%;
-  height: 610px;
-  min-height: 560px;
-
   align-self: end;
+
+  width: 100%;
+  height: 700px;
+  min-height: 620px;
+
+  /*
+   * This is the distance from the bottom of the hero
+   * to the visible table surface in hero_5.png.
+   */
+  --table-baseline: 88px;
 
   pointer-events: none;
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+    height: 740px;
+
+    --table-baseline: 96px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    height: 570px;
-    min-height: 520px;
+    height: 640px;
+    min-height: 570px;
+
+    --table-baseline: 78px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    height: 510px;
+    height: 520px;
     min-height: 470px;
+
+    --table-baseline: 62px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -623,16 +698,14 @@ export const ProductsContainer = styled.div`
     width: min(100%, 700px);
     height: 390px;
     min-height: 0;
-
-    /* margin-top: 5px; */
     margin-top: 10px;
+
+    --table-baseline: 0px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
-
     height: clamp(190px, 51vw, 245px);
-
     margin-top: 16px;
   }
 
@@ -641,86 +714,185 @@ export const ProductsContainer = styled.div`
   }
 `;
 
+// export const ProductsContainer = styled.div`
+//   position: relative;
+//   z-index: 2;
+
+//   align-self: end;
+
+//   width: 100%;
+//   height: 700px;
+//   min-height: 620px;
+
+//   pointer-events: none;
+
+//   @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+//     height: 740px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+//     height: 640px;
+//     min-height: 570px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+//     height: 520px;
+//     min-height: 470px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     order: 2;
+//     align-self: center;
+
+//     width: min(100%, 700px);
+//     height: 390px;
+//     min-height: 0;
+//     margin-top: 10px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     width: 100%;
+//     height: clamp(190px, 51vw, 245px);
+//     margin-top: 16px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+//     margin-top: 14px;
+//   }
+// `;
+
 export const ProductBag = styled.div`
   --bag-start-x: ${({ $startX = "-40px" }) => $startX};
-  --bag-rotation: 0deg;
 
   position: absolute;
+  bottom: var(--table-baseline);
 
   left: ${({ $position }) => {
-    if ($position === "center") return "34.5%";
-    if ($position === "right") return "69%";
-    return "0";
+    if ($position === "center") return "35.5%";
+    if ($position === "right") return "72.5%";
+    return "1.5%";
   }};
-
-  bottom: 0;
 
   z-index: ${({ $position }) => {
     if ($position === "center") return 3;
-    if ($position === "left") return 2;
-    return 1;
+    return 2;
   }};
 
-  width: 32%;
+  width: ${({ $position }) => {
+    if ($position === "center") return "34%";
+    return "29%";
+  }};
 
   opacity: 0;
 
   animation: ${bagReveal} 900ms cubic-bezier(0.22, 1, 0.36, 1)
-      ${({ $delay }) => $delay} forwards,
-    ${subtleFloat} 5.6s ease-in-out calc(${({ $delay }) => $delay} + 1.1s)
-      infinite;
+    ${({ $delay }) => $delay} forwards;
 
   transform-origin: center bottom;
   will-change: opacity, transform, filter;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  &::after {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    left: 13%;
+    right: 13%;
+    bottom: -3px;
+
+    height: 12px;
+
+    background: rgba(61, 42, 24, 0.16);
+    border-radius: 50%;
+    filter: blur(7px);
+
+    pointer-events: none;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
     left: ${({ $position }) => {
-      if ($position === "center") return "34%";
-      if ($position === "right") return "68%";
-      return "0";
+      if ($position === "center") return "35%";
+      if ($position === "right") return "72%";
+      return "1.5%";
     }};
 
-    width: 32.5%;
+    width: ${({ $position }) => {
+      if ($position === "center") return "34.5%";
+      return "29.5%";
+    }};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    left: ${({ $position }) => {
+      if ($position === "center") return "35%";
+      if ($position === "right") return "71.5%";
+      return "1%";
+    }};
+
+    width: ${({ $position }) => {
+      if ($position === "center") return "34%";
+      return "29.5%";
+    }};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     left: ${({ $position }) => {
-      if ($position === "center") return "33.5%";
-      if ($position === "right") return "67%";
+      if ($position === "center") return "34.5%";
+      if ($position === "right") return "70%";
       return "0";
     }};
 
-    width: 33%;
+    width: ${({ $position }) => {
+      if ($position === "center") return "35%";
+      return "30.5%";
+    }};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    bottom: 0;
+
     left: ${({ $position }) => {
       if ($position === "center") return "37%";
       if ($position === "right") return "66%";
       return "8%";
     }};
 
-    width: 25%;
+    width: ${({ $position }) => {
+      if ($position === "center") return "27%";
+      return "25%";
+    }};
+
+    &::after {
+      height: 8px;
+      filter: blur(5px);
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     left: ${({ $position }) => {
-      if ($position === "center") return "34.5%";
-      if ($position === "right") return "69%";
-      return "0";
-    }};
-
-    width: 31%;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    left: ${({ $position }) => {
-      if ($position === "center") return "34.25%";
+      if ($position === "center") return "34%";
       if ($position === "right") return "68.5%";
       return "0";
     }};
 
-    width: 31.5%;
+    width: ${({ $position }) => {
+      if ($position === "center") return "33%";
+      return "31%";
+    }};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    left: ${({ $position }) => {
+      if ($position === "center") return "34%";
+      if ($position === "right") return "68.5%";
+      return "0";
+    }};
+
+    width: ${({ $position }) => {
+      if ($position === "center") return "33%";
+      return "31.5%";
+    }};
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -732,6 +904,123 @@ export const ProductBag = styled.div`
   }
 `;
 
+// export const ProductBag = styled.div`
+//   --bag-start-x: ${({ $startX = "-40px" }) => $startX};
+
+//   position: absolute;
+//   bottom: 0;
+
+//   left: ${({ $position }) => {
+//     if ($position === "center") return "33.5%";
+//     if ($position === "right") return "68.5%";
+//     return "0";
+//   }};
+
+//   z-index: ${({ $position }) => {
+//     if ($position === "center") return 3;
+//     return 2;
+//   }};
+
+//   width: ${({ $position }) => {
+//     if ($position === "center") return "37%";
+//     return "32%";
+//   }};
+
+//   opacity: 0;
+
+//   animation: ${bagReveal} 900ms cubic-bezier(0.22, 1, 0.36, 1)
+//     ${({ $delay }) => $delay} forwards;
+
+//   transform-origin: center bottom;
+//   will-change: opacity, transform, filter;
+
+//   @media (min-width: ${({ theme }) => theme.breakpoints.wide}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "33%";
+//       if ($position === "right") return "68%";
+//       return "0";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "38%";
+//       return "32.5%";
+//     }};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "33.5%";
+//       if ($position === "right") return "68.5%";
+//       return "0";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "37%";
+//       return "32%";
+//     }};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "34%";
+//       if ($position === "right") return "68.5%";
+//       return "0";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "35.5%";
+//       return "31.5%";
+//     }};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "37%";
+//       if ($position === "right") return "66%";
+//       return "8%";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "27%";
+//       return "25%";
+//     }};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "34%";
+//       if ($position === "right") return "68.5%";
+//       return "0";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "33%";
+//       return "31%";
+//     }};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+//     left: ${({ $position }) => {
+//       if ($position === "center") return "34%";
+//       if ($position === "right") return "68.5%";
+//       return "0";
+//     }};
+
+//     width: ${({ $position }) => {
+//       if ($position === "center") return "33%";
+//       return "31.5%";
+//     }};
+//   }
+
+//   @media (prefers-reduced-motion: reduce) {
+//     opacity: 1;
+//     animation: none;
+
+//     filter: none;
+//     transform: none;
+//   }
+// `;
+
 export const ProductBagImage = styled.img`
   display: block;
 
@@ -740,7 +1029,19 @@ export const ProductBagImage = styled.img`
 
   object-fit: contain;
 
-  filter: drop-shadow(0 18px 15px rgba(61, 42, 24, 0.16));
+  filter: drop-shadow(0 7px 7px rgba(61, 42, 24, 0.1));
 
   user-select: none;
 `;
+// export const ProductBagImage = styled.img`
+//   display: block;
+
+//   width: 100%;
+//   height: auto;
+
+//   object-fit: contain;
+
+//   filter: drop-shadow(0 14px 12px rgba(61, 42, 24, 0.14));
+
+//   user-select: none;
+// `;

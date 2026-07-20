@@ -1,6 +1,6 @@
-import heroBackground from "../../../assets/images/hero/hero_4.png";
+import heroBackground from "../../../assets/images/hero/hero_5.png";
 import mexicoGroundBag from "../../../assets/images/hero/mex_gb_for_hero-preview.png";
-import venezuelaGroundBag from "../../../assets/images/hero/vzla_gb_for_hero-preview.png";
+import venezuelaGroundBag from "../../../assets/images/hero/vzla_gb_for_hero-removebg.png";
 import venezuelaWholeBag from "../../../assets/images/hero/vzla_wb_for_hero-preview.png";
 
 import {
@@ -125,21 +125,21 @@ export const NewHero_Component = () => {
         </HeroContent>
 
         <ProductsContainer aria-label="Café Marbella coffee collection">
-          <ProductBag $position="left" $delay="0.45s" $startX="-48px">
+          <ProductBag $position="left" $delay="0.4s" $startX="-42px">
             <ProductBagImage
               src={venezuelaGroundBag}
               alt="Café Marbella Venezuela ground coffee"
             />
           </ProductBag>
 
-          <ProductBag $position="center" $delay="0.75s" $startX="-36px">
+          <ProductBag $position="center" $delay="0.62s" $startX="-34px">
             <ProductBagImage
               src={venezuelaWholeBag}
               alt="Café Marbella Venezuela whole-bean coffee"
             />
           </ProductBag>
 
-          <ProductBag $position="right" $delay="1.05s" $startX="-24px">
+          <ProductBag $position="right" $delay="0.84s" $startX="-26px">
             <ProductBagImage
               src={mexicoGroundBag}
               alt="Café Marbella México coffee"

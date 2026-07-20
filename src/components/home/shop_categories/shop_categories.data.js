@@ -5,15 +5,15 @@ import merchandiseCategoryImage from "../../../assets/images/categories/category
 export const categoryItems = [
   {
     id: "coffee",
-    title: "Buy Coffee",
-    description: "Discover our single-origin Venezuelan coffee.",
+    title: "Coffee",
+    description: "Discover our single-origin Premium Venezuelan coffee.",
     path: "/coffee",
     image: coffeeCategoryImage,
   },
 
   {
     id: "merchandise",
-    title: "Buy Merchandise",
+    title: "Merchandise",
     description: "Premium apparel and accessories. Don't miss our things",
     path: "/merchandise",
     image: merchandiseCategoryImage,

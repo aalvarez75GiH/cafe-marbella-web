@@ -52,11 +52,11 @@ export const SignatureBundles = () => {
           <BundlesSectionEyebrow>SHOP BY BUNDLES</BundlesSectionEyebrow>
 
           <BundlesSectionTitle>
-            Discover our amazing combinations
+            Discover our amazing Stacks & Combos
           </BundlesSectionTitle>
 
           <BundlesSectionDescription>
-            Great coffee &amp; great merch
+            Great coffee &amp; great merch mixed
           </BundlesSectionDescription>
         </BundlesSectionHeader>
       </BundlesHeaderContent>
