@@ -204,26 +204,7 @@ export const MobileButtonWrapper = styled.div`
     gap: 16px;
   }
 `;
-// export const CarouselProgress = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 14px;
 
-//   width: 100%;
-//   margin-bottom: 26px;
-// `;
-
-// export const ProgressLabel = styled.span`
-//   flex-shrink: 0;
-
-//   color: ${({ theme }) => theme.colors.brand.primary};
-
-//   font-family: ${({ theme }) => theme.fonts.body};
-//   font-size: 0.75rem;
-//   font-weight: 700;
-//   letter-spacing: 0.08em;
-//   text-transform: uppercase;
-// `;
 export const CarouselProgress = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -265,26 +246,3 @@ export const ProgressLine = styled.span`
 
   transform: scaleX(${({ $active }) => ($active ? 1 : 0.92)});
 `;
-// export const ProgressTrack = styled.div`
-//   position: relative;
-
-//   flex: 1;
-//   height: 3px;
-
-//   overflow: hidden;
-
-//   background: rgba(20, 92, 52, 0.16);
-//   border-radius: 999px;
-// `;
-
-// export const ProgressFill = styled.span`
-//   position: absolute;
-//   inset: 0 auto 0 0;
-
-//   width: ${({ $progress }) => `${$progress}%`};
-
-//   background: ${({ theme }) => theme.colors.brand.primary};
-//   border-radius: inherit;
-
-//   transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1);
-// `;
