@@ -51,6 +51,16 @@ export const Slide = styled.article`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns:
+      minmax(0, 0.92fr)
+      minmax(0, 1.08fr);
+
+    min-height: 520px;
+
+    border-radius: 18px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
   }
 `;
@@ -78,14 +88,12 @@ export const IntroColumn = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 48px 32px;
-
-    text-align: center;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
   }
+
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  } */
 `;
 
 export const Eyebrow = styled.p`
@@ -271,9 +279,11 @@ export const BundleColumn = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 46px 32px;
+    justify-content: center;
 
-    text-align: center;
+    padding: 44px 34px;
+
+    text-align: left;
   }
 `;
 
@@ -293,7 +303,7 @@ export const SlideCounter = styled.p`
   letter-spacing: 0.12em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -326,10 +336,12 @@ export const BundleName = styled.h3`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
+    justify-content: flex-start;
 
     max-width: 100%;
     height: auto;
+
+    font-size: clamp(2.1rem, 5vw, 2.8rem);
   }
 `;
 
@@ -358,9 +370,8 @@ export const TitleDecoration = styled.div`
 
     transform: rotate(45deg);
   }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -382,11 +393,11 @@ export const BundleDescription = styled.p`
   line-height: 1.55;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    max-width: 440px;
+    max-width: 390px;
     min-height: auto;
 
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 0;
+    margin-left: 0;
   }
 `;
 
@@ -440,15 +451,21 @@ export const SlideImageArea = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    min-height: 500px;
+    min-height: 520px;
 
     &::after {
-      display: none;
+      display: block;
+
+      width: 28px;
     }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-height: 370px;
+
+    &::after {
+      display: none;
+    }
   }
 `;
 
@@ -565,6 +582,6 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;

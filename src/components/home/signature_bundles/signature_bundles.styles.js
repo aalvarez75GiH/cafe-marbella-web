@@ -20,16 +20,6 @@ export const SignatureBundlesSection = styled.section`
 
   /* keep the rest of your existing styles */
 `;
-// export const SignatureBundlesSection = styled.section`
-//   width: 100%;
-
-//   padding: 48px 0 36px;
-
-//   background: ${({ theme }) => theme.colors.bg.primary};
-
-//   overflow: visible;
-
-// `;
 
 export const SectionHeader = styled.header`
   width: min(100% - 40px, 900px);
@@ -219,6 +209,142 @@ export const SectionContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: min(100% - 20px, 1500px);
+  }
+`;
+export const DesktopBundlesLayout = styled.div`
+  display: block;
+
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
+`;
+
+export const MobileBundlesLayout = styled.div`
+  display: none;
+
+  width: 100%;
+  min-width: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: block;
+  }
+`;
+
+export const BundlesToggleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  margin: 28px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin: 24px 0;
+  }
+`;
+
+export const BundlesToggleButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  width: 100%;
+  min-height: 58px;
+  padding: 0 28px;
+
+  color: ${({ theme }) => theme.colors.brand.primary};
+  background: transparent;
+
+  border: 1px solid ${({ theme }) => theme.colors.brand.primary};
+  border-radius: 12px;
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.98rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+  &:hover {
+    background: transparent;
+    color: ${({ theme }) => theme.colors.brand.primary};
+    border-color: ${({ theme }) => theme.colors.brand.primary};
+
+    box-shadow: 0 8px 20px rgba(20, 92, 52, 0.08);
+
+    transform: translateY(-2px);
+  }
+  /* &:hover {
+    color: ${({ theme }) => theme.colors.text.inverse};
+    background: ${({ theme }) => theme.colors.brand.primary};
+
+    box-shadow: 0 10px 24px rgba(20, 92, 52, 0.13);
+
+    transform: translateY(-2px);
+  } */
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
+    outline-offset: 4px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    min-height: 54px;
+
+    font-size: 0.92rem;
+  }
+`;
+
+export const ToggleArrow = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1;
+
+  transform: rotate(${({ $isOpen }) => ($isOpen ? "180deg" : "0deg")});
+
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+`;
+
+export const ExpandableBundles = styled.div`
+  display: grid;
+  grid-template-rows: ${({ $isOpen }) => ($isOpen ? "1fr" : "0fr")};
+
+  width: 100%;
+
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
+
+  transition: grid-template-rows 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 400ms ease,
+    visibility 0s linear ${({ $isOpen }) => ($isOpen ? "0s" : "650ms")};
+`;
+
+export const ExpandableBundlesInner = styled.div`
+  min-height: 0;
+
+  overflow: hidden;
+`;
+
+export const AdditionalBundlesList = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+
+  width: 100%;
+  padding-bottom: 28px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    gap: 22px;
+    padding-bottom: 22px;
   }
 `;
 const NavigationButton = styled.button`

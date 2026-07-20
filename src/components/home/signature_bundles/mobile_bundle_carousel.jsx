@@ -3,6 +3,10 @@ import { MobileBundleSlide } from "./mobile_bundle_slide";
 import {
   MobileCarouselViewport,
   MobileCarouselItem,
+  MobileCarouselWrapper,
+  CarouselProgress,
+  ProgressSegment,
+  ProgressLine,
 } from "./mobile_bundle_carousel.styles";
 
 export const MobileBundleCarousel = ({
@@ -30,17 +34,27 @@ export const MobileBundleCarousel = ({
   };
 
   return (
-    <MobileCarouselViewport onScroll={handleScroll}>
-      {bundles.map((bundle, index) => (
-        <MobileCarouselItem key={bundle.id}>
-          <MobileBundleSlide
-            bundle={bundle}
-            currentBundle={currentBundle}
-            totalBundles={bundles.length}
-            slideIndex={index}
-          />
-        </MobileCarouselItem>
-      ))}
-    </MobileCarouselViewport>
+    <MobileCarouselWrapper>
+      <CarouselProgress aria-label="Bundle progress">
+        {bundles.map((bundle, index) => (
+          <ProgressSegment key={bundle.id}>
+            <ProgressLine $active={index === currentBundle} />
+          </ProgressSegment>
+        ))}
+      </CarouselProgress>
+
+      <MobileCarouselViewport onScroll={handleScroll}>
+        {bundles.map((bundle, index) => (
+          <MobileCarouselItem key={bundle.id}>
+            <MobileBundleSlide
+              bundle={bundle}
+              currentBundle={currentBundle}
+              totalBundles={bundles.length}
+              slideIndex={index}
+            />
+          </MobileCarouselItem>
+        ))}
+      </MobileCarouselViewport>
+    </MobileCarouselWrapper>
   );
 };

@@ -27,7 +27,8 @@ export const ShopCategories = () => {
         <SectionHeader>
           <SectionEyebrow>SHOP BY CATEGORIES</SectionEyebrow>
 
-          <SectionTitle>Discover everything we have to offer.</SectionTitle>
+          {/* <SectionTitle>Discover everything we have to offer.</SectionTitle> */}
+          <SectionTitle>Discover our premium products.</SectionTitle>
 
           <SectionDescription>
             Premium coffee and exclusive merchandise.

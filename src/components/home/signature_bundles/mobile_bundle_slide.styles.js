@@ -187,7 +187,7 @@ export const MobilePrice = styled.p`
 
   color: ${({ theme }) => theme.colors.brand.primaryDark};
 
-  font-family: ${({ theme }) => theme.fonts.heading};
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: clamp(2rem, 6vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
@@ -204,3 +204,87 @@ export const MobileButtonWrapper = styled.div`
     gap: 16px;
   }
 `;
+// export const CarouselProgress = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 14px;
+
+//   width: 100%;
+//   margin-bottom: 26px;
+// `;
+
+// export const ProgressLabel = styled.span`
+//   flex-shrink: 0;
+
+//   color: ${({ theme }) => theme.colors.brand.primary};
+
+//   font-family: ${({ theme }) => theme.fonts.body};
+//   font-size: 0.75rem;
+//   font-weight: 700;
+//   letter-spacing: 0.08em;
+//   text-transform: uppercase;
+// `;
+export const CarouselProgress = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+
+  width: 100%;
+  margin-bottom: 24px;
+`;
+export const ProgressSegment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+export const ProgressLabel = styled.span`
+  color: ${({ theme }) => theme.colors.brand.primary};
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 220ms ease, transform 220ms ease;
+
+  white-space: nowrap;
+`;
+export const ProgressLine = styled.span`
+  display: block;
+
+  width: 100%;
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.brand.primary : "rgba(20,92,52,.14)"};
+
+  transition: background-color 250ms ease, transform 250ms ease;
+
+  transform: scaleX(${({ $active }) => ($active ? 1 : 0.92)});
+`;
+// export const ProgressTrack = styled.div`
+//   position: relative;
+
+//   flex: 1;
+//   height: 3px;
+
+//   overflow: hidden;
+
+//   background: rgba(20, 92, 52, 0.16);
+//   border-radius: 999px;
+// `;
+
+// export const ProgressFill = styled.span`
+//   position: absolute;
+//   inset: 0 auto 0 0;
+
+//   width: ${({ $progress }) => `${$progress}%`};
+
+//   background: ${({ theme }) => theme.colors.brand.primary};
+//   border-radius: inherit;
+
+//   transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+// `;

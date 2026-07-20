@@ -7,15 +7,13 @@ import {
   MobileSceneImage,
   MobileBadge,
   MobileContent,
-  MobilePagination,
-  MobilePaginationDot,
   MobileBundleName,
   MobileBundleDescription,
   MobilePrice,
   MobileButtonWrapper,
 } from "./mobile_bundle_slide.styles";
 
-export const MobileBundleSlide = ({ bundle, currentBundle, totalBundles }) => {
+export const MobileBundleSlide = ({ bundle }) => {
   return (
     <MobileSlide>
       <MobileImageArea>
@@ -28,16 +26,6 @@ export const MobileBundleSlide = ({ bundle, currentBundle, totalBundles }) => {
       </MobileImageArea>
 
       <MobileContent>
-        <MobilePagination aria-label="Current bundle">
-          {Array.from({ length: totalBundles }).map((_, index) => (
-            <MobilePaginationDot
-              key={index}
-              $isActive={index === currentBundle}
-              aria-hidden="true"
-            />
-          ))}
-        </MobilePagination>
-
         <MobileBundleName>{bundle.name}</MobileBundleName>
 
         <MobileBundleDescription>{bundle.description}</MobileBundleDescription>
