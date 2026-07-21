@@ -44,4 +44,10 @@ export const colors = /** @type {const} */ ({
     success: "#247F35",
     error: "#B3261E",
   },
+  coffeeApp: {
+    grind_filter_bg: "#FEF9F3",
+    grind_filter_active_border: "#C8922D",
+    groundIdentification: "#F2B854",
+    wholeBeanIdentification: "#FB4762",
+  },
 });

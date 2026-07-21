@@ -1,7 +1,5 @@
 export const fonts = {
   display: "'Raleway', serif",
-  //display: "'Cormorant Garamond', serif",
-  //display: "'Libre Bodoni', serif",
   heading: "'Raleway', sans-serif",
   body: "'DM Sans', sans-serif",
 };
