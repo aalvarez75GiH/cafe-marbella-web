@@ -6,12 +6,17 @@ import { CoffeeProductsGrid } from "../../components/coffee/coffee_products_grid
 
 import { coffeeProducts } from "../../data/coffee/coffee_products.data";
 import { buildCoffeeCatalog } from "../../utils/coffee/coffee_catalog.utils";
+import { useMobileBreakpoint } from "../../hooks/use_mobile_breakpoint";
+
+import { MobileCoffeeFlow } from "../../components/coffee/mobile_coffee_flow/mobile_coffee_flow";
 
 import { CoffeePageContent } from "./coffee_page.styles";
 
 export const CoffeePage = () => {
   const [selectedGrind, setSelectedGrind] = useState("ground");
   const [selectedRoast, setSelectedRoast] = useState("light");
+
+  const isMobile = useMobileBreakpoint();
 
   const catalog = useMemo(() => {
     return buildCoffeeCatalog(coffeeProducts);
@@ -26,6 +31,9 @@ export const CoffeePage = () => {
     );
   }, [catalog, selectedGrind, selectedRoast]);
 
+  if (isMobile) {
+    return <MobileCoffeeFlow products={catalog} />;
+  }
   return (
     <>
       <CoffeeHero

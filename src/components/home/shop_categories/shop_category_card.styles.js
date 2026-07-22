@@ -57,62 +57,6 @@ export const Card = styled(Link)`
     min-height: 310px;
   }
 `;
-// export const Card = styled.button`
-//   position: relative;
-
-//   display: block;
-
-//   width: 100%;
-//   min-width: 0;
-//   min-height: 410px;
-//   height: 100%;
-//   padding: 0;
-
-//   overflow: hidden;
-
-//   color: ${({ theme }) => theme.colors?.text?.inverse || "#ffffff"};
-//   background: ${({ theme }) => theme.colors?.bg?.secondary || "#f8f6f1"};
-//   border: 0;
-//   border-radius: 18px;
-
-//   text-align: left;
-//   cursor: pointer;
-//   isolation: isolate;
-
-//   box-shadow: 0 14px 36px rgba(23, 23, 23, 0.09);
-
-//   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-//     box-shadow 300ms ease;
-
-//   &:hover {
-//     transform: translateY(-7px);
-//     box-shadow: 0 22px 48px rgba(23, 23, 23, 0.16);
-//   }
-
-//   &:focus-visible {
-//     outline: 3px solid
-//       ${({ theme }) => theme.colors?.brand?.secondary || "#c8922d"};
-//     outline-offset: 4px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-//     min-height: 360px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     min-height: 315px;
-//     border-radius: 16px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     min-height: 340px;
-//     border-radius: 14px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-//     min-height: 310px;
-//   }
-// `;
 
 export const CardBackground = styled.div`
   position: absolute;

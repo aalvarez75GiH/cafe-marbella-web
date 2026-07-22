@@ -15,6 +15,7 @@ export const colors = /** @type {const} */ ({
     card: "#F7F1E6",
     footer: "#074729",
     dark: "#102318",
+    light_grey: "#F5F4F4",
   },
 
   text: {
