@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { MobileGrindSelection } from "./mobile_grind_selection";
 import { MobileRoastSelection } from "./mobile_roast_selection";
@@ -12,8 +12,11 @@ import {
   FlowViewport,
   FlowScreen,
 } from "./mobile_coffee_flow.styles";
+import { GeolocationContext } from "../../../infrastructure/services/geolocation/geolocation.context";
 
 export const MobileCoffeeFlow = ({ products }) => {
+  const { locationStatus, deviceLat, deviceLng } =
+    useContext(GeolocationContext);
   const [isEntering, setIsEntering] = useState(true);
 
   const [step, setStep] = useState("grind");
@@ -116,6 +119,24 @@ export const MobileCoffeeFlow = ({ products }) => {
       >
         {renderStep()}
       </FlowScreen>
+      <div
+        style={{
+          position: "fixed",
+          bottom: 10,
+          left: 10,
+          right: 10,
+          zIndex: 9999,
+          background: "#fff",
+          border: "1px solid #ccc",
+          padding: "10px",
+          fontSize: "11px",
+          fontFamily: "monospace",
+        }}
+      >
+        <div>Status: {locationStatus}</div>
+        <div>Lat: {String(deviceLat)}</div>
+        <div>Lng: {String(deviceLng)}</div>
+      </div>
     </FlowViewport>
   );
 };

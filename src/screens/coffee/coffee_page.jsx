@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import { CoffeeHero } from "../../components/coffee/coffee_hero/coffee_hero";
 import { CoffeeFilters } from "../../components/coffee/coffee_filters/coffee_filters";
@@ -12,11 +12,31 @@ import { MobileCoffeeFlow } from "../../components/coffee/mobile_coffee_flow/mob
 
 import { CoffeePageContent } from "./coffee_page.styles";
 
+import { GlobalContext } from "../../infrastructure/services/global/global.context";
+import { GeolocationContext } from "../../infrastructure/services/geolocation/geolocation.context";
+
 export const CoffeePage = () => {
+  console.log("CoffeePage rendered");
   const [selectedGrind, setSelectedGrind] = useState("ground");
   const [selectedRoast, setSelectedRoast] = useState("light");
 
   const isMobile = useMobileBreakpoint();
+  const { productsCatalog, activeProducts, isProductsLoading, productsError } =
+    useContext(GlobalContext);
+
+  const { deviceLat, deviceLng, locationError, locationStatus } =
+    useContext(GeolocationContext);
+
+  useEffect(() => {
+    console.log("PRODUCTS LOADING:", isProductsLoading);
+    console.log("PRODUCTS ERROR:", productsError);
+    console.log("CATALOG:", productsCatalog);
+    console.log("ACTIVE PRODUCTS:", activeProducts);
+    console.log("LOCATION STATUS:", locationStatus);
+    console.log("LAT:", deviceLat);
+    console.log("LNG:", deviceLng);
+    console.log("LOCATION ERROR:", locationError);
+  }, [isProductsLoading, productsError, productsCatalog, activeProducts]);
 
   const catalog = useMemo(() => {
     return buildCoffeeCatalog(coffeeProducts);
@@ -36,10 +56,7 @@ export const CoffeePage = () => {
   }
   return (
     <>
-      <CoffeeHero
-      // selectedGrind={selectedGrind}
-      // onGrindChange={setSelectedGrind}
-      />
+      <CoffeeHero />
 
       <CoffeePageContent>
         <CoffeeFilters
@@ -53,4 +70,23 @@ export const CoffeePage = () => {
       </CoffeePageContent>
     </>
   );
+  // return (
+  //   <>
+  //     <CoffeeHero
+  //     // selectedGrind={selectedGrind}
+  //     // onGrindChange={setSelectedGrind}
+  //     />
+
+  //     <CoffeePageContent>
+  //       <CoffeeFilters
+  //         selectedGrind={selectedGrind}
+  //         selectedRoast={selectedRoast}
+  //         onGrindChange={setSelectedGrind}
+  //         onRoastChange={setSelectedRoast}
+  //       />
+
+  //       <CoffeeProductsGrid products={filteredProducts} />
+  //     </CoffeePageContent>
+  //   </>
+  // );
 };
