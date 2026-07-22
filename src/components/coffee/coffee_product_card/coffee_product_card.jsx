@@ -2,7 +2,7 @@ import {
   Card,
   CardHeader,
   Origin,
-  ProductMeta,
+  // sProductMeta,
   Rating,
   RatingStar,
   RatingValue,
@@ -18,31 +18,31 @@ import {
   SizeDivider,
   ViewLink,
   GrindIdentificationLine,
+  HeaderTop,
 } from "./coffee_product_card.styles";
 
 export const CoffeeProductCard = ({ product }) => {
   const origin = product.originCountry;
   const roastLabel = product.product_name?.en;
   const productName = product.product_subtitle?.en;
-
+  const formattedRating = Number(product.rating).toFixed(1);
   return (
     <Card>
       <CardHeader>
-        <Origin>{origin}</Origin>
-
-        <ProductMeta>
-          <Rating>
-            <RatingStar aria-hidden="true">★</RatingStar>
-            <RatingValue>{product.rating}</RatingValue>
-          </Rating>
+        <HeaderTop>
+          <Origin>{origin}</Origin>
 
           <FlagImage src={product.flagImage} alt={`${origin} flag`} />
-        </ProductMeta>
+        </HeaderTop>
+
+        <Rating>
+          <RatingStar aria-hidden="true">★</RatingStar>
+          <RatingValue>{formattedRating}</RatingValue>
+        </Rating>
       </CardHeader>
 
       <ProductImageArea>
         <ProductImage src={product.images?.front} alt={productName} />
-        {/* <ProductImage src={product.images} alt={productName} /> */}
       </ProductImageArea>
 
       <ProductContent>

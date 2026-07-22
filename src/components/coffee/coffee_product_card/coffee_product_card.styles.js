@@ -44,9 +44,10 @@ export const Card = styled.article`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 100%;
+    width: 95%;
     max-width: 420px;
     min-height: 500px;
+    margin-inline: auto;
     padding: 18px 18px 26px;
 
     &:hover {
@@ -55,6 +56,8 @@ export const Card = styled.article`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    width: 95%;
+    margin-inline: auto;
     min-height: 480px;
     padding: 16px 16px 24px;
   }
@@ -64,23 +67,26 @@ export const Card = styled.article`
 export const CardHeader = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 26px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    gap: 42px;
+    gap: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    gap: 36px;
+    gap: 22px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    gap: 30px;
+    gap: 20px;
   }
+`;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    gap: 26px;
-  }
+export const HeaderTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 `;
 
 export const Origin = styled.h3`
@@ -99,14 +105,21 @@ export const Origin = styled.h3`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 26px;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 22px;
+  }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    font-size: 20px;
+  }
+  /* 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     font-size: 22px;
-  }
+  } */
 `;
 
 export const ProductMeta = styled.div`
@@ -127,7 +140,11 @@ export const RatingStar = styled.span`
   line-height: 1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 30px;
+    font-size: 22px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    font-size: 2px;
   }
 `;
 
@@ -137,21 +154,32 @@ export const RatingValue = styled.span`
   font-size: 22px;
   font-weight: 700;
   line-height: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 42px;
+    font-size: 20px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    width: 38px;
+    font-size: 18px;
+  }
 `;
 
 export const FlagImage = styled.img`
   display: block;
 
-  width: 48px;
+  width: 46px;
   height: auto;
   object-fit: contain;
+  flex-shrink: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 44px;
+    width: 42px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    width: 40px;
+    width: 38px;
   }
 `;
 
@@ -213,18 +241,28 @@ export const ProductContent = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 20px;
+  gap: 16px;
 
   margin-top: auto;
   padding-bottom: 18px;
+  /* display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 20px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    gap: 14px;
+  margin-top: auto;
+  padding-bottom: 18px; */
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding-bottom: 16px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    gap: 12px;
+    padding-bottom: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     gap: 10px;
+    padding-bottom: 22px;
   }
 `;
 
@@ -242,11 +280,11 @@ export const RoastLevel = styled.p`
   line-height: 1.2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 18px;
+    font-size: 17px;
   }
 `;
 
@@ -264,11 +302,11 @@ export const ProductName = styled.p`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 21px;
+    font-size: 19px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 19px;
+    font-size: 18px;
   }
 `;
 
@@ -289,17 +327,16 @@ export const SizeItem = styled.span`
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 16px;
-    gap: 6px;
+    font-size: 15px;
   }
 `;
 
@@ -343,11 +380,11 @@ export const ViewLink = styled.a`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
@@ -359,7 +396,7 @@ export const GrindIdentificationLine = styled.div`
 
   z-index: 2;
 
-  height: 9px;
+  height: 14px;
 
   background: ${({ $grindType, theme }) =>
     $grindType === "whole"
@@ -367,15 +404,15 @@ export const GrindIdentificationLine = styled.div`
       : theme.colors.coffeeApp.groundIdentification};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    height: 8px;
+    height: 13px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    height: 7px;
+    height: 12px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    height: 6px;
+    height: 10px;
   }
 `;
 

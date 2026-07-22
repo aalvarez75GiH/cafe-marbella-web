@@ -5,7 +5,7 @@ export const coffeeProducts = [
     id: "mex-dark-ground",
     grindType: "ground",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "mex",
     createdAt: "2026-04-18T16:07:44.485Z",
     specifications: [
@@ -141,7 +141,7 @@ export const coffeeProducts = [
     id: "mex-dark-whole",
     grindType: "whole",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "mex",
     createdAt: "2026-04-18T16:06:05.793Z",
     specifications: [
@@ -277,7 +277,7 @@ export const coffeeProducts = [
     id: "mex-light-ground",
     grindType: "ground",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "mex",
     createdAt: "2026-04-18T15:59:12.649Z",
     specifications: [
@@ -413,7 +413,7 @@ export const coffeeProducts = [
     id: "mex-light-whole",
     grindType: "whole",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "mex",
     createdAt: "2026-04-18T16:04:19.744Z",
     specifications: [
@@ -973,7 +973,7 @@ export const coffeeProducts = [
     grindType: "whole",
     originCountry: "Venezuela",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "vzla",
     createdAt: "2026-04-19T16:07:53.258Z",
     specifications: [
@@ -1244,7 +1244,7 @@ export const coffeeProducts = [
     id: "vzla-light-whole",
     originCountry: "Venezuela",
     title: "Cafe Marbella",
-    rating: 5,
+    rating: 5.0,
     flag_key: "vzla",
     createdAt: "2026-04-19T16:06:20.851Z",
     specifications: [
