@@ -62,24 +62,23 @@ export const CarouselProgress = styled.div`
 export const ProgressSegment = styled.div`
   position: relative;
 
-  height: 16px;
   min-width: 0;
+
+  padding-top: 8px;
 `;
 
 export const ProgressLabel = styled.span`
   position: absolute;
-  top: -17px;
+  top: -4px;
   left: 50%;
 
-  color: ${({ theme }) => theme.colors.brand.primary};
+  transform: translateX(-50%);
+  color: ${({ theme }) => theme.colors.text.secondary};
 
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.625rem;
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.06em;
-
-  transform: translateX(-50%);
 
   white-space: nowrap;
 `;
@@ -90,10 +89,10 @@ export const ProgressLine = styled.span`
   width: 100%;
   height: 3px;
 
-  background: ${({ $active, theme }) =>
-    $active ? theme.colors.brand.primary : "rgba(20, 92, 52, 0.16)"};
+  margin-top: 4px;
 
   border-radius: 999px;
 
-  transition: background-color 220ms ease;
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.brand.primary : "rgba(20,92,52,.16)"};
 `;

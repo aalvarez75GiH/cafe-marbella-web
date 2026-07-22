@@ -129,7 +129,6 @@ export const BundleSlide = ({ bundle, totalBundles }) => {
       <SlideImageArea>
         {bundle.badge && <Badge>★ {bundle.badge}</Badge>}
 
-        {/* <SceneImage src={bundle.sceneImage || bundle.image} alt={bundle.name} /> */}
         <SceneImage
           src={bundle.sceneImage || bundle.image}
           alt={bundle.name}

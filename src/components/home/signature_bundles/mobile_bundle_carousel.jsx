@@ -6,6 +6,7 @@ import {
   MobileCarouselWrapper,
   CarouselProgress,
   ProgressSegment,
+  ProgressLabel,
   ProgressLine,
 } from "./mobile_bundle_carousel.styles";
 
@@ -38,20 +39,21 @@ export const MobileBundleCarousel = ({
       <CarouselProgress aria-label="Bundle progress">
         {bundles.map((bundle, index) => (
           <ProgressSegment key={bundle.id}>
+            {index === currentBundle && (
+              <ProgressLabel>
+                {index + 1}/{bundles.length}
+              </ProgressLabel>
+            )}
+
             <ProgressLine $active={index === currentBundle} />
           </ProgressSegment>
         ))}
       </CarouselProgress>
 
       <MobileCarouselViewport onScroll={handleScroll}>
-        {bundles.map((bundle, index) => (
+        {bundles.map((bundle) => (
           <MobileCarouselItem key={bundle.id}>
-            <MobileBundleSlide
-              bundle={bundle}
-              currentBundle={currentBundle}
-              totalBundles={bundles.length}
-              slideIndex={index}
-            />
+            <MobileBundleSlide bundle={bundle} />
           </MobileCarouselItem>
         ))}
       </MobileCarouselViewport>
