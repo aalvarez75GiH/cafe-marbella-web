@@ -1,8 +1,8 @@
 import {
   MobileScreen,
-  MobileTopBar,
-  BackButton,
-  ScreenTitle,
+  //   MobileTopBar,
+  //   BackButton,
+  //   ScreenTitle,
   Content,
   Intro,
   IntroTitle,
@@ -24,7 +24,8 @@ import {
 import lightRoastIcon from "../../../assets/images/coffee_app/coffee_filters/light_roast.png";
 import mediumRoastIcon from "../../../assets/images/coffee_app/coffee_filters/medium_roast.png";
 import darkRoastIcon from "../../../assets/images/coffee_app/coffee_filters/dark_roast.png";
-import { ChevronLeftIcon } from "../../../assets/icons/ui/chevron_left.icon";
+// import { ChevronLeftIcon } from "../../../assets/icons/ui/chevron_left.icon";
+import { MobileCoffeeHeader } from "./mobile_coffee_header";
 
 const roastOptions = [
   {
@@ -50,28 +51,17 @@ const roastOptions = [
 ];
 
 export const MobileRoastSelection = ({
-  selectedGrind,
+  //   selectedGrind,
   selectedRoast,
   onRoastSelect,
   onBack,
 }) => {
-  const screenTitle =
-    selectedGrind === "whole" ? "Whole bean coffee" : "Ground beans coffee";
+  //   const screenTitle =
+  //     selectedGrind === "whole" ? "Whole bean coffee" : "Ground beans coffee";
 
   return (
     <MobileScreen>
-      <MobileTopBar>
-        <BackButton
-          type="button"
-          onClick={onBack}
-          aria-label="Go back to grind selection"
-        >
-          {/* <BackIcon>&lsaquo;</BackIcon> */}
-          <ChevronLeftIcon size={26} />
-        </BackButton>
-
-        <ScreenTitle>{screenTitle}</ScreenTitle>
-      </MobileTopBar>
+      <MobileCoffeeHeader title="Select your roast" onBack={onBack} />
 
       <Content>
         <Intro>

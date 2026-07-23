@@ -2,7 +2,6 @@ import {
   Card,
   CardHeader,
   Origin,
-  // sProductMeta,
   Rating,
   RatingStar,
   RatingValue,
@@ -26,13 +25,20 @@ export const CoffeeProductCard = ({ product }) => {
   const roastLabel = product.product_name?.en;
   const productName = product.product_subtitle?.en;
   const formattedRating = Number(product.rating).toFixed(1);
+
+  const defaultVariant =
+    product.size_variants?.find((variant) => variant.isDefault) ??
+    product.size_variants?.[0];
+
+  const productImage = defaultVariant?.images?.[0] ?? "";
+
   return (
     <Card>
       <CardHeader>
         <HeaderTop>
           <Origin>{origin}</Origin>
 
-          <FlagImage src={product.flagImage} alt={`${origin} flag`} />
+          <FlagImage src={product.flag_image} alt={`${origin} flag`} />
         </HeaderTop>
 
         <Rating>
@@ -42,7 +48,7 @@ export const CoffeeProductCard = ({ product }) => {
       </CardHeader>
 
       <ProductImageArea>
-        <ProductImage src={product.images?.front} alt={productName} />
+        <ProductImage src={productImage} alt={productName} />
       </ProductImageArea>
 
       <ProductContent>

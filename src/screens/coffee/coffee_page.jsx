@@ -4,8 +4,8 @@ import { CoffeeHero } from "../../components/coffee/coffee_hero/coffee_hero";
 import { CoffeeFilters } from "../../components/coffee/coffee_filters/coffee_filters";
 import { CoffeeProductsGrid } from "../../components/coffee/coffee_products_grid/coffee_products_grid";
 
-import { coffeeProducts } from "../../data/coffee/coffee_products.data";
-import { buildCoffeeCatalog } from "../../utils/coffee/coffee_catalog.utils";
+// import { coffeeProducts } from "../../data/coffee/coffee_products.data";
+// import { buildCoffeeCatalog } from "../../utils/coffee/coffee_catalog.utils";
 import { useMobileBreakpoint } from "../../hooks/use_mobile_breakpoint";
 
 import { MobileCoffeeFlow } from "../../components/coffee/mobile_coffee_flow/mobile_coffee_flow";
@@ -38,16 +38,12 @@ export const CoffeePage = () => {
     console.log("LOCATION ERROR:", locationError);
   }, [isProductsLoading, productsError, productsCatalog, activeProducts]);
 
-  const catalog = useMemo(() => {
-    return buildCoffeeCatalog(coffeeProducts);
-  }, []);
+  const catalog = productsCatalog;
 
   const filteredProducts = useMemo(() => {
     return catalog.filter(
       (product) =>
-        product.active &&
-        product.grindType === selectedGrind &&
-        product.roast === selectedRoast
+        product.grindType === selectedGrind && product.roast === selectedRoast
     );
   }, [catalog, selectedGrind, selectedRoast]);
 
@@ -70,23 +66,4 @@ export const CoffeePage = () => {
       </CoffeePageContent>
     </>
   );
-  // return (
-  //   <>
-  //     <CoffeeHero
-  //     // selectedGrind={selectedGrind}
-  //     // onGrindChange={setSelectedGrind}
-  //     />
-
-  //     <CoffeePageContent>
-  //       <CoffeeFilters
-  //         selectedGrind={selectedGrind}
-  //         selectedRoast={selectedRoast}
-  //         onGrindChange={setSelectedGrind}
-  //         onRoastChange={setSelectedRoast}
-  //       />
-
-  //       <CoffeeProductsGrid products={filteredProducts} />
-  //     </CoffeePageContent>
-  //   </>
-  // );
 };

@@ -12,7 +12,7 @@ export const getImageUrlFromPath = async (path) => {
 
     return await getDownloadURL(imageRef);
   } catch (error) {
-    console.warn(`Firebase image not found: ${path}`);
+    console.error(`Error fetching Firebase image for path: ${path}`, error);
     return null;
   }
 };

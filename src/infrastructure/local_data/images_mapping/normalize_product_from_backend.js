@@ -36,13 +36,6 @@ export const normalizeProductFromBackend = async (product) => {
               images = [];
             }
           }
-          // if (
-          //   images.length === 0 &&
-          //   Array.isArray(variant?.images_path) &&
-          //   variant.images_path.length > 0
-          // ) {
-          //   images = await getImageUrlsFromPaths(variant.images_path);
-          // }
 
           return {
             ...variant,

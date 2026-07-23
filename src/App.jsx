@@ -23,12 +23,7 @@ function App() {
           onCart={() => console.log("Cart clicked")}
         />
       )}
-      {/* <Main_Header
-        cartQuantity={0}
-        onSearch={() => console.log("Search clicked")}
-        onAccount={() => console.log("Account clicked")}
-        onCart={() => console.log("Cart clicked")}
-      /> */}
+
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/coffee" element={<CoffeePage />} />

@@ -58,12 +58,6 @@ export const BackIcon = styled.span`
     font-size: 36px;
   }
 `;
-// export const BackIcon = styled.span`
-//   font-family: ${({ theme }) => theme.fonts.heading};
-//   font-size: 34px;
-//   font-weight: 300;
-//   line-height: 1;
-// `;
 
 export const Title = styled.h1`
   margin: 0;
@@ -71,13 +65,13 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.text.primary};
 
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 22px;
+    font-size: 18px;
   }
 `;
 
@@ -93,6 +87,6 @@ export const Subtitle = styled.p`
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: 13px;
+    font-size: 10px;
   }
 `;

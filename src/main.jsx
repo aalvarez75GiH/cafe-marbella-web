@@ -4,8 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 
 import { theme } from "./infrastructure/theme/index.js";
-import { Global_Context_Provider } from "./infrastructure/services/global/global.context.jsx";
-import { Geolocation_Context_Provider } from "./infrastructure/services/geolocation/geolocation.context.jsx";
+import { Global_Context_Provider } from "./infrastructure/services/global/global.provider.jsx";
+import { Geolocation_Context_Provider } from "./infrastructure/services/geolocation/geolocation.provider.jsx";
 
 import "./index.css";
 import App from "./App.jsx";
