@@ -14,6 +14,7 @@ import { CoffeePageContent } from "./coffee_page.styles";
 
 import { GlobalContext } from "../../infrastructure/services/global/global.context";
 import { GeolocationContext } from "../../infrastructure/services/geolocation/geolocation.context";
+import { WarehouseContext } from "../../infrastructure/services/warehouse/warehouse.context";
 
 export const CoffeePage = () => {
   console.log("CoffeePage rendered");
@@ -26,6 +27,16 @@ export const CoffeePage = () => {
 
   const { deviceLat, deviceLng, locationError, locationStatus } =
     useContext(GeolocationContext);
+
+  const { myWarehouse, inventoryProducts, isWarehouseLoading, warehouseError } =
+    useContext(WarehouseContext);
+
+  useEffect(() => {
+    console.log("WAREHOUSE:", myWarehouse);
+    console.log("WAREHOUSE PRODUCTS:", inventoryProducts);
+    console.log("WAREHOUSE LOADING:", isWarehouseLoading);
+    console.log("WAREHOUSE ERROR:", warehouseError);
+  }, [myWarehouse, inventoryProducts, isWarehouseLoading, warehouseError]);
 
   useEffect(() => {
     console.log("PRODUCTS LOADING:", isProductsLoading);
