@@ -4,8 +4,6 @@ import { CoffeeHero } from "../../components/coffee/coffee_hero/coffee_hero";
 import { CoffeeFilters } from "../../components/coffee/coffee_filters/coffee_filters";
 import { CoffeeProductsGrid } from "../../components/coffee/coffee_products_grid/coffee_products_grid";
 
-// import { coffeeProducts } from "../../data/coffee/coffee_products.data";
-// import { buildCoffeeCatalog } from "../../utils/coffee/coffee_catalog.utils";
 import { useMobileBreakpoint } from "../../hooks/use_mobile_breakpoint";
 
 import { MobileCoffeeFlow } from "../../components/coffee/mobile_coffee_flow/mobile_coffee_flow";
