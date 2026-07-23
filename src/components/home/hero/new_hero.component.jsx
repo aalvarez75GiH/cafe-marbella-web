@@ -53,7 +53,7 @@ const CoffeeBeanIcon = () => (
 
 export const NewHero_Component = () => {
   return (
-    <Hero>
+    <Hero id="main-hero">
       <BackgroundImage $image={heroBackground} />
 
       <ContentContainer>

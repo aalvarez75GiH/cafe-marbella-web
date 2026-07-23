@@ -6,11 +6,12 @@ import { StoryImpactSection } from "../../components/home/our_story_foundation/s
 import { CommunitySocialSection } from "../../components/home/social/community_social_section";
 import { FooterSection } from "../../components/home/footer/footer.component";
 import { NewHero_Component } from "../../components/home/hero/new_hero.component";
+import { VideoHero } from "../../components/home/video_hero/video_hero";
 
 export const HomeScreen = () => {
   return (
     <main>
-      {/* <Hero_Component /> */}
+      <VideoHero />
       <NewHero_Component />
       <BrandPillarsSection />
       <ShopCategories />
