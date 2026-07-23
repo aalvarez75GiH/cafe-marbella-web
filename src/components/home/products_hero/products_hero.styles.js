@@ -1,16 +1,16 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const productReveal = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(28px) scale(0.96);
-  }
+// const productReveal = keyframes`
+//   from {
+//     opacity: 0;
+//     transform: translateX(28px) scale(0.96);
+//   }
 
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-`;
+//   to {
+//     opacity: 1;
+//     transform: translateX(0) scale(1);
+//   }
+// `;
 
 export const ProductsHeroSection = styled.section`
   position: relative;

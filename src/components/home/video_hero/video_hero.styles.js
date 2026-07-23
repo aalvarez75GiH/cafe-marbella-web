@@ -303,6 +303,38 @@ export const VideoHeroButton = styled.button`
     }
   }
 `;
+export const FlagSignature = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  margin-top: 22px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-top: 18px;
+  }
+`;
+
+export const FlagImage = styled.img`
+  display: block;
+
+  width: 112px;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0.92;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 92px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    width: 82px;
+  }
+`;
 
 export const ScrollIndicator = styled.div`
   position: absolute;
