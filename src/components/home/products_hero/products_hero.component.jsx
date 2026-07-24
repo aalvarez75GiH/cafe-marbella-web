@@ -35,7 +35,8 @@ import {
   EmptyHero,
 } from "./products_hero.styles";
 
-import heroBackground from "../../../assets/images/hero/hero_5.png";
+import heroBackground from "../../../assets/images/products_hero/hero_8.png";
+// import heroBackground from "../../../assets/images/hero/hero_5.png";
 
 const LeafIcon = () => (
   <BenefitIcon viewBox="0 0 24 24" aria-hidden="true">
@@ -242,16 +243,15 @@ export const ProductsHero = ({
             >
               Order Now
             </OrderButton>
+            <NextButton
+              type="button"
+              aria-label="Show next coffee"
+              onClick={handleNext}
+              disabled={isLastProduct}
+            >
+              →
+            </NextButton>
           </ProductInformation>
-
-          <NextButton
-            type="button"
-            aria-label="Show next coffee"
-            onClick={handleNext}
-            disabled={isLastProduct}
-          >
-            →
-          </NextButton>
 
           <DotsContainer aria-label="Featured coffee progress">
             {heroProducts.map((product, index) => (

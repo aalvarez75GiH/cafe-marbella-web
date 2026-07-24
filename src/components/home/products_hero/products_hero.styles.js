@@ -198,24 +198,35 @@ export const BenefitLabel = styled.span`
 export const ProductCarousel = styled.div`
   position: relative;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns:
+    minmax(330px, 0.88fr)
+    minmax(220px, 0.55fr);
   align-items: center;
-  justify-content: center;
+  column-gap: clamp(10px, 1.2vw, 20px);
 
   width: 100%;
   min-width: 0;
   min-height: 650px;
-  padding-top: 52px;
+  padding-top: 34px;
 
   user-select: none;
   -webkit-user-select: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    grid-template-columns:
+      minmax(290px, 0.9fr)
+      minmax(210px, 0.55fr);
+    column-gap: 12px;
+
     min-height: 590px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     width: 100%;
     min-height: 560px;
     margin-top: 20px;
@@ -228,8 +239,10 @@ export const ProductCarousel = styled.div`
 `;
 
 export const ProductViewport = styled.div`
-  width: min(100%, 590px);
+  grid-column: 1;
+  grid-row: 1;
 
+  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -241,7 +254,6 @@ export const ProductViewport = styled.div`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
-
   -webkit-overflow-scrolling: touch;
 
   cursor: grab;
@@ -254,7 +266,7 @@ export const ProductViewport = styled.div`
     cursor: grabbing;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 100%;
   }
 
@@ -273,11 +285,12 @@ export const ProductSlide = styled.div`
   flex: 0 0 100%;
 
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 
   width: 100%;
   min-width: 100%;
+  height: 100%;
 
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -287,19 +300,19 @@ export const ProductImage = styled.img`
   display: block;
 
   width: auto;
-  max-width: 88%;
-  height: 425px;
+  max-width: 94%;
+  height: 490px;
 
   object-fit: contain;
 
-  filter: drop-shadow(0 30px 30px rgba(18, 56, 36, 0.2));
+  filter: drop-shadow(0 22px 24px rgba(47, 31, 16, 0.18));
 
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    height: 375px;
+    height: 410px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -313,17 +326,39 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductInformation = styled.div`
+  grid-column: 2;
+  grid-row: 1;
+
   position: relative;
   z-index: 2;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
 
   width: 100%;
-  margin-top: 14px;
+  max-width: 235px;
+  margin: 0;
 
-  text-align: center;
+  text-align: left;
+
+  transform: translateX(-92px);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    transform: translateX(-10px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    align-items: center;
+
+    max-width: none;
+    margin-top: 14px;
+
+    text-align: center;
+
+    transform: none;
+  }
 `;
 
 export const ProductType = styled.span`
@@ -341,12 +376,17 @@ export const ProductType = styled.span`
 `;
 
 export const ProductRoast = styled.strong`
-  margin-top: 8px;
+  margin-top: 10px;
 
   color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 1.3rem;
+  font-size: 1.7rem;
+  line-height: 1.1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.3rem;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     color: ${({ theme }) => theme.colors.text.inverse};
@@ -354,7 +394,7 @@ export const ProductRoast = styled.strong`
 `;
 
 export const ProductPriceLabel = styled.span`
-  margin-top: 12px;
+  margin-top: 18px;
 
   color: ${({ theme }) => theme.colors.text.secondary};
 
@@ -370,12 +410,17 @@ export const ProductPriceLabel = styled.span`
 `;
 
 export const ProductPrice = styled.strong`
-  margin-top: 2px;
+  margin-top: 4px;
 
   color: ${({ theme }) => theme.colors.text.green};
 
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 1.8rem;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 2.2rem;
+  line-height: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.8rem;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     color: ${({ theme }) => theme.colors.text.inverse};
@@ -387,13 +432,11 @@ export const OrderButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 200px;
-  min-width: 150px;
-  max-width: 1400px;
-  min-height: 46px;
+  width: 220px;
+  min-height: 48px;
 
-  margin-top: 14px;
-  padding: 11px 22px;
+  margin-top: 20px;
+  padding: 12px 24px;
 
   border: 1px solid ${({ theme }) => theme.colors.brand.primary};
   border-radius: 999px;
@@ -405,37 +448,28 @@ export const OrderButton = styled.button`
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.07em;
-  text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
 
   cursor: pointer;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 180px;
-    min-width: 0;
-    max-width: 310px;
-    min-height: 54px;
-  }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 180px;
-    min-width: 0;
-    max-width: 310px;
-    min-height: 54px;
+    width: 250px;
+    min-height: 50px;
   }
 `;
 
 export const NavigationButton = styled.button`
   position: absolute;
-  top: 44%;
+  top: 46%;
   z-index: 3;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   padding: 0;
 
   border: 1px solid ${({ theme }) => theme.colors.border.medium};
@@ -445,7 +479,6 @@ export const NavigationButton = styled.button`
   background: rgba(255, 255, 255, 0.76);
 
   font-size: 1rem;
-
   cursor: pointer;
 
   backdrop-filter: blur(8px);
@@ -469,7 +502,6 @@ export const NavigationButton = styled.button`
 
   &:disabled {
     opacity: 0.35;
-
     cursor: default;
     pointer-events: none;
   }
@@ -480,28 +512,71 @@ export const NavigationButton = styled.button`
 `;
 
 export const PreviousButton = styled(NavigationButton)`
-  left: calc(40% - 200px);
+  top: calc(46% + 28px);
+  left: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    top: calc(50% + 22px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 44%;
+  }
 `;
+// export const PreviousButton = styled(NavigationButton)`
+//   left: 8px;
+// `;
 
 export const NextButton = styled(NavigationButton)`
-  right: calc(40% - 200px);
+  top: 50%;
+  right: -68px;
+  left: auto;
+
+  transform: translateY(-50%);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    right: -56px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 44%;
+    right: 0;
+
+    transform: translateY(-50%);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
 `;
 
 export const DotsContainer = styled.div`
   position: absolute;
-  top: 8px;
-  left: 50%;
+  bottom: 34px;
+  left: 30%;
   z-index: 3;
 
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
 
   transform: translateX(-50%);
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    bottom: 26px;
+    left: 29%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    bottom: 18px;
+    left: 50%;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
+    top: 8px;
+    bottom: auto;
+    left: 50%;
   }
 `;
 
