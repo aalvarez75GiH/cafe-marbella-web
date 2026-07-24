@@ -226,9 +226,6 @@ export const ProductsHero = ({
 
           <ProductInformation>
             <ProductType>{activeProduct.grindLabel}</ProductType>
-            {/* <ProductType>
-              {activeProduct.originLabel} · {activeProduct.grindLabel}
-            </ProductType> */}
 
             <ProductRoast>{activeProduct.roastLabel}</ProductRoast>
 

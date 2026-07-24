@@ -1,6 +1,7 @@
 export const colors = /** @type {const} */ ({
   brand: {
-    primary: "#145C34",
+    // primary: "#145C34",
+    primary: "#3E7E39",
     primaryDark: "#0C4325",
     secondary: "#C8922D",
     secondaryLight: "#D9A441",
@@ -23,7 +24,8 @@ export const colors = /** @type {const} */ ({
     secondary: "#5E5E5E",
     muted: "#7A746B",
     inverse: "#FFFFFF",
-    green: "#145C34",
+    // green: "#145C34",
+    green: "#3E7E39",
     gold: "#C8922D",
     gold_light: "#D9A441",
     black: "#000000",

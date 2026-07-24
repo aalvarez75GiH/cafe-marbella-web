@@ -27,10 +27,9 @@ export const HomeScreen = () => {
           console.log("Selected product:", product);
         }}
       />
-      {/* <NewHero_Component /> */}
-      <BrandPillarsSection />
-      <ShopCategories />
       <SignatureBundles />
+      <ShopCategories />
+      <BrandPillarsSection />
       <StoryImpactSection />
       <CommunitySocialSection />
       <FooterSection />

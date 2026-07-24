@@ -432,12 +432,25 @@ export const BundlesHeaderContent = styled.div`
 `;
 export const BundlesSectionHeader = styled.header`
   width: 100%;
-  margin: 0 0 34px;
+
+  margin: 72px 0 34px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-bottom: 28px;
+    margin: 56px 0 28px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin: 40px 0 24px;
   }
 `;
+// export const BundlesSectionHeader = styled.header`
+//   width: 100%;
+//   margin: 0 0 34px;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     margin-bottom: 28px;
+//   }
+// `;
 
 export const BundlesSectionEyebrow = styled.p`
   margin: 0 0 18px;
@@ -466,7 +479,7 @@ export const BundlesSectionTitle = styled.h2`
   max-width: 1120px;
   margin: 0;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  color: ${({ theme }) => theme.colors.brand.primary};
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.45rem, 4vw, 4.15rem);

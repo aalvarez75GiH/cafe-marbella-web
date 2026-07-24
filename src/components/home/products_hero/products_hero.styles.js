@@ -2,21 +2,48 @@ import styled from "styled-components";
 
 export const ProductsHeroSection = styled.section`
   position: relative;
+  z-index: 2;
 
   width: 100%;
   min-height: 760px;
+  margin-top: -22px;
+
   overflow: hidden;
 
   background: ${({ theme }) => theme.colors.bg.secondary};
+
+  /*
+   * A subtle desktop transition—not a large dome.
+   */
+  /* border-radius: 50% 50% 0 0 / 24px 24px 0 0; */
 
   &::after {
     content: "";
     display: none;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    margin-top: -16px;
+
+    /* border-radius: 50% 50% 0 0 / 18px 18px 0 0; */
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    min-height: auto;
+    margin-top: 0;
+    padding: 42px 0 40px;
+
+    /*
+     * Tablet and mobile need a clean edge.
+     * The large curved cap consumes too much space.
+     */
+    border-radius: 0;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     &::after {
       position: absolute;
+      padding-block: 38px 32px;
       inset: 0;
       z-index: 0;
 
@@ -32,10 +59,6 @@ export const ProductsHeroSection = styled.section`
 
       pointer-events: none;
     }
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    min-height: auto;
   }
 `;
 
@@ -624,7 +647,7 @@ export const OrderButton = styled.button`
   border-radius: 999px;
 
   color: ${({ theme }) => theme.colors.text.inverse};
-  background: ${({ theme }) => theme.colors.brand.primary};
+  background: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.76rem;

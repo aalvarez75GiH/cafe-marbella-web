@@ -4,23 +4,16 @@ export const Section = styled.section`
   position: relative;
   z-index: 2;
 
-  margin-top: -42px;
-  padding: 74px 24px 68px;
+  margin-top: -26px;
+
+  /* border-radius: 56px 56px 0 0; */
+  padding: 88px 24px 68px;
+  box-shadow: 0 -12px 40px rgba(16, 32, 22, 0.04);
 
   background-color: ${({ theme }) => theme.colors?.brand?.cream || "#F7F1E6"};
 
   overflow: hidden;
 
-  /*
-   * Creates the soft curved transition between the hero
-   * and this section.
-   */
-  border-radius: 50% 50% 0 0 / 42px 42px 0 0;
-
-  /*
-   * Very subtle background pattern inspired by
-   * topographic contour lines.
-   */
   background-image: radial-gradient(
       ellipse at 15% 25%,
       transparent 0 44px,
@@ -36,14 +29,12 @@ export const Section = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints?.tablet || "768px"}) {
     margin-top: -28px;
-    padding: 58px 20px 52px;
-    border-radius: 50% 50% 0 0 / 28px 28px 0 0;
+    padding: 68px 20px 52px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints?.mobile || "480px"}) {
     margin-top: -20px;
-    padding: 48px 18px 42px;
-    border-radius: 50% 50% 0 0 / 20px 20px 0 0;
+    padding: 56px 18px 42px;
   }
 `;
 

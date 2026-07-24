@@ -4,18 +4,18 @@ import { revealCard } from "../../../infrastructure/animations/index";
 export const Section = styled.section`
   width: 100%;
 
-  padding: 96px 0 36px;
+  padding: 96px 0 96px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    padding: 80px 0 32px;
+    padding: 80px 0 82px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 64px 0 28px;
+    padding: 64px 0 70px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: 48px 0 22px;
+    padding: 48px 0 58px;
   }
 `;
 
@@ -60,7 +60,7 @@ export const SectionEyebrow = styled.p`
 export const SectionTitle = styled.h2`
   max-width: 1120px;
   margin: 0;
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  color: ${({ theme }) => theme.colors.brand.primary};
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.45rem, 4vw, 4.15rem);
   font-weight: 650;
@@ -115,30 +115,6 @@ export const CardsContainer = styled.div`
     gap: 18px;
   }
 `;
-// export const CardsContainer = styled.div`
-//   width: calc(100% - 48px);
-//   max-width: 1440px;
-//   margin: 0 auto;
-
-//   display: grid;
-//   grid-template-columns: repeat(3, minmax(0, 1fr));
-//   gap: 18px;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-//     width: calc(100% - 40px);
-//     gap: 16px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     width: calc(100% - 32px);
-//     grid-template-columns: repeat(2, minmax(0, 1fr));
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     width: calc(100% - 24px);
-//     grid-template-columns: 1fr;
-//   }
-// `;
 
 export const CardReveal = styled.div`
   width: 100%;
@@ -153,18 +129,6 @@ export const CardReveal = styled.div`
     transition: none;
   }
 `;
-// export const CardReveal = styled.div`
-//   width: 100%;
-//   min-width: 0;
-
-//   ${revealCard}
-
-//   @media (prefers-reduced-motion: reduce) {
-//     opacity: 1;
-//     transform: none;
-//     transition: none;
-//   }
-// `;
 
 export const SectionContent = styled.div`
   width: 100%;
