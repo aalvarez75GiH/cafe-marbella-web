@@ -213,28 +213,43 @@ export const ProductCarousel = styled.div`
   user-select: none;
   -webkit-user-select: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+  /* 1280px */
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-template-columns:
-      minmax(290px, 0.9fr)
-      minmax(210px, 0.55fr);
-    column-gap: 12px;
+      minmax(320px, 0.9fr)
+      minmax(215px, 0.52fr);
+    column-gap: 22px;
 
-    min-height: 590px;
+    min-height: 620px;
   }
 
+  /* 1024px */
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    grid-template-columns:
+      minmax(275px, 0.88fr)
+      minmax(180px, 0.48fr);
+    column-gap: 10px;
+
+    min-height: 570px;
+    padding-top: 24px;
+  }
+
+  /* 768px */
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 100%;
-    min-height: 560px;
+    min-height: 620px;
     margin-top: 20px;
+    padding-top: 52px;
   }
 
+  /* 480px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-height: 500px;
-    padding-top: 38px;
+    padding-top: 42px;
   }
 `;
 
@@ -311,17 +326,30 @@ export const ProductImage = styled.img`
   user-select: none;
   -webkit-user-drag: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    height: 410px;
+  /* 1280px */
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    height: 440px;
   }
 
+  /* 1024px */
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    height: 350px;
+  }
+
+  /* 768px */
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: 360px;
   }
 
+  /* 480px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: 92%;
     height: 305px;
+  }
+
+  /* 375px */
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    height: 270px;
   }
 `;
 
@@ -345,35 +373,144 @@ export const ProductInformation = styled.div`
 
   transform: translateX(-92px);
 
+  /* Wide screens: 1441px and above */
+  @media (min-width: 1441px) {
+    transform: translateX(-150px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+    max-width: 190px;
+    transform: translateX(-48px);
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    max-width: 220px;
+    transform: translateX(-70px);
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    transform: translateX(-10px);
+    max-width: 180px;
+    transform: translateX(-18px);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    position: static;
+
     align-items: center;
 
+    width: 100%;
     max-width: none;
-    margin-top: 14px;
+    margin-top: 18px;
 
     text-align: center;
 
     transform: none;
   }
 `;
+// export const ProductInformation = styled.div`
+//   grid-column: 2;
+//   grid-row: 1;
+
+//   position: relative;
+//   z-index: 2;
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   justify-content: center;
+
+//   width: 100%;
+//   max-width: 235px;
+//   margin: 0;
+
+//   text-align: left;
+
+//   /* Wide desktop */
+//   transform: translateX(-92px);
+
+//   /* 1280px: create a little more space from the bag */
+//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+//     max-width: 220px;
+//     transform: translateX(-48px);
+//   }
+
+//   /* 1024px */
+//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+//     max-width: 180px;
+//     transform: translateX(-18px);
+//   }
+
+//   /* 768px: stacked layout */
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     position: static;
+
+//     align-items: center;
+
+//     width: 100%;
+//     max-width: none;
+//     margin-top: 18px;
+
+//     text-align: center;
+
+//     transform: none;
+//   }
+// `;
 
 export const ProductType = styled.span`
   color: ${({ theme }) => theme.colors.text.secondary};
 
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.72rem;
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  line-height: 1.1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.2rem;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.15rem;
   }
 `;
+// export const ProductType = styled.span`
+//   color: ${({ theme }) => theme.colors.text.secondary};
+
+//   font-family: ${({ theme }) => theme.fonts.body};
+//   font-size: 0.72rem;
+//   font-weight: 700;
+//   line-height: 1.3;
+//   letter-spacing: 0.13em;
+//   text-transform: uppercase;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+//     font-size: 0.74rem;
+//     letter-spacing: 0.16em;
+//   }
+//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+//     font-size: 0.68rem;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+//     font-size: 0.6rem;
+//     letter-spacing: 0.1em;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     font-size: 0.68rem;
+//     color: ${({ theme }) => theme.colors.text.green};
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     color: ${({ theme }) => theme.colors.text.green};
+//   }
+// `;
 
 export const ProductRoast = styled.strong`
   margin-top: 10px;
@@ -384,12 +521,26 @@ export const ProductRoast = styled.strong`
   font-size: 1.7rem;
   line-height: 1.1;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 1.55rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    margin-top: 8px;
+    font-size: 1.28rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
+    color: ${({ theme }) => theme.colors.text.green};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    color: ${({ theme }) => theme.colors.text.inverse};
+    color: ${({ theme }) => theme.colors.text.green};
   }
 `;
 
@@ -404,8 +555,27 @@ export const ProductPriceLabel = styled.span`
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+    font-size: 0.74rem;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    margin-top: 16px;
+    font-size: 0.64rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    margin-top: 12px;
+    font-size: 0.58rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin-top: 14px;
+    font-size: 0.64rem;
+    color: ${({ theme }) => theme.colors.text.green};
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    color: rgba(255, 255, 255, 0.72);
+    color: ${({ theme }) => theme.colors.text.green};
   }
 `;
 
@@ -418,12 +588,24 @@ export const ProductPrice = styled.strong`
   font-size: 2.2rem;
   line-height: 1;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
+    font-size: 2rem;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    font-size: 1.65rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 1.8rem;
+    color: ${({ theme }) => theme.colors.text.green};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    color: ${({ theme }) => theme.colors.text.inverse};
+    color: ${({ theme }) => theme.colors.text.green};
   }
 `;
 
@@ -453,8 +635,29 @@ export const OrderButton = styled.button`
 
   cursor: pointer;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: 205px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    width: 175px;
+    min-height: 44px;
+    margin-top: 15px;
+    padding-inline: 18px;
+
+    font-size: 0.68rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 240px;
+    min-height: 50px;
+    margin-top: 18px;
+
+    font-size: 0.74rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 250px;
+    width: 230px;
     min-height: 50px;
   }
 `;
@@ -506,26 +709,34 @@ export const NavigationButton = styled.button`
     pointer-events: none;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
 `;
 
 export const PreviousButton = styled(NavigationButton)`
-  top: calc(46% + 28px);
+  top: calc(48% + 28px);
   left: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    top: calc(50% + 22px);
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    top: calc(47% + 22px);
+    /* top: calc(46% + 22px); */
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: 44%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    top: 51%;
+    left: 4px;
+  }
+
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 57%;
+    left: 18px;
+  } */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
   }
 `;
-// export const PreviousButton = styled(NavigationButton)`
-//   left: 8px;
-// `;
 
 export const NextButton = styled(NavigationButton)`
   top: 50%;
@@ -534,16 +745,21 @@ export const NextButton = styled(NavigationButton)`
 
   transform: translateY(-50%);
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    right: -56px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    right: -58px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: 44%;
-    right: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    right: -44px;
+  }
+
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 58%;
+    right: 18px;
+    left: auto;
 
     transform: translateY(-50%);
-  }
+  } */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
@@ -563,19 +779,24 @@ export const DotsContainer = styled.div`
 
   transform: translateX(-50%);
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    bottom: 26px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    bottom: 24px;
     left: 29%;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    bottom: 12px;
+    left: 28%;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    bottom: 18px;
+    top: 10px;
+    bottom: auto;
     left: 50%;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     top: 8px;
-    bottom: auto;
     left: 50%;
   }
 `;

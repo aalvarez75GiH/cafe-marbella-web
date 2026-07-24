@@ -39,6 +39,22 @@ const getDefaultVariant = (sizeVariants = []) => {
   );
 };
 
+const originOrder = {
+  venezuela: 0,
+  mexico: 1,
+};
+
+const grindOrder = {
+  ground: 0,
+  whole: 1,
+};
+
+const roastOrder = {
+  light: 0,
+  medium: 1,
+  dark: 2,
+};
+
 export const buildProductsHeroSlides = (products = []) => {
   return products
     .filter((product) => {
@@ -49,6 +65,10 @@ export const buildProductsHeroSlides = (products = []) => {
       const origin = getOriginKey(product.originCountry);
       const grind = getGrindKey(product.grindType);
       const roast = normalizeValue(product.roast);
+
+      if (origin === "mexico") {
+        return false;
+      }
 
       return (
         allowedOrigins.has(origin) &&
@@ -102,7 +122,41 @@ export const buildProductsHeroSlides = (products = []) => {
         // imageKey: defaultVariant?.image_keys?.[0] ?? null,
       };
     })
-    .sort((a, b) => a.priority - b.priority);
+    .sort((a, b) => {
+      const originDifference =
+        (originOrder[a.origin] ?? 99) - (originOrder[b.origin] ?? 99);
+
+      if (originDifference !== 0) {
+        return originDifference;
+      }
+
+      const grindDifference =
+        (grindOrder[a.grind] ?? 99) - (grindOrder[b.grind] ?? 99);
+
+      if (grindDifference !== 0) {
+        return grindDifference;
+      }
+
+      const roastDifference =
+        (roastOrder[a.roast] ?? 99) - (roastOrder[b.roast] ?? 99);
+
+      if (roastDifference !== 0) {
+        return roastDifference;
+      }
+
+      return a.priority - b.priority;
+    });
+  // .sort((a, b) => {
+  //   const roastDifference =
+  //     (roastOrder[a.roast] ?? 99) - (roastOrder[b.roast] ?? 99);
+
+  //   if (roastDifference !== 0) {
+  //     return roastDifference;
+  //   }
+
+  //   return a.priority - b.priority;
+  // });
+  // .sort((a, b) => a.priority - b.priority);
 };
 
 export const formatHeroPrice = (priceInCents) => {
