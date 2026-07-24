@@ -12,20 +12,15 @@ import {
   HeroContent,
   HeroEyebrow,
   HeroTitle,
-  Divider,
-  DividerLine,
-  DividerBean,
-  HeroDescription,
-  DesktopActions,
-  ShopButton,
-  LearnMoreButton,
   BenefitsContainer,
   BenefitItem,
   BenefitDivider,
   BenefitIcon,
   BenefitLabel,
   ProductCarousel,
-  ProductStage,
+  ProductViewport,
+  ProductTrack,
+  ProductSlide,
   ProductImage,
   ProductInformation,
   ProductType,
@@ -33,7 +28,6 @@ import {
   ProductPriceLabel,
   ProductPrice,
   OrderButton,
-  //   NavigationButton,
   PreviousButton,
   NextButton,
   DotsContainer,
@@ -65,12 +59,6 @@ const CoffeeBeanIcon = () => (
   </BenefitIcon>
 );
 
-const getPreviousIndex = (currentIndex, total) =>
-  currentIndex === 0 ? total - 1 : currentIndex - 1;
-
-const getNextIndex = (currentIndex, total) =>
-  currentIndex === total - 1 ? 0 : currentIndex + 1;
-
 export const ProductsHero = ({
   products = [],
   isLoading = false,
@@ -83,11 +71,57 @@ export const ProductsHero = ({
   );
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const touchStartX = useRef(null);
-  const touchCurrentX = useRef(null);
-  const [transitionDirection, setTransitionDirection] = useState("next");
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
+
+  const productViewportRef = useRef(null);
+
+  const isFirstProduct = activeIndex === 0;
+  const isLastProduct = activeIndex === heroProducts.length - 1;
+
+  const scrollToProduct = (index) => {
+    const viewport = productViewportRef.current;
+
+    if (!viewport) {
+      return;
+    }
+
+    const nextIndex = Math.max(0, Math.min(index, heroProducts.length - 1));
+
+    viewport.scrollTo({
+      left: viewport.clientWidth * nextIndex,
+      behavior: "smooth",
+    });
+  };
+
+  const handlePrevious = () => {
+    scrollToProduct(activeIndex - 1);
+  };
+
+  const handleNext = () => {
+    scrollToProduct(activeIndex + 1);
+  };
+
+  const handleDotSelect = (index) => {
+    scrollToProduct(index);
+  };
+
+  const handleProductScroll = (event) => {
+    const viewport = event.currentTarget;
+    const slideWidth = viewport.clientWidth;
+
+    if (!slideWidth) {
+      return;
+    }
+
+    const nextIndex = Math.round(viewport.scrollLeft / slideWidth);
+
+    if (
+      nextIndex >= 0 &&
+      nextIndex < heroProducts.length &&
+      nextIndex !== activeIndex
+    ) {
+      setActiveIndex(nextIndex);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -115,74 +149,6 @@ export const ProductsHero = ({
 
   const activeProduct = heroProducts[activeIndex];
 
-  const changeProduct = (nextIndex, direction) => {
-    if (isTransitioning || nextIndex === activeIndex) {
-      return;
-    }
-
-    setTransitionDirection(direction);
-    setIsTransitioning(true);
-
-    window.setTimeout(() => {
-      setActiveIndex(nextIndex);
-      setIsTransitioning(false);
-    }, 220);
-  };
-
-  const handlePrevious = () => {
-    const previousIndex = getPreviousIndex(activeIndex, heroProducts.length);
-
-    changeProduct(previousIndex, "previous");
-  };
-
-  const handleNext = () => {
-    const nextIndex = getNextIndex(activeIndex, heroProducts.length);
-
-    changeProduct(nextIndex, "next");
-  };
-
-  const handleTouchStart = (event) => {
-    touchStartX.current = event.touches[0].clientX;
-    touchCurrentX.current = event.touches[0].clientX;
-  };
-
-  const handleTouchMove = (event) => {
-    const currentX = event.touches[0].clientX;
-
-    touchCurrentX.current = currentX;
-
-    if (touchStartX.current !== null) {
-      const offset = currentX - touchStartX.current;
-
-      setDragOffset(Math.max(-90, Math.min(90, offset)));
-    }
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX.current === null || touchCurrentX.current === null) {
-      setDragOffset(0);
-      return;
-    }
-
-    const swipeDistance = touchStartX.current - touchCurrentX.current;
-
-    const minimumSwipeDistance = 50;
-
-    if (swipeDistance > minimumSwipeDistance) {
-      handleNext();
-    } else if (swipeDistance < -minimumSwipeDistance) {
-      handlePrevious();
-    }
-
-    setDragOffset(0);
-    touchStartX.current = null;
-    touchCurrentX.current = null;
-  };
-
-  const handleOrderNow = () => {
-    onOrderNow?.(activeProduct);
-  };
-
   return (
     <ProductsHeroSection id="main-hero">
       <BackgroundImage $image={heroBackground} />
@@ -191,35 +157,7 @@ export const ProductsHero = ({
         <HeroContent>
           <HeroEyebrow>Premium Venezuelan Coffee</HeroEyebrow>
 
-          <HeroTitle>
-            Born in Venezuela.
-            <br />
-            Shared with the world.
-          </HeroTitle>
-
-          <Divider aria-hidden="true">
-            <DividerLine />
-            <DividerBean />
-            <DividerLine />
-          </Divider>
-
-          <HeroDescription>
-            From our family farms to your cup.
-            <br />
-            100% organic. 100% Latin America.
-          </HeroDescription>
-
-          <DesktopActions>
-            <ShopButton type="button">
-              Shop Coffee
-              <span aria-hidden="true">→</span>
-            </ShopButton>
-
-            <LearnMoreButton type="button">
-              Learn More
-              <span aria-hidden="true">→</span>
-            </LearnMoreButton>
-          </DesktopActions>
+          <HeroTitle>Buying our coffee is just one swipe away.</HeroTitle>
 
           <BenefitsContainer>
             <BenefitItem>
@@ -258,59 +196,64 @@ export const ProductsHero = ({
           </BenefitsContainer>
         </HeroContent>
 
-        <ProductCarousel
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
+        <ProductCarousel>
           <PreviousButton
             type="button"
             aria-label="Show previous coffee"
             onClick={handlePrevious}
+            disabled={isFirstProduct}
           >
             ←
           </PreviousButton>
 
-          <ProductStage
-            // key={activeProduct.id}
-            $isTransitioning={isTransitioning}
-            $direction={transitionDirection}
-            $dragOffset={dragOffset}
+          <ProductViewport
+            ref={productViewportRef}
+            onScroll={handleProductScroll}
           >
-            <ProductImage
-              src={activeProduct.image}
-              alt={`${activeProduct.originLabel} ${activeProduct.grindLabel} ${activeProduct.roastLabel}`}
-            />
+            <ProductTrack>
+              {heroProducts.map((product) => (
+                <ProductSlide key={product.id}>
+                  <ProductImage
+                    src={product.image}
+                    alt={`${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
+                    draggable="false"
+                  />
+                </ProductSlide>
+              ))}
+            </ProductTrack>
+          </ProductViewport>
 
-            <ProductInformation>
-              <ProductType>
-                {activeProduct.originLabel} · {activeProduct.grindLabel}
-              </ProductType>
+          <ProductInformation>
+            <ProductType>
+              {activeProduct.originLabel} · {activeProduct.grindLabel}
+            </ProductType>
 
-              <ProductRoast>{activeProduct.roastLabel}</ProductRoast>
+            <ProductRoast>{activeProduct.roastLabel}</ProductRoast>
 
-              <ProductPriceLabel>Starting at</ProductPriceLabel>
+            <ProductPriceLabel>Starting at</ProductPriceLabel>
 
-              <ProductPrice>
-                {formatHeroPrice(activeProduct.startingPrice)}
-              </ProductPrice>
+            <ProductPrice>
+              {formatHeroPrice(activeProduct.startingPrice)}
+            </ProductPrice>
 
-              <OrderButton type="button" onClick={handleOrderNow}>
-                Order Now
-                <span aria-hidden="true">→</span>
-              </OrderButton>
-            </ProductInformation>
-          </ProductStage>
+            <OrderButton
+              type="button"
+              onClick={() => onOrderNow?.(activeProduct)}
+            >
+              Order Now
+            </OrderButton>
+          </ProductInformation>
 
           <NextButton
             type="button"
             aria-label="Show next coffee"
             onClick={handleNext}
+            disabled={isLastProduct}
           >
             →
           </NextButton>
 
-          <DotsContainer aria-label="Select a featured coffee">
+          <DotsContainer aria-label="Featured coffee progress">
             {heroProducts.map((product, index) => (
               <DotButton
                 key={product.id}
@@ -318,11 +261,7 @@ export const ProductsHero = ({
                 $active={index === activeIndex}
                 aria-label={`Show ${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
                 aria-current={index === activeIndex ? "true" : undefined}
-                onClick={() => {
-                  const direction = index > activeIndex ? "next" : "previous";
-                  changeProduct(index, direction);
-                }}
-                // onClick={() => setActiveIndex(index)}
+                onClick={() => handleDotSelect(index)}
               />
             ))}
           </DotsContainer>

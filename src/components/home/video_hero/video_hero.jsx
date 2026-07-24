@@ -49,9 +49,12 @@ export const VideoHero = () => {
           <VideoHeroEyebrow>From Venezuela to your cup</VideoHeroEyebrow>
 
           <VideoHeroTitle>
-            Coffee with a story
+            Born in Venezuela.
             <br />
-            worth sharing.
+            Shared with the world.
+            {/* Coffee with a story
+            <br />
+            worth sharing. */}
           </VideoHeroTitle>
 
           <VideoHeroDescription>

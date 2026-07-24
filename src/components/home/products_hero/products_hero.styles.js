@@ -1,19 +1,8 @@
 import styled from "styled-components";
 
-// const productReveal = keyframes`
-//   from {
-//     opacity: 0;
-//     transform: translateX(28px) scale(0.96);
-//   }
-
-//   to {
-//     opacity: 1;
-//     transform: translateX(0) scale(1);
-//   }
-// `;
-
 export const ProductsHeroSection = styled.section`
   position: relative;
+
   width: 100%;
   min-height: 760px;
   overflow: hidden;
@@ -76,7 +65,9 @@ export const ProductsHeroContainer = styled.div`
   padding: 54px clamp(48px, 5.4vw, 112px) 48px clamp(52px, 5.8vw, 118px);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    grid-template-columns: minmax(390px, 0.92fr) minmax(500px, 1.08fr);
+    grid-template-columns:
+      minmax(390px, 0.92fr)
+      minmax(500px, 1.08fr);
     column-gap: 38px;
 
     min-height: 680px;
@@ -131,7 +122,7 @@ export const HeroEyebrow = styled.p`
 `;
 
 export const HeroTitle = styled.h2`
-  max-width: 590px;
+  max-width: 620px;
   margin: 0;
 
   color: ${({ theme }) => theme.colors.text.green};
@@ -139,93 +130,25 @@ export const HeroTitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(4.2rem, 5.5vw, 6.4rem);
   font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.06em;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
 
-  0% @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    max-width: 510px;
+  text-wrap: balance;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    max-width: 540px;
+
     font-size: clamp(3.6rem, 5.3vw, 5.2rem);
+    line-height: 1.02;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: 100%;
+
     font-size: clamp(2.8rem, 12vw, 4rem);
-    line-height: 0.97;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
   }
-`;
-
-export const Divider = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  margin-top: 28px;
-`;
-
-export const DividerLine = styled.span`
-  width: 82px;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.border.medium};
-`;
-
-export const DividerBean = styled.span`
-  width: 10px;
-  height: 14px;
-
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.text.primary};
-
-  transform: rotate(35deg);
-`;
-
-export const HeroDescription = styled.p`
-  margin: 24px 0 0;
-
-  color: ${({ theme }) => theme.colors.text.primary};
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 1rem;
-  line-height: 1.55;
-`;
-
-export const DesktopActions = styled.div`
-  display: flex;
-  gap: 14px;
-
-  margin-top: 28px;
-`;
-
-const BaseButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-
-  min-width: 180px;
-  min-height: 52px;
-  padding: 13px 24px;
-
-  border-radius: 6px;
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.84rem;
-  font-weight: 700;
-
-  cursor: pointer;
-`;
-
-export const ShopButton = styled(BaseButton)`
-  border: 1px solid ${({ theme }) => theme.colors.brand.primary};
-
-  color: ${({ theme }) => theme.colors.text.inverse};
-  background: ${({ theme }) => theme.colors.brand.primary};
-`;
-
-export const LearnMoreButton = styled(BaseButton)`
-  border: 1px solid ${({ theme }) => theme.colors.brand.primary};
-
-  color: ${({ theme }) => theme.colors.text.green};
-  background: rgba(255, 255, 255, 0.5);
 `;
 
 export const BenefitsContainer = styled.div`
@@ -248,6 +171,7 @@ export const BenefitItem = styled.div`
 
 export const BenefitDivider = styled.span`
   width: 1px;
+
   background: ${({ theme }) => theme.colors.border.medium};
 `;
 
@@ -275,6 +199,7 @@ export const ProductCarousel = styled.div`
   position: relative;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -283,7 +208,6 @@ export const ProductCarousel = styled.div`
   min-height: 650px;
   padding-top: 52px;
 
-  touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
 
@@ -303,80 +227,101 @@ export const ProductCarousel = styled.div`
   }
 `;
 
-export const ProductStage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+export const ProductViewport = styled.div`
   width: min(100%, 590px);
 
-  opacity: ${({ $isTransitioning }) => ($isTransitioning ? 0 : 1)};
+  overflow-x: auto;
+  overflow-y: hidden;
 
-  transform: ${({ $isTransitioning, $direction, $dragOffset }) => {
-    if (!$isTransitioning) {
-      return `translateX(${$dragOffset}px) scale(1)`;
-    }
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
 
-    return $direction === "next"
-      ? "translateX(-64px) scale(0.97)"
-      : "translateX(64px) scale(0.97)";
-  }};
+  touch-action: pan-x pan-y;
 
-  transition: opacity 220ms ease, transform 220ms ease;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-  will-change: opacity, transform;
+  -webkit-overflow-scrolling: touch;
+
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    transform: ${({ $isTransitioning, $direction }) => {
-      if (!$isTransitioning) {
-        return "translateX(0) scale(1)";
-      }
-
-      return $direction === "next"
-        ? "translateX(-64px) scale(0.97)"
-        : "translateX(64px) scale(0.97)";
-    }};
-
-    transition: opacity 220ms ease,
-      transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    width: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    transition: none;
+    scroll-behavior: auto;
   }
+`;
+
+export const ProductTrack = styled.div`
+  display: flex;
+
+  width: 100%;
+`;
+
+export const ProductSlide = styled.div`
+  flex: 0 0 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 100%;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 `;
 
 export const ProductImage = styled.img`
   display: block;
 
   width: auto;
-  max-width: 86%;
-  height: 410px;
+  max-width: 88%;
+  height: 425px;
 
   object-fit: contain;
 
-  filter: drop-shadow(0 26px 28px rgba(18, 56, 36, 0.17));
+  filter: drop-shadow(0 30px 30px rgba(18, 56, 36, 0.2));
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    height: 365px;
+    height: 375px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    height: 350px;
+    height: 360px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    height: 295px;
+    max-width: 92%;
+    height: 305px;
   }
 `;
 
 export const ProductInformation = styled.div`
+  position: relative;
+  z-index: 2;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  margin-top: 18px;
+  width: 100%;
+  margin-top: 14px;
 
   text-align: center;
 `;
@@ -440,9 +385,13 @@ export const ProductPrice = styled.strong`
 export const OrderButton = styled.button`
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
 
+  width: 200px;
+  min-width: 150px;
+  max-width: 1400px;
   min-height: 46px;
+
   margin-top: 14px;
   padding: 11px 22px;
 
@@ -456,9 +405,24 @@ export const OrderButton = styled.button`
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.07em;
+  text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 
   cursor: pointer;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 180px;
+    min-width: 0;
+    max-width: 310px;
+    min-height: 54px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 180px;
+    min-width: 0;
+    max-width: 310px;
+    min-height: 54px;
+  }
 `;
 
 export const NavigationButton = styled.button`
@@ -481,6 +445,7 @@ export const NavigationButton = styled.button`
   background: rgba(255, 255, 255, 0.76);
 
   font-size: 1rem;
+
   cursor: pointer;
 
   backdrop-filter: blur(8px);
@@ -489,9 +454,9 @@ export const NavigationButton = styled.button`
   transform: translateY(-50%);
 
   transition: color 180ms ease, background-color 180ms ease,
-    border-color 180ms ease;
+    border-color 180ms ease, opacity 180ms ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: ${({ theme }) => theme.colors.text.inverse};
     background: ${({ theme }) => theme.colors.brand.primary};
     border-color: ${({ theme }) => theme.colors.brand.primary};
@@ -500,6 +465,13 @@ export const NavigationButton = styled.button`
   &:focus-visible {
     outline: 3px solid ${({ theme }) => theme.colors.brand.secondary};
     outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+
+    cursor: default;
+    pointer-events: none;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -517,11 +489,11 @@ export const NextButton = styled(NavigationButton)`
 
 export const DotsContainer = styled.div`
   position: absolute;
-  top: 16px;
+  top: 8px;
   left: 50%;
   z-index: 3;
 
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 7px;
@@ -529,7 +501,7 @@ export const DotsContainer = styled.div`
   transform: translateX(-50%);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    top: 8px;
+    display: flex;
   }
 `;
 
@@ -546,7 +518,13 @@ export const DotButton = styled.button`
 
   cursor: pointer;
 
-  transition: width 200ms ease;
+  transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 200ms ease;
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
+    outline-offset: 3px;
+  }
 `;
 
 export const EmptyHero = styled.section`
