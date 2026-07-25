@@ -169,7 +169,8 @@ export const CardTitle = styled.h3`
   max-width: 520px;
   margin: 0;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  /* color: ${({ theme }) => theme.colors.brand.primaryDark}; */
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 2.8vw, 3.05rem);

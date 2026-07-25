@@ -78,7 +78,8 @@ export const Eyebrow = styled.p`
 export const Title = styled.h2`
   margin: 4px 0 0;
 
-  color: ${({ theme }) => theme.colors?.brand?.primaryDark || "#0C4325"};
+  /* color: ${({ theme }) => theme.colors?.brand?.primaryDark || "#0C4325"}; */
+  color: ${({ theme }) => theme.colors?.text?.green || "#0C4325"};
 
   font-family: ${({ theme }) =>
     theme.fonts?.display || '"Cormorant Garamond", serif'};

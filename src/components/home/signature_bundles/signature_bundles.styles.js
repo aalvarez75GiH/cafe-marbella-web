@@ -254,7 +254,8 @@ export const BundlesToggleButton = styled.button`
   min-height: 58px;
   padding: 0 28px;
 
-  color: ${({ theme }) => theme.colors.brand.primary};
+  /* color: ${({ theme }) => theme.colors.brand.primary}; */
+  color: ${({ theme }) => theme.colors.text.green};
   background: transparent;
 
   border: 1px solid ${({ theme }) => theme.colors.brand.primary};
@@ -278,14 +279,6 @@ export const BundlesToggleButton = styled.button`
 
     transform: translateY(-2px);
   }
-  /* &:hover {
-    color: ${({ theme }) => theme.colors.text.inverse};
-    background: ${({ theme }) => theme.colors.brand.primary};
-
-    box-shadow: 0 10px 24px rgba(20, 92, 52, 0.13);
-
-    transform: translateY(-2px);
-  } */
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
@@ -443,14 +436,6 @@ export const BundlesSectionHeader = styled.header`
     margin: 40px 0 24px;
   }
 `;
-// export const BundlesSectionHeader = styled.header`
-//   width: 100%;
-//   margin: 0 0 34px;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     margin-bottom: 28px;
-//   }
-// `;
 
 export const BundlesSectionEyebrow = styled.p`
   margin: 0 0 18px;

@@ -86,7 +86,8 @@ export const CommunitySectionTitle = styled.h2`
   max-width: 820px;
   margin: 0;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  /* color: ${({ theme }) => theme.colors.brand.primaryDark}; */
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.25rem, 3.25vw, 3.35rem);

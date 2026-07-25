@@ -143,7 +143,7 @@ export const IntroTitle = styled.h2`
   max-width: 360px;
   margin: 0;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(1.6rem, 2.1vw, 2.4rem);
@@ -319,7 +319,8 @@ export const BundleName = styled.h3`
 
   overflow: hidden;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  /* color: ${({ theme }) => theme.colors.brand.primaryDark}; */
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2.35rem, 3.25vw, 3.7rem);
@@ -405,7 +406,8 @@ export const Price = styled.p`
   margin: 30px 0 18px;
   margin-top: 28px;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  /* color: ${({ theme }) => theme.colors.brand.primaryDark}; */
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: 1.9rem;

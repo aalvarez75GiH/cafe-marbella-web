@@ -89,12 +89,6 @@ export const StoryImpactCard = ({ item }) => {
 
         <Eyebrow>{item.eyebrow}</Eyebrow>
 
-        {/* <Divider aria-hidden="true">
-          <DividerLine />
-          <DividerDiamond />
-          <DividerLine />
-        </Divider> */}
-
         <CardTitle>{item.title}</CardTitle>
 
         <CardDescription>{item.description}</CardDescription>
