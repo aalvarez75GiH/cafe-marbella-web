@@ -63,7 +63,7 @@ export const SignatureBundles = () => {
   // };
 
   return (
-    <SignatureBundlesSection>
+    <SignatureBundlesSection id="signature-bundles">
       <BundlesHeaderContent>
         <BundlesSectionHeader>
           <BundlesSectionEyebrow>SHOP BY BUNDLES</BundlesSectionEyebrow>

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   buildProductsHeroSlides,
@@ -19,6 +19,8 @@ import {
   BenefitLabel,
   ProductCarousel,
   ProductViewport,
+  //   MobileCarouselNavigation,
+  //   MobileArrow,
   ProductTrack,
   ProductSlide,
   ProductImage,
@@ -33,7 +35,14 @@ import {
   DotsContainer,
   DotButton,
   EmptyHero,
+  ProductRating,
+  RatingStars,
+  RatingCount,
+  MostPopularBadge,
 } from "./products_hero.styles";
+
+// import { ChevronRightIcon } from "../../../assets/icons/ui/chevron_right.icon";
+// import { ChevronLeftIcon } from "../../../assets/icons/ui/chevron_left.icon";
 
 import heroBackground from "../../../assets/images/products_hero/hero_8.png";
 // import heroBackground from "../../../assets/images/hero/hero_5.png";
@@ -74,6 +83,13 @@ export const ProductsHero = ({
   const [activeIndex, setActiveIndex] = useState(0);
 
   const productViewportRef = useRef(null);
+  const scrollFrameRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      window.cancelAnimationFrame(scrollFrameRef.current);
+    };
+  }, []);
 
   const isFirstProduct = activeIndex === 0;
   const isLastProduct = activeIndex === heroProducts.length - 1;
@@ -81,11 +97,15 @@ export const ProductsHero = ({
   const scrollToProduct = (index) => {
     const viewport = productViewportRef.current;
 
-    if (!viewport) {
+    if (!viewport || !heroProducts.length) {
       return;
     }
 
     const nextIndex = Math.max(0, Math.min(index, heroProducts.length - 1));
+
+    // window.clearTimeout(scrollEndTimerRef.current);
+
+    setActiveIndex(nextIndex);
 
     viewport.scrollTo({
       left: viewport.clientWidth * nextIndex,
@@ -107,21 +127,28 @@ export const ProductsHero = ({
 
   const handleProductScroll = (event) => {
     const viewport = event.currentTarget;
-    const slideWidth = viewport.clientWidth;
 
-    if (!slideWidth) {
-      return;
-    }
+    window.cancelAnimationFrame(scrollFrameRef.current);
 
-    const nextIndex = Math.round(viewport.scrollLeft / slideWidth);
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      const slideWidth = viewport.clientWidth;
 
-    if (
-      nextIndex >= 0 &&
-      nextIndex < heroProducts.length &&
-      nextIndex !== activeIndex
-    ) {
-      setActiveIndex(nextIndex);
-    }
+      if (!slideWidth || !heroProducts.length) {
+        return;
+      }
+
+      const nextIndex = Math.max(
+        0,
+        Math.min(
+          Math.round(viewport.scrollLeft / slideWidth),
+          heroProducts.length - 1
+        )
+      );
+
+      setActiveIndex((currentIndex) =>
+        currentIndex === nextIndex ? currentIndex : nextIndex
+      );
+    });
   };
 
   if (isLoading) {
@@ -224,10 +251,47 @@ export const ProductsHero = ({
             </ProductTrack>
           </ProductViewport>
 
+          {/* <MobileCarouselNavigation>
+            <MobileArrow
+              type="button"
+              onClick={handlePrevious}
+              disabled={isFirstProduct}
+              aria-label="Previous coffee"
+            >
+              <ChevronLeftIcon />
+            </MobileArrow>
+
+            <MobileArrow
+              type="button"
+              onClick={handleNext}
+              disabled={isLastProduct}
+              aria-label="Next coffee"
+            >
+              <ChevronRightIcon />
+            </MobileArrow>
+          </MobileCarouselNavigation> */}
+
           <ProductInformation>
             <ProductType>{activeProduct.grindLabel}</ProductType>
 
             <ProductRoast>{activeProduct.roastLabel}</ProductRoast>
+
+            <ProductRating
+              aria-label={`${activeProduct.rating} out of 5 stars`}
+            >
+              <RatingStars aria-hidden="true">
+                {"★".repeat(Math.round(activeProduct.rating))}
+                {"☆".repeat(5 - Math.round(activeProduct.rating))}
+              </RatingStars>
+
+              {activeProduct.reviewCount > 0 && (
+                <RatingCount>({activeProduct.reviewCount})</RatingCount>
+              )}
+            </ProductRating>
+
+            {activeProduct.isMostPopular && (
+              <MostPopularBadge>Most Popular</MostPopularBadge>
+            )}
 
             <ProductPriceLabel>Starting at</ProductPriceLabel>
 
@@ -241,6 +305,7 @@ export const ProductsHero = ({
             >
               Order Now
             </OrderButton>
+
             <NextButton
               type="button"
               aria-label="Show next coffee"

@@ -281,14 +281,14 @@ export const ProductViewport = styled.div`
   grid-row: 1;
 
   width: 100%;
+
   overflow-x: auto;
   overflow-y: hidden;
 
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   overscroll-behavior-x: contain;
 
-  touch-action: pan-x pan-y;
+  touch-action: pan-x;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -306,12 +306,150 @@ export const ProductViewport = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 100%;
+    cursor: default;
   }
 
   @media (prefers-reduced-motion: reduce) {
     scroll-behavior: auto;
   }
 `;
+
+export const MobileCarouselNavigation = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    position: static;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+
+    width: 100%;
+    margin-top: 4px;
+
+    pointer-events: auto;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    gap: 54px;
+    margin-top: 2px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    gap: 46px;
+  }
+`;
+// export const MobileCarouselNavigation = styled.div`
+//   display: none;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+//     position: absolute;
+//     top: 52px;
+//     left: 0;
+//     z-index: 5;
+
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+
+//     width: 100%;
+//     height: 360px;
+//     padding-inline: 8px;
+
+//     pointer-events: none;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     top: 42px;
+//     height: 305px;
+//     padding-inline: 4px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+//     height: 270px;
+//   }
+// `;
+
+export const MobileArrow = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: ${({ theme }) => theme.colors.brand.primary};
+
+  cursor: pointer;
+
+  transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
+
+  svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.88);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+`;
+// export const MobileArrow = styled.button`
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   width: 48px;
+//   height: 48px;
+//   padding: 0;
+
+//   border: 0;
+//   background: transparent;
+
+//   color: ${({ theme }) => theme.colors.brand.primary};
+
+//   cursor: pointer;
+//   pointer-events: auto;
+
+//   transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
+
+//   svg {
+//     display: block;
+//     width: 30px;
+//     height: 30px;
+//   }
+
+//   &:disabled {
+//     opacity: 0.2;
+//     pointer-events: none;
+//   }
+
+//   &:active:not(:disabled) {
+//     transform: scale(0.88);
+//   }
+
+//   &:focus-visible {
+//     outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
+//     outline-offset: 3px;
+//     border-radius: 6px;
+//   }
+// `;
 
 export const ProductTrack = styled.div`
   display: flex;
@@ -331,8 +469,21 @@ export const ProductSlide = styled.div`
   height: 100%;
 
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 `;
+// export const ProductSlide = styled.div`
+//   flex: 0 0 100%;
+
+//   display: flex;
+//   align-items: flex-end;
+//   justify-content: center;
+
+//   width: 100%;
+//   min-width: 100%;
+//   height: 100%;
+
+//   scroll-snap-align: start;
+//   scroll-snap-stop: always;
+// `;
 
 export const ProductImage = styled.img`
   display: block;
@@ -429,54 +580,6 @@ export const ProductInformation = styled.div`
     transform: none;
   }
 `;
-// export const ProductInformation = styled.div`
-//   grid-column: 2;
-//   grid-row: 1;
-
-//   position: relative;
-//   z-index: 2;
-
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: center;
-
-//   width: 100%;
-//   max-width: 235px;
-//   margin: 0;
-
-//   text-align: left;
-
-//   /* Wide desktop */
-//   transform: translateX(-92px);
-
-//   /* 1280px: create a little more space from the bag */
-//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-//     max-width: 220px;
-//     transform: translateX(-48px);
-//   }
-
-//   /* 1024px */
-//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-//     max-width: 180px;
-//     transform: translateX(-18px);
-//   }
-
-//   /* 768px: stacked layout */
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     position: static;
-
-//     align-items: center;
-
-//     width: 100%;
-//     max-width: none;
-//     margin-top: 18px;
-
-//     text-align: center;
-
-//     transform: none;
-//   }
-// `;
 
 export const ProductType = styled.span`
   color: ${({ theme }) => theme.colors.text.secondary};
@@ -502,38 +605,6 @@ export const ProductType = styled.span`
     font-size: 1.15rem;
   }
 `;
-// export const ProductType = styled.span`
-//   color: ${({ theme }) => theme.colors.text.secondary};
-
-//   font-family: ${({ theme }) => theme.fonts.body};
-//   font-size: 0.72rem;
-//   font-weight: 700;
-//   line-height: 1.3;
-//   letter-spacing: 0.13em;
-//   text-transform: uppercase;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.wide}) {
-//     font-size: 0.74rem;
-//     letter-spacing: 0.16em;
-//   }
-//   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-//     font-size: 0.68rem;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-//     font-size: 0.6rem;
-//     letter-spacing: 0.1em;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     font-size: 0.68rem;
-//     color: ${({ theme }) => theme.colors.text.green};
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     color: ${({ theme }) => theme.colors.text.green};
-//   }
-// `;
 
 export const ProductRoast = styled.strong`
   margin-top: 10px;
@@ -602,6 +673,54 @@ export const ProductPriceLabel = styled.span`
   }
 `;
 
+export const ProductRating = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 10px;
+`;
+
+export const RatingStars = styled.span`
+  color: ${({ theme }) => theme.colors.brand.secondary};
+
+  font-family: Arial, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+`;
+
+export const RatingCount = styled.span`
+  color: ${({ theme }) => theme.colors.text.secondary};
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.72rem;
+  font-weight: 600;
+`;
+
+export const MostPopularBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  min-height: 28px;
+  margin-top: 10px;
+  padding: 5px 14px;
+
+  border: 1px solid ${({ theme }) => theme.colors.brand.secondary};
+  border-radius: 999px;
+
+  color: ${({ theme }) => theme.colors.brand.secondary};
+  background: rgba(247, 241, 230, 0.5);
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+`;
+
 export const ProductPrice = styled.strong`
   margin-top: 4px;
 
@@ -644,7 +763,7 @@ export const OrderButton = styled.button`
   padding: 12px 24px;
 
   border: 1px solid ${({ theme }) => theme.colors.brand.primary};
-  border-radius: 999px;
+  border-radius: 8px;
 
   color: ${({ theme }) => theme.colors.text.inverse};
   background: ${({ theme }) => theme.colors.text.green};
@@ -775,14 +894,6 @@ export const NextButton = styled(NavigationButton)`
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     right: -44px;
   }
-
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: 58%;
-    right: 18px;
-    left: auto;
-
-    transform: translateY(-50%);
-  } */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;

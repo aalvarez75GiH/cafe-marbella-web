@@ -241,6 +241,25 @@ export const VideoHeroDescription = styled.p`
   }
 `;
 
+export const VideoHeroActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  width: 100%;
+  margin-top: 34px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`;
+
 export const VideoHeroButton = styled.button`
   display: inline-flex;
   align-items: center;
@@ -249,13 +268,21 @@ export const VideoHeroButton = styled.button`
   width: fit-content;
   min-width: 210px;
   min-height: 54px;
-  margin-top: 34px;
   padding: 14px 28px;
 
-  border: 1px solid rgba(255, 255, 255, 0.78);
+  border: 1px solid
+    ${({ theme, $variant }) =>
+      $variant === "primary"
+        ? theme.colors.brand.primary
+        : "rgba(255, 255, 255, 0.78)"};
+
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: ${({ theme, $variant }) =>
+    $variant === "primary"
+      ? theme.colors.brand.primary
+      : "rgba(255, 255, 255, 0.08)"};
+
   color: ${({ theme }) => theme.colors.text.inverse};
 
   font-family: ${({ theme }) => theme.fonts.body};
@@ -265,16 +292,35 @@ export const VideoHeroButton = styled.button`
   text-transform: uppercase;
 
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 
-  transition: background 220ms ease, color 220ms ease, border-color 220ms ease,
-    transform 220ms ease;
+  backdrop-filter: ${({ $variant }) =>
+    $variant === "secondary" ? "blur(8px)" : "none"};
+
+  -webkit-backdrop-filter: ${({ $variant }) =>
+    $variant === "secondary" ? "blur(8px)" : "none"};
+
+  transition: background-color 220ms ease, color 220ms ease,
+    border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.bg.primary};
-    color: ${({ theme }) => theme.colors.brand.primary};
-    border-color: ${({ theme }) => theme.colors.bg.primary};
+    background: ${({ theme, $variant }) =>
+      $variant === "primary"
+        ? theme.colors.brand.primaryDark
+        : theme.colors.bg.primary};
+
+    color: ${({ theme, $variant }) =>
+      $variant === "primary"
+        ? theme.colors.text.inverse
+        : theme.colors.brand.primary};
+
+    border-color: ${({ theme, $variant }) =>
+      $variant === "primary"
+        ? theme.colors.brand.primaryDark
+        : theme.colors.bg.primary};
+
+    box-shadow: ${({ $variant }) =>
+      $variant === "primary" ? "0 10px 26px rgba(4, 25, 15, 0.24)" : "none"};
+
     transform: translateY(-2px);
   }
 
@@ -284,15 +330,16 @@ export const VideoHeroButton = styled.button`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    min-width: 195px;
+    min-width: 175px;
     min-height: 50px;
-    margin-top: 28px;
+    padding-inline: 22px;
 
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     width: 100%;
+    min-width: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -303,6 +350,68 @@ export const VideoHeroButton = styled.button`
     }
   }
 `;
+// export const VideoHeroButton = styled.button`
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   width: fit-content;
+//   min-width: 210px;
+//   min-height: 54px;
+//   margin-top: 34px;
+//   padding: 14px 28px;
+
+//   border: 1px solid rgba(255, 255, 255, 0.78);
+//   border-radius: 9px;
+
+//   background: rgba(255, 255, 255, 0.08);
+//   color: ${({ theme }) => theme.colors.text.inverse};
+
+//   font-family: ${({ theme }) => theme.fonts.body};
+//   font-size: 0.88rem;
+//   font-weight: 700;
+//   letter-spacing: 0.08em;
+//   text-transform: uppercase;
+
+//   cursor: pointer;
+//   backdrop-filter: blur(8px);
+//   -webkit-backdrop-filter: blur(8px);
+
+//   transition: background 220ms ease, color 220ms ease, border-color 220ms ease,
+//     transform 220ms ease;
+
+//   &:hover {
+//     background: ${({ theme }) => theme.colors.bg.primary};
+//     color: ${({ theme }) => theme.colors.brand.primary};
+//     border-color: ${({ theme }) => theme.colors.bg.primary};
+//     transform: translateY(-2px);
+//   }
+
+//   &:focus-visible {
+//     outline: 3px solid ${({ theme }) => theme.colors.brand.secondary};
+//     outline-offset: 4px;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     min-width: 195px;
+//     min-height: 50px;
+//     margin-top: 28px;
+
+//     font-size: 0.8rem;
+//   }
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+//     width: 100%;
+//   }
+
+//   @media (prefers-reduced-motion: reduce) {
+//     transition: none;
+
+//     &:hover {
+//       transform: none;
+//     }
+//   }
+// `;
 export const FlagSignature = styled.div`
   display: flex;
   align-items: center;

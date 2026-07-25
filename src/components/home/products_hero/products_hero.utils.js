@@ -105,9 +105,11 @@ export const buildProductsHeroSlides = (products = []) => {
         description: product.description?.en ?? "",
 
         // UI
-        rating: product.rating ?? 0,
-        flagKey: product.flag_key,
+        rating: Number(product.rating ?? 0),
         priority: Number(product.priority ?? 0),
+        isMostPopular: Number(product.priority ?? 0) === 1,
+        reviewCount: Number(product.review_count ?? product.reviewCount ?? 0),
+        flagKey: product.flag_key,
 
         // Variants
         sizeVariants: product.size_variants ?? [],

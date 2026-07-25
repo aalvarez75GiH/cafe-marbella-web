@@ -7,6 +7,7 @@ import {
   VideoHeroEyebrow,
   VideoHeroTitle,
   VideoHeroDescription,
+  VideoHeroActions,
   VideoHeroButton,
   ScrollIndicator,
   ScrollLine,
@@ -61,10 +62,31 @@ export const VideoHero = () => {
             Discover premium Venezuelan coffee, carefully selected and roasted
             to create an unforgettable experience.
           </VideoHeroDescription>
+          <VideoHeroActions>
+            <VideoHeroButton
+              type="button"
+              $variant="primary"
+              onClick={handleExploreClick}
+            >
+              Shop Coffee
+            </VideoHeroButton>
 
-          <VideoHeroButton type="button" onClick={handleExploreClick}>
+            <VideoHeroButton
+              type="button"
+              $variant="secondary"
+              onClick={() => {
+                document.getElementById("signature-bundles")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            >
+              Shop Bundles
+            </VideoHeroButton>
+          </VideoHeroActions>
+          {/* <VideoHeroButton type="button" onClick={handleExploreClick}>
             Discover our coffee
-          </VideoHeroButton>
+          </VideoHeroButton> */}
           <FlagSignature aria-label="Venezuelan coffee origin">
             <FlagImage
               src={venezuelanFlag}
