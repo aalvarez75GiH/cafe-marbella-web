@@ -19,8 +19,6 @@ import {
   BenefitLabel,
   ProductCarousel,
   ProductViewport,
-  //   MobileCarouselNavigation,
-  //   MobileArrow,
   ProductTrack,
   ProductSlide,
   ProductImage,
@@ -38,14 +36,10 @@ import {
   ProductRating,
   RatingStars,
   RatingCount,
-  MostPopularBadge,
+  ProductBadge,
 } from "./products_hero.styles";
 
-// import { ChevronRightIcon } from "../../../assets/icons/ui/chevron_right.icon";
-// import { ChevronLeftIcon } from "../../../assets/icons/ui/chevron_left.icon";
-
 import heroBackground from "../../../assets/images/products_hero/hero_8.png";
-// import heroBackground from "../../../assets/images/hero/hero_5.png";
 
 const LeafIcon = () => (
   <BenefitIcon viewBox="0 0 24 24" aria-hidden="true">
@@ -84,12 +78,27 @@ export const ProductsHero = ({
 
   const productViewportRef = useRef(null);
   const scrollFrameRef = useRef(null);
-
   useEffect(() => {
     return () => {
       window.cancelAnimationFrame(scrollFrameRef.current);
     };
   }, []);
+
+  const getProductSlideStep = () => {
+    const viewport = productViewportRef.current;
+    const track = viewport?.firstElementChild;
+    const firstSlide = track?.firstElementChild;
+
+    if (!viewport || !track || !firstSlide) {
+      return 0;
+    }
+
+    const trackStyles = window.getComputedStyle(track);
+    const gap =
+      Number.parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+
+    return firstSlide.getBoundingClientRect().width + gap;
+  };
 
   const isFirstProduct = activeIndex === 0;
   const isLastProduct = activeIndex === heroProducts.length - 1;
@@ -103,12 +112,16 @@ export const ProductsHero = ({
 
     const nextIndex = Math.max(0, Math.min(index, heroProducts.length - 1));
 
-    // window.clearTimeout(scrollEndTimerRef.current);
+    const slideStep = getProductSlideStep();
+
+    if (!slideStep) {
+      return;
+    }
 
     setActiveIndex(nextIndex);
 
     viewport.scrollTo({
-      left: viewport.clientWidth * nextIndex,
+      left: slideStep * nextIndex,
       behavior: "smooth",
     });
   };
@@ -131,16 +144,16 @@ export const ProductsHero = ({
     window.cancelAnimationFrame(scrollFrameRef.current);
 
     scrollFrameRef.current = window.requestAnimationFrame(() => {
-      const slideWidth = viewport.clientWidth;
+      const slideStep = getProductSlideStep();
 
-      if (!slideWidth || !heroProducts.length) {
+      if (!slideStep || !heroProducts.length) {
         return;
       }
 
       const nextIndex = Math.max(
         0,
         Math.min(
-          Math.round(viewport.scrollLeft / slideWidth),
+          Math.round(viewport.scrollLeft / slideStep),
           heroProducts.length - 1
         )
       );
@@ -246,30 +259,21 @@ export const ProductsHero = ({
                     alt={`${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
                     draggable="false"
                   />
+                  {product.isMostPopular && (
+                    <ProductBadge aria-label="Best seller">
+                      <span aria-hidden="true">★</span>
+
+                      <span className="badge-copy">
+                        Best
+                        <br />
+                        Seller
+                      </span>
+                    </ProductBadge>
+                  )}
                 </ProductSlide>
               ))}
             </ProductTrack>
           </ProductViewport>
-
-          {/* <MobileCarouselNavigation>
-            <MobileArrow
-              type="button"
-              onClick={handlePrevious}
-              disabled={isFirstProduct}
-              aria-label="Previous coffee"
-            >
-              <ChevronLeftIcon />
-            </MobileArrow>
-
-            <MobileArrow
-              type="button"
-              onClick={handleNext}
-              disabled={isLastProduct}
-              aria-label="Next coffee"
-            >
-              <ChevronRightIcon />
-            </MobileArrow>
-          </MobileCarouselNavigation> */}
 
           <ProductInformation>
             <ProductType>{activeProduct.grindLabel}</ProductType>
@@ -288,10 +292,6 @@ export const ProductsHero = ({
                 <RatingCount>({activeProduct.reviewCount})</RatingCount>
               )}
             </ProductRating>
-
-            {activeProduct.isMostPopular && (
-              <MostPopularBadge>Most Popular</MostPopularBadge>
-            )}
 
             <ProductPriceLabel>Starting at</ProductPriceLabel>
 

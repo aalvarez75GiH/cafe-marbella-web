@@ -309,6 +309,22 @@ export const ProductViewport = styled.div`
     cursor: default;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    /*
+   * Must match the mobile ProductSlide width.
+   * This centers the first and last products while allowing
+   * adjacent products to peek into the viewport.
+   */
+    --mobile-slide-width: clamp(172px, 48vw, 205px);
+
+    width: 100%;
+    padding-inline: calc((100% - var(--mobile-slide-width)) / 2);
+
+    scroll-padding-inline: calc((100% - var(--mobile-slide-width)) / 2);
+
+    box-sizing: border-box;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     scroll-behavior: auto;
   }
@@ -340,36 +356,6 @@ export const MobileCarouselNavigation = styled.div`
     gap: 46px;
   }
 `;
-// export const MobileCarouselNavigation = styled.div`
-//   display: none;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-//     position: absolute;
-//     top: 52px;
-//     left: 0;
-//     z-index: 5;
-
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-
-//     width: 100%;
-//     height: 360px;
-//     padding-inline: 8px;
-
-//     pointer-events: none;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     top: 42px;
-//     height: 305px;
-//     padding-inline: 4px;
-//   }
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-//     height: 270px;
-//   }
-// `;
 
 export const MobileArrow = styled.button`
   display: inline-flex;
@@ -410,54 +396,35 @@ export const MobileArrow = styled.button`
     border-radius: 6px;
   }
 `;
-// export const MobileArrow = styled.button`
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   width: 48px;
-//   height: 48px;
-//   padding: 0;
-
-//   border: 0;
-//   background: transparent;
-
-//   color: ${({ theme }) => theme.colors.brand.primary};
-
-//   cursor: pointer;
-//   pointer-events: auto;
-
-//   transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
-
-//   svg {
-//     display: block;
-//     width: 30px;
-//     height: 30px;
-//   }
-
-//   &:disabled {
-//     opacity: 0.2;
-//     pointer-events: none;
-//   }
-
-//   &:active:not(:disabled) {
-//     transform: scale(0.88);
-//   }
-
-//   &:focus-visible {
-//     outline: 2px solid ${({ theme }) => theme.colors.brand.secondary};
-//     outline-offset: 3px;
-//     border-radius: 6px;
-//   }
-// `;
 
 export const ProductTrack = styled.div`
   display: flex;
 
   width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: max-content;
+    gap: 18px;
+  }
 `;
+// export const ProductTrack = styled.div`
+//   display: flex;
+
+//   width: 100%;
+
+//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+//     gap: 14px;
+//   }
+// `;
+// // export const ProductTrack = styled.div`
+// //   display: flex;
+
+// //   width: 100%;
+// // `;
 
 export const ProductSlide = styled.div`
+  position: relative;
+
   flex: 0 0 100%;
 
   display: flex;
@@ -469,21 +436,16 @@ export const ProductSlide = styled.div`
   height: 100%;
 
   scroll-snap-align: start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex: 0 0 clamp(172px, 48vw, 205px);
+
+    width: clamp(172px, 48vw, 205px);
+    min-width: clamp(172px, 48vw, 205px);
+
+    scroll-snap-align: center;
+  }
 `;
-// export const ProductSlide = styled.div`
-//   flex: 0 0 100%;
-
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: center;
-
-//   width: 100%;
-//   min-width: 100%;
-//   height: 100%;
-
-//   scroll-snap-align: start;
-//   scroll-snap-stop: always;
-// `;
 
 export const ProductImage = styled.img`
   display: block;
@@ -517,13 +479,106 @@ export const ProductImage = styled.img`
 
   /* 480px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: 92%;
+    width: 100%;
+    max-width: 100%;
     height: 305px;
+
+    object-fit: contain;
   }
 
   /* 375px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
     height: 270px;
+  }
+`;
+
+export const ProductBadge = styled.span`
+  position: absolute;
+  top: 18%;
+  left: calc(50% + 76px);
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  min-width: 78px;
+  min-height: 42px;
+  padding: 7px 9px 11px;
+
+  background: ${({ theme }) => theme.colors.brand.primary};
+  color: ${({ theme }) => theme.colors.text.inverse};
+
+  box-shadow: 0 7px 16px rgba(12, 67, 37, 0.2);
+
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.055em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  span {
+    color: ${({ theme }) => theme.colors.brand.secondary};
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .badge-copy {
+    color: inherit;
+    font-size: inherit;
+    line-height: 1.05;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 17%;
+    left: calc(50% + 78px);
+
+    min-width: 74px;
+    min-height: 40px;
+    padding: 7px 8px 10px;
+
+    font-size: 0.59rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    top: 16%;
+    left: calc(50% + 74px);
+
+    min-width: 70px;
+    min-height: 38px;
+    padding: 6px 8px 10px;
+
+    font-size: 0.56rem;
+
+    box-shadow: 0 6px 14px rgba(12, 67, 37, 0.18);
+
+    span {
+      font-size: 0.72rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
+    top: 17%;
+    left: calc(50% + 66px);
+
+    min-width: 66px;
+    min-height: 36px;
+    padding: 6px 7px 9px;
+
+    font-size: 0.53rem;
+
+    span {
+      font-size: 0.68rem;
+    }
   }
 `;
 
@@ -696,29 +751,6 @@ export const RatingCount = styled.span`
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.72rem;
   font-weight: 600;
-`;
-
-export const MostPopularBadge = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: fit-content;
-  min-height: 28px;
-  margin-top: 10px;
-  padding: 5px 14px;
-
-  border: 1px solid ${({ theme }) => theme.colors.brand.secondary};
-  border-radius: 999px;
-
-  color: ${({ theme }) => theme.colors.brand.secondary};
-  background: rgba(247, 241, 230, 0.5);
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 `;
 
 export const ProductPrice = styled.strong`
