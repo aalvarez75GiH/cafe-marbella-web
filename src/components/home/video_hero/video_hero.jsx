@@ -15,7 +15,7 @@ import {
   FlagImage,
 } from "./video_hero.styles";
 
-import heroVideo from "../../../assets/videos/tentative_video.mp4";
+import heroVideo from "../../../assets/videos/video_clipped.mp4";
 import heroPoster from "../../../assets/videos/video_hero_poster.png";
 import venezuelanFlag from "../../../assets/images/hero/venezuelan_flag.png";
 

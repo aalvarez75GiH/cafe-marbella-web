@@ -310,11 +310,6 @@ export const ProductViewport = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    /*
-   * Must match the mobile ProductSlide width.
-   * This centers the first and last products while allowing
-   * adjacent products to peek into the viewport.
-   */
     --mobile-slide-width: clamp(172px, 48vw, 205px);
 
     width: 100%;

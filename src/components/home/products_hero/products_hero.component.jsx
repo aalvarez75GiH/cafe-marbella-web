@@ -78,6 +78,7 @@ export const ProductsHero = ({
 
   const productViewportRef = useRef(null);
   const scrollFrameRef = useRef(null);
+
   useEffect(() => {
     return () => {
       window.cancelAnimationFrame(scrollFrameRef.current);
@@ -163,6 +164,35 @@ export const ProductsHero = ({
       );
     });
   };
+  //   const handleProductScroll = (event) => {
+  //     if (isTouchDraggingRef.current) {
+  //       return;
+  //     }
+
+  //     const viewport = event.currentTarget;
+
+  //     window.cancelAnimationFrame(scrollFrameRef.current);
+
+  //     scrollFrameRef.current = window.requestAnimationFrame(() => {
+  //       const slideStep = getProductSlideStep();
+
+  //       if (!slideStep || !heroProducts.length) {
+  //         return;
+  //       }
+
+  //       const nextIndex = Math.max(
+  //         0,
+  //         Math.min(
+  //           Math.round(viewport.scrollLeft / slideStep),
+  //           heroProducts.length - 1
+  //         )
+  //       );
+
+  //       setActiveIndex((currentIndex) =>
+  //         currentIndex === nextIndex ? currentIndex : nextIndex
+  //       );
+  //     });
+  //   };
 
   if (isLoading) {
     return (
