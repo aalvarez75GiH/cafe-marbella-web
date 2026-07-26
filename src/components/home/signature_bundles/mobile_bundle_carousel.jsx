@@ -10,10 +10,14 @@ import {
   ProgressLine,
 } from "./mobile_bundle_carousel.styles";
 
+import { MobileFlyerSlide } from "./mobile_flyer_slide.component";
+
 export const MobileBundleCarousel = ({
   bundles,
   currentBundle,
   onBundleChange,
+  onShopBundle,
+  variant = "flyer",
 }) => {
   const handleScroll = (event) => {
     const viewport = event.currentTarget;
@@ -53,7 +57,11 @@ export const MobileBundleCarousel = ({
       <MobileCarouselViewport onScroll={handleScroll}>
         {bundles.map((bundle) => (
           <MobileCarouselItem key={bundle.id}>
-            <MobileBundleSlide bundle={bundle} />
+            {variant === "flyer" ? (
+              <MobileFlyerSlide bundle={bundle} onShopBundle={onShopBundle} />
+            ) : (
+              <MobileBundleSlide bundle={bundle} onShopBundle={onShopBundle} />
+            )}
           </MobileCarouselItem>
         ))}
       </MobileCarouselViewport>

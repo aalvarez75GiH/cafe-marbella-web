@@ -65,7 +65,7 @@ export const SignatureBundles = () => {
           <BundlesSectionEyebrow>SHOP BY BUNDLES</BundlesSectionEyebrow>
 
           <BundlesSectionTitle>
-            Discover our amazing Stacks &amp; Combos
+            Discover our amazing Packs &amp; Combos
           </BundlesSectionTitle>
 
           <BundlesSectionDescription>
