@@ -152,7 +152,7 @@ export const HeroTitle = styled.h2`
 
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(4.2rem, 5.5vw, 6.4rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.045em;
 

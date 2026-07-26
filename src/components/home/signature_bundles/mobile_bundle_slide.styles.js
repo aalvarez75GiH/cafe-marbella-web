@@ -131,23 +131,23 @@ export const MobileContent = styled.div`
 `;
 
 export const MobileBundleName = styled.h3`
+  width: 100%;
   margin: 0;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.display};
-  font-size: clamp(1.8rem, 5vw, 2.3rem);
-  font-weight: 650;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  text-align: center;
+  font-size: clamp(3rem, 13vw, 4.25rem);
+  font-weight: 780;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: clamp(1.65rem, 7vw, 2rem);
-  }
+  text-align: center;
+  text-wrap: balance;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileSmall}) {
-    font-size: clamp(1.5rem, 7vw, 1.8rem);
+    font-size: clamp(2.7rem, 12.5vw, 3.7rem);
+    line-height: 0.92;
   }
 `;
 
@@ -181,7 +181,7 @@ export const MobileBundleDescription = styled.p`
 export const MobilePrice = styled.p`
   margin: 18px 0 16px;
 
-  color: ${({ theme }) => theme.colors.brand.primaryDark};
+  color: ${({ theme }) => theme.colors.text.green};
 
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: clamp(1.85rem, 5vw, 2.25rem);

@@ -14,7 +14,7 @@ export const redesignedBundleItems = [
     number: "1",
     name: "Starter Pack",
     description:
-      "Start every morning with two handcrafted specialty coffees paired with the Café Marbella signature mug. A perfect introduction to our Venezuelan coffee experience.",
+      "Start every morning with two handcrafted specialty coffees and the Café Marbella signature mug.",
     image: starterPackImage,
     image_transparent: starterPackImage_tr,
     badge: "Best Seller",
@@ -42,7 +42,7 @@ export const redesignedBundleItems = [
     number: "2",
     name: "Cap & Coffee Combo",
     description:
-      "Enjoy premium Venezuelan coffee with our signature mug and embroidered Marbella cap. A perfect blend of exceptional flavor and everyday style.",
+      "Experience premium Venezuelan coffee with our signature embroidered Marbella cap.",
     image: capCoffeeComboImage,
     image_transparent: capCoffeeComboImage_tr,
     price: 45.99,
@@ -69,7 +69,7 @@ export const redesignedBundleItems = [
     number: "3",
     name: "T-Shirt & Coffee Combo",
     description:
-      "Enjoy premium Venezuelan coffee with our signature mug and exclusive Marbella T-shirt. A perfect combination of exceptional flavor and timeless style.",
+      "Enjoy premium Venezuelan coffee with our signature mug and exclusive Marbella T-shirt.",
     image: tShirtCoffeeComboImage,
     image_transparent: tShirtCoffeeComboImage_tr,
     price: 44.99,
@@ -96,7 +96,7 @@ export const redesignedBundleItems = [
     number: "4",
     name: "Streetwear Coffee Pack",
     description:
-      "Experience the complete Café Marbella collection with specialty coffee, an exclusive T-shirt, and our signature embroidered cap. Crafted for coffee lovers who appreciate quality.",
+      "Everything you need to enjoy Café Marbella, from specialty coffee to exclusive apparel.",
     image: streetwearImage,
     image_transparent: streetwearImage_tr,
     price: 51.99,
