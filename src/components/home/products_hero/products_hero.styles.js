@@ -957,7 +957,7 @@ export const DotsContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    top: 8px;
+    top: 40px;
     left: 50%;
   }
 `;
