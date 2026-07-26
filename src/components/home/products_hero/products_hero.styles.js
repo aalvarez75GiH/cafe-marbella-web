@@ -265,15 +265,30 @@ export const ProductCarousel = styled.div`
 
     width: 100%;
     min-height: 620px;
+    margin-top: 48px;
+    padding-top: 0;
+  }
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 620px;
     margin-top: 20px;
     padding-top: 52px;
-  }
+  } */
 
   /* 480px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-height: 500px;
-    padding-top: 42px;
+    margin-top: 48px;
+    padding-top: 0;
   }
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    min-height: 500px;
+    padding-top: 42px;
+  } */
 `;
 
 export const ProductViewport = styled.div`
@@ -402,20 +417,6 @@ export const ProductTrack = styled.div`
     gap: 18px;
   }
 `;
-// export const ProductTrack = styled.div`
-//   display: flex;
-
-//   width: 100%;
-
-//   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-//     gap: 14px;
-//   }
-// `;
-// // export const ProductTrack = styled.div`
-// //   display: flex;
-
-// //   width: 100%;
-// // `;
 
 export const ProductSlide = styled.div`
   position: relative;
@@ -548,11 +549,11 @@ export const ProductBadge = styled.span`
     top: 16%;
     left: calc(50% + 74px);
 
-    min-width: 70px;
-    min-height: 38px;
+    min-width: 90px;
+    min-height: 48px;
     padding: 6px 8px 10px;
 
-    font-size: 0.56rem;
+    font-size: 0.66rem;
 
     box-shadow: 0 6px 14px rgba(12, 67, 37, 0.18);
 
@@ -623,7 +624,7 @@ export const ProductInformation = styled.div`
 
     width: 100%;
     max-width: none;
-    margin-top: 18px;
+    margin-top: 0px;
 
     text-align: center;
 
@@ -897,11 +898,6 @@ export const PreviousButton = styled(NavigationButton)`
     left: 4px;
   }
 
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: 57%;
-    left: 18px;
-  } */
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
   }
@@ -951,14 +947,13 @@ export const DotsContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    top: 10px;
-    bottom: auto;
-    left: 50%;
-  }
+    position: static;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    top: 40px;
-    left: 50%;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 32px;
+
+    transform: none;
   }
 `;
 

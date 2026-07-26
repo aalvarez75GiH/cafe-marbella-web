@@ -108,7 +108,7 @@ export const buildProductsHeroSlides = (products = []) => {
         rating: Number(product.rating ?? 0),
         reviewCount: Number(product.review_count ?? product.reviewCount ?? 0),
         priority: Number(product.priority ?? 0),
-        isMostPopular: Number(product.priority ?? 0) === 1,
+        isBestSeller: product.isBestSeller === true,
         flagKey: product.flag_key,
 
         // Variants

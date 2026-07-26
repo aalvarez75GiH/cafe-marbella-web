@@ -289,7 +289,7 @@ export const ProductsHero = ({
                     alt={`${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
                     draggable="false"
                   />
-                  {product.isMostPopular && (
+                  {product.isBestSeller && (
                     <ProductBadge aria-label="Best seller">
                       <span aria-hidden="true">★</span>
 
@@ -304,6 +304,18 @@ export const ProductsHero = ({
               ))}
             </ProductTrack>
           </ProductViewport>
+          <DotsContainer aria-label="Featured coffee progress">
+            {heroProducts.map((product, index) => (
+              <DotButton
+                key={product.id}
+                type="button"
+                $active={index === activeIndex}
+                aria-label={`Show ${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
+                aria-current={index === activeIndex ? "true" : undefined}
+                onClick={() => handleDotSelect(index)}
+              />
+            ))}
+          </DotsContainer>
 
           <ProductInformation>
             <ProductType>{activeProduct.grindLabel}</ProductType>
@@ -345,8 +357,7 @@ export const ProductsHero = ({
               →
             </NextButton>
           </ProductInformation>
-
-          <DotsContainer aria-label="Featured coffee progress">
+          {/* <DotsContainer aria-label="Featured coffee progress">
             {heroProducts.map((product, index) => (
               <DotButton
                 key={product.id}
@@ -357,7 +368,7 @@ export const ProductsHero = ({
                 onClick={() => handleDotSelect(index)}
               />
             ))}
-          </DotsContainer>
+          </DotsContainer> */}
         </ProductCarousel>
       </ProductsHeroContainer>
     </ProductsHeroSection>
