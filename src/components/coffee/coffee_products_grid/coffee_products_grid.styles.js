@@ -1,65 +1,65 @@
 import styled from "styled-components";
 
 export const ProductsSection = styled.section`
-  background: ${({ theme }) => theme.colors.bg.tertiary};
+  width: 100%;
   min-width: 0;
-`;
 
-export const ProductsHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  min-height: 72px;
-  margin-bottom: 18px;
-  padding: 0 4px;
-`;
-
-export const ProductsSummary = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-
-  font-family: ${({ theme }) => theme.fonts.body};
-  color: ${({ theme }) => theme.colors.text.primary};
-
-  strong {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-`;
-
-export const ProductsCount = styled.span`
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.colors.text.secondary};
+  background: transparent;
 `;
 
 export const ProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 420px));
-  justify-content: start;
-  gap: 24px;
+  grid-template-columns: ${({ $productCount }) =>
+    $productCount === 1 ? "minmax(0, 720px)" : "repeat(2, minmax(0, 1fr))"};
+  justify-content: ${({ $productCount }) =>
+    $productCount === 1 ? "center" : "stretch"};
+  align-items: stretch;
+  gap: 28px;
 
   width: 100%;
+  min-width: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-template-columns: repeat(3, minmax(0, 390px));
-    gap: 20px;
+    gap: 24px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    grid-template-columns: repeat(2, minmax(0, 420px));
     gap: 20px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const EmptyProducts = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 320px;
+  padding: 48px 24px;
+
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
+  border-radius: 16px;
+
+  background: ${({ theme }) => theme.colors.bg.primary};
+
+  text-align: center;
+
+  strong {
+    color: ${({ theme }) => theme.colors.text.primary};
+
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 1.15rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-template-columns: minmax(0, 420px);
-    justify-content: center;
-    gap: 16px;
+  span {
+    color: ${({ theme }) => theme.colors.text.secondary};
+
+    font-family: ${({ theme }) => theme.fonts.body};
+    font-size: 0.9rem;
   }
 `;

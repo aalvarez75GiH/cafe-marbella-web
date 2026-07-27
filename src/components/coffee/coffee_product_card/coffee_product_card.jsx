@@ -69,7 +69,16 @@ export const CoffeeProductCard = ({ product }) => {
           </SizesList>
         </ProductDetails>
 
-        <ViewLink href={`/coffee/${product.id}`}>View</ViewLink>
+        <ViewLink href={`/coffee/${product.id}`}>
+          View details
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M9 5L16 12L9 19"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </ViewLink>
       </ProductContent>
 
       <GrindIdentificationLine $grindType={product.grindType} />
