@@ -15,8 +15,8 @@ import {
   FlagImage,
 } from "./video_hero.styles";
 
-import heroVideo from "../../../assets/videos/video_clipped.mp4";
-import heroPoster from "../../../assets/videos/video_hero_poster.png";
+import heroVideo from "../../../assets/videos/video_hero_web.mp4";
+import heroPoster from "../../../assets/videos/video_poster.png";
 import venezuelanFlag from "../../../assets/images/hero/venezuelan_flag.png";
 
 export const VideoHero = () => {
@@ -84,9 +84,7 @@ export const VideoHero = () => {
               Shop Bundles
             </VideoHeroButton>
           </VideoHeroActions>
-          {/* <VideoHeroButton type="button" onClick={handleExploreClick}>
-            Discover our coffee
-          </VideoHeroButton> */}
+
           <FlagSignature aria-label="Venezuelan coffee origin">
             <FlagImage
               src={venezuelanFlag}
