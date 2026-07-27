@@ -10,15 +10,24 @@ import {
   ArrowIcon,
 } from "./shop_category_card.styles";
 
+import { useContext } from "react";
+
+import { NavigationTransitionContext } from "../../../infrastructure/services/navigation_transition/navigation_transition.context";
+
 export const ShopCategoryCard = ({ category }) => {
   const { title, description, image, path } = category;
-
+  const { navigateWithTransition } = useContext(NavigationTransitionContext);
   return (
-    <Card to={path} aria-label={`Explore ${title}`}>
+    <Card
+      to={path}
+      aria-label={`Explore ${title}`}
+      onClick={(event) => {
+        event.preventDefault();
+        navigateWithTransition(path);
+      }}
+    >
       <CardBackground $image={image} />
-
       <CardOverlay />
-
       <CardContent>
         <ContentGroup>
           <CardTitle>{title}</CardTitle>

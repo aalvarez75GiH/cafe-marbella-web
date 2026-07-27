@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 
 import { MobileGrindSelection } from "./mobile_grind_selection";
 import { MobileRoastSelection } from "./mobile_roast_selection";
 import { MobileProducts } from "./mobile_products";
 
-import {
-  FlowLoader,
-  LoaderMark,
-  LoaderSpinner,
-  LoaderText,
-  FlowViewport,
-  FlowScreen,
-} from "./mobile_coffee_flow.styles";
+import { getFilteredCoffeeProducts } from "../../../infrastructure/services/global/global.utils";
+import { FlowViewport, FlowScreen } from "./mobile_coffee_flow.styles";
 
 export const MobileCoffeeFlow = ({ products }) => {
-  const [isEntering, setIsEntering] = useState(true);
-
   const [step, setStep] = useState("grind");
   const [direction, setDirection] = useState("forward");
 
   const [selectedGrind, setSelectedGrind] = useState(null);
   const [selectedRoast, setSelectedRoast] = useState(null);
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setIsEntering(false);
-    }, 450);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, []);
 
   const handleGrindSelect = (grindType) => {
     setDirection("forward");
@@ -58,12 +40,14 @@ export const MobileCoffeeFlow = ({ products }) => {
     }
   };
 
-  const filteredProducts = products.filter(
-    (product) =>
-      product.active &&
-      product.grindType === selectedGrind &&
-      product.roast === selectedRoast
-  );
+  const filteredProducts = useMemo(() => {
+    return getFilteredCoffeeProducts({
+      products,
+      selectedGrind,
+      selectedRoast,
+      activeOnly: true,
+    });
+  }, [products, selectedGrind, selectedRoast]);
 
   const renderStep = () => {
     if (step === "grind") {
@@ -95,18 +79,6 @@ export const MobileCoffeeFlow = ({ products }) => {
     );
   };
 
-  if (isEntering) {
-    return (
-      <FlowLoader role="status" aria-live="polite">
-        <LoaderMark aria-hidden="true">
-          <LoaderSpinner />
-        </LoaderMark>
-
-        <LoaderText>Preparing your coffee experience</LoaderText>
-      </FlowLoader>
-    );
-  }
-
   return (
     <FlowViewport>
       <FlowScreen
@@ -119,25 +91,3 @@ export const MobileCoffeeFlow = ({ products }) => {
     </FlowViewport>
   );
 };
-
-// in order to show Lat and Long
-{
-  /* <div
-        style={{
-          position: "fixed",
-          bottom: 10,
-          left: 10,
-          right: 10,
-          zIndex: 9999,
-          background: "#fff",
-          border: "1px solid #ccc",
-          padding: "10px",
-          fontSize: "11px",
-          fontFamily: "monospace",
-        }}
-      >
-        <div>Status: {locationStatus}</div>
-        <div>Lat: {String(deviceLat)}</div>
-        <div>Lng: {String(deviceLng)}</div>
-      </div> */
-}

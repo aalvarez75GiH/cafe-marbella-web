@@ -5,13 +5,12 @@ import { CoffeeFilters } from "../../components/coffee/coffee_filters/coffee_fil
 import { CoffeeProductsGrid } from "../../components/coffee/coffee_products_grid/coffee_products_grid";
 
 import { useMobileBreakpoint } from "../../hooks/use_mobile_breakpoint";
-
 import { MobileCoffeeFlow } from "../../components/coffee/mobile_coffee_flow/mobile_coffee_flow";
-
 import { CoffeePageContent } from "./coffee_page.styles";
+import { CoffeeTopBar } from "../../components/coffee/coffee_top_bar.component/coffee_top_bar.component";
 
+import { getFilteredCoffeeProducts } from "../../infrastructure/services/global/global.utils";
 import { GlobalContext } from "../../infrastructure/services/global/global.context";
-import { GeolocationContext } from "../../infrastructure/services/geolocation/geolocation.context";
 import { WarehouseContext } from "../../infrastructure/services/warehouse/warehouse.context";
 
 export const CoffeePage = () => {
@@ -20,11 +19,7 @@ export const CoffeePage = () => {
   const [selectedRoast, setSelectedRoast] = useState("light");
 
   const isMobile = useMobileBreakpoint();
-  const { productsCatalog, activeProducts, isProductsLoading, productsError } =
-    useContext(GlobalContext);
-
-  const { deviceLat, deviceLng, locationError, locationStatus } =
-    useContext(GeolocationContext);
+  const { productsCatalog } = useContext(GlobalContext);
 
   const { myWarehouse, inventoryProducts, isWarehouseLoading, warehouseError } =
     useContext(WarehouseContext);
@@ -36,24 +31,15 @@ export const CoffeePage = () => {
     console.log("WAREHOUSE ERROR:", warehouseError);
   }, [myWarehouse, inventoryProducts, isWarehouseLoading, warehouseError]);
 
-  useEffect(() => {
-    console.log("PRODUCTS LOADING:", isProductsLoading);
-    console.log("PRODUCTS ERROR:", productsError);
-    console.log("CATALOG:", productsCatalog);
-    console.log("ACTIVE PRODUCTS:", activeProducts);
-    console.log("LOCATION STATUS:", locationStatus);
-    console.log("LAT:", deviceLat);
-    console.log("LNG:", deviceLng);
-    console.log("LOCATION ERROR:", locationError);
-  }, [isProductsLoading, productsError, productsCatalog, activeProducts]);
-
   const catalog = productsCatalog;
 
   const filteredProducts = useMemo(() => {
-    return catalog.filter(
-      (product) =>
-        product.grindType === selectedGrind && product.roast === selectedRoast
-    );
+    return getFilteredCoffeeProducts({
+      products: catalog,
+      selectedGrind,
+      selectedRoast,
+      activeOnly: true,
+    });
   }, [catalog, selectedGrind, selectedRoast]);
 
   if (isMobile) {
@@ -61,6 +47,8 @@ export const CoffeePage = () => {
   }
   return (
     <>
+      <CoffeeTopBar />
+
       <CoffeeHero />
 
       <CoffeePageContent>
