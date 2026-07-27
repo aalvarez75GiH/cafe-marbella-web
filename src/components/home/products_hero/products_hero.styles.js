@@ -12,11 +12,6 @@ export const ProductsHeroSection = styled.section`
 
   background: ${({ theme }) => theme.colors.bg.secondary};
 
-  /*
-   * A subtle desktop transition—not a large dome.
-   */
-  /* border-radius: 50% 50% 0 0 / 24px 24px 0 0; */
-
   &::after {
     content: "";
     display: none;
@@ -33,10 +28,6 @@ export const ProductsHeroSection = styled.section`
     margin-top: 0;
     padding: 42px 0 40px;
 
-    /*
-     * Tablet and mobile need a clean edge.
-     * The large curved cap consumes too much space.
-     */
     border-radius: 0;
   }
 
@@ -268,16 +259,6 @@ export const ProductCarousel = styled.div`
     margin-top: 48px;
     padding-top: 0;
   }
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-    min-height: 620px;
-    margin-top: 20px;
-    padding-top: 52px;
-  } */
 
   /* 480px */
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -285,10 +266,6 @@ export const ProductCarousel = styled.div`
     margin-top: 48px;
     padding-top: 0;
   }
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    min-height: 500px;
-    padding-top: 42px;
-  } */
 `;
 
 export const ProductViewport = styled.div`
@@ -303,7 +280,7 @@ export const ProductViewport = styled.div`
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
 
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -326,11 +303,19 @@ export const ProductViewport = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     --mobile-slide-width: clamp(172px, 48vw, 205px);
+    --mobile-slide-gap: 18px;
+
+    --mobile-carousel-gutter: calc(
+      (100vw - 28px - var(--mobile-slide-width)) / 2
+    );
 
     width: 100%;
-    padding-inline: calc((100% - var(--mobile-slide-width)) / 2);
 
-    scroll-padding-inline: calc((100% - var(--mobile-slide-width)) / 2);
+    padding-left: var(--mobile-carousel-gutter);
+    padding-right: 0;
+
+    scroll-padding-left: var(--mobile-carousel-gutter);
+    scroll-padding-right: var(--mobile-carousel-gutter);
 
     box-sizing: border-box;
   }
@@ -414,7 +399,25 @@ export const ProductTrack = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: max-content;
-    gap: 18px;
+    gap: var(--mobile-slide-gap);
+  }
+`;
+
+export const CarouselEndSpacer = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: block;
+
+    flex: 0 0
+      max(0px, calc(var(--mobile-carousel-gutter) - var(--mobile-slide-gap)));
+
+    width: max(
+      0px,
+      calc(var(--mobile-carousel-gutter) - var(--mobile-slide-gap))
+    );
+
+    pointer-events: none;
   }
 `;
 

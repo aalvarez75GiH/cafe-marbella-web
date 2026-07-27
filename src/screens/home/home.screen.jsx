@@ -7,7 +7,6 @@ import { SignatureBundles } from "../../components/home/signature_bundles/signat
 import { StoryImpactSection } from "../../components/home/our_story_foundation/story_impact_section";
 import { CommunitySocialSection } from "../../components/home/social/community_social_section";
 import { FooterSection } from "../../components/home/footer/footer.component";
-import { NewHero_Component } from "../../components/home/hero/new_hero.component";
 import { VideoHero } from "../../components/home/video_hero/video_hero";
 import { ProductsHero } from "../../components/home/products_hero/products_hero.component";
 

@@ -20,6 +20,7 @@ import {
   ProductCarousel,
   ProductViewport,
   ProductTrack,
+  CarouselEndSpacer,
   ProductSlide,
   ProductImage,
   ProductInformation,
@@ -164,35 +165,6 @@ export const ProductsHero = ({
       );
     });
   };
-  //   const handleProductScroll = (event) => {
-  //     if (isTouchDraggingRef.current) {
-  //       return;
-  //     }
-
-  //     const viewport = event.currentTarget;
-
-  //     window.cancelAnimationFrame(scrollFrameRef.current);
-
-  //     scrollFrameRef.current = window.requestAnimationFrame(() => {
-  //       const slideStep = getProductSlideStep();
-
-  //       if (!slideStep || !heroProducts.length) {
-  //         return;
-  //       }
-
-  //       const nextIndex = Math.max(
-  //         0,
-  //         Math.min(
-  //           Math.round(viewport.scrollLeft / slideStep),
-  //           heroProducts.length - 1
-  //         )
-  //       );
-
-  //       setActiveIndex((currentIndex) =>
-  //         currentIndex === nextIndex ? currentIndex : nextIndex
-  //       );
-  //     });
-  //   };
 
   if (isLoading) {
     return (
@@ -302,6 +274,7 @@ export const ProductsHero = ({
                   )}
                 </ProductSlide>
               ))}
+              <CarouselEndSpacer aria-hidden="true" />
             </ProductTrack>
           </ProductViewport>
           <DotsContainer aria-label="Featured coffee progress">
@@ -357,18 +330,6 @@ export const ProductsHero = ({
               →
             </NextButton>
           </ProductInformation>
-          {/* <DotsContainer aria-label="Featured coffee progress">
-            {heroProducts.map((product, index) => (
-              <DotButton
-                key={product.id}
-                type="button"
-                $active={index === activeIndex}
-                aria-label={`Show ${product.originLabel} ${product.grindLabel} ${product.roastLabel}`}
-                aria-current={index === activeIndex ? "true" : undefined}
-                onClick={() => handleDotSelect(index)}
-              />
-            ))}
-          </DotsContainer> */}
         </ProductCarousel>
       </ProductsHeroContainer>
     </ProductsHeroSection>
